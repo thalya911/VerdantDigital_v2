@@ -138,13 +138,15 @@ const StartProjectModal: React.FC<StartProjectModalProps> = ({ isOpen, onClose }
                  </p>
               </div>
 
-              <button 
+              <a
+                href="https://meetings-ap1.hubspot.com/thalya"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full block text-center bg-transparent border-2 border-brand-border hover:border-brand-accent text-white hover:text-brand-accent font-bold py-4 px-6 rounded-lg transition-all uppercase tracking-wide group"
-                onClick={() => alert('Redirect to Booking Calendar')}
               >
                 Book Free Call
                 <span className="block text-[10px] text-brand-muted group-hover:text-brand-accent font-normal normal-case mt-0.5 transition-colors">Next available: Today</span>
-              </button>
+              </a>
             </div>
           </div>
 

@@ -181,15 +181,14 @@ const ExpressBuildModal: React.FC<ExpressBuildModalProps> = ({ isOpen, onClose }
                 >
                   Perfect! Continue with Express Build
                 </button>
-                <button
-                  onClick={() => {
-                    onClose();
-                    alert('Redirecting to booking calendar...');
-                  }}
-                  className="flex-1 bg-transparent border-2 border-brand-border hover:border-brand-accent text-white hover:text-brand-accent font-bold text-lg py-4 px-6 rounded-lg transition-all uppercase tracking-wide"
+                <a
+                  href="https://meetings-ap1.hubspot.com/thalya"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 bg-transparent border-2 border-brand-border hover:border-brand-accent text-white hover:text-brand-accent font-bold text-lg py-4 px-6 rounded-lg transition-all uppercase tracking-wide inline-block text-center"
                 >
                   I need custom features - Book Free Call
-                </button>
+                </a>
               </div>
             </div>
           )}

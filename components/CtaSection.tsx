@@ -27,12 +27,14 @@ const CtaSection: React.FC<CtaSectionProps> = ({ onOpenModal }) => {
               See Your Options
               <ArrowRight size={18} />
             </button>
-            <button
-              onClick={onOpenModal}
-              className="bg-white/20 hover:bg-white/30 text-brand-black border-2 border-brand-black font-bold text-base py-3 px-6 rounded-lg transition-all"
+            <a
+              href="https://meetings-ap1.hubspot.com/thalya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white/20 hover:bg-white/30 text-brand-black border-2 border-brand-black font-bold text-base py-3 px-6 rounded-lg transition-all inline-block"
             >
               Book Free 15-Min Call
-            </button>
+            </a>
          </div>
 
          <div className="flex flex-wrap justify-center gap-6 text-brand-black/70 font-bold text-xs uppercase tracking-wider">
