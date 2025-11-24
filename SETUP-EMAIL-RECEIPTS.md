@@ -1,12 +1,10 @@
-prod_TTaZVJCeZc0Fk9
-
-# Email Receipts Setup Guide
+# Email Receipts Setup Guide (Vercel)
 
 This guide will help you configure email receipts for all form submissions to be sent to `thalya@verdantlabs.com.au`.
 
 ## Overview
 
-Your application now has three Netlify Functions that handle form submissions and payment receipts:
+Your application now has three Vercel Serverless Functions that handle form submissions and payment receipts:
 
 1. **create-checkout-session.js** - Handles Stripe payment checkout sessions
 2. **stripe-webhook.js** - Listens for successful payments and sends receipt emails via Resend
@@ -60,7 +58,7 @@ All emails are automatically sent to: **thalya@verdantlabs.com.au**
 2. Click "Add endpoint"
 3. Enter your webhook URL:
    ```
-   https://YOUR_NETLIFY_SITE.netlify.app/.netlify/functions/stripe-webhook
+   https://YOUR_VERCEL_SITE.vercel.app/api/stripe-webhook
    ```
 4. Select events to listen for:
    - `checkout.session.completed`
@@ -68,10 +66,10 @@ All emails are automatically sent to: **thalya@verdantlabs.com.au**
 5. Click "Add endpoint"
 6. Copy the **Signing secret** (starts with `whsec_`)
 
-### 3. Configure Environment Variables in Netlify
+### 3. Configure Environment Variables in Vercel
 
-1. Go to your Netlify site dashboard
-2. Navigate to **Site settings → Environment variables**
+1. Go to your Vercel project dashboard
+2. Click **Settings** → **Environment Variables**
 3. Add the following environment variables:
 
 | Variable Name | Value | Description |
@@ -82,9 +80,9 @@ All emails are automatically sent to: **thalya@verdantlabs.com.au**
 | `STRIPE_RECURRING_PRICE_ID` | `price_...` | Stripe recurring price ID for $99/mo |
 | `RESEND_API_KEY` | `re_...` | Resend API key for sending emails |
 
-**Important:** Make sure to set these for **all deployment contexts** (Production, Deploy Previews, and Branch deploys) or just Production if you only need it there.
+**Important:** Make sure to set these for **all environments** (Production, Preview, and Development) by checking all three boxes when adding each variable.
 
-### 4. Deploy to Netlify
+### 4. Deploy to Vercel
 
 1. Push your code to your Git repository:
    ```bash
@@ -93,9 +91,9 @@ All emails are automatically sent to: **thalya@verdantlabs.com.au**
    git push
    ```
 
-2. Netlify will automatically detect the changes and deploy
+2. Vercel will automatically detect the changes and deploy
 
-3. Wait for the deployment to complete
+3. Wait for the deployment to complete (usually 1-2 minutes)
 
 ### 5. Test the Setup
 
@@ -142,9 +140,9 @@ All emails are automatically sent to: **thalya@verdantlabs.com.au**
    - Go to Resend dashboard → Domains
    - Ensure your domain is verified (green checkmark)
 
-2. **Check Netlify Functions logs**
-   - Go to Netlify dashboard → Functions
-   - Click on the function that's having issues
+2. **Check Vercel Functions logs**
+   - Go to Vercel dashboard → Your Project → Logs
+   - Filter by the function that's having issues (e.g., `/api/stripe-webhook`)
    - Check the logs for errors
 
 3. **Check Stripe webhook logs**
@@ -153,19 +151,19 @@ All emails are automatically sent to: **thalya@verdantlabs.com.au**
    - Check recent webhook events for errors
 
 4. **Verify environment variables**
-   - Go to Netlify dashboard → Site settings → Environment variables
+   - Go to Vercel dashboard → Settings → Environment Variables
    - Ensure all variables are set correctly
-   - Try redeploying after adding variables
+   - Click "Redeploy" after adding/changing variables
 
 ### Contact form not submitting
 
 1. Check browser console for errors
-2. Verify the API endpoint is accessible: `https://YOUR_SITE/.netlify/functions/contact-form`
-3. Check Netlify Functions logs for error details
+2. Verify the API endpoint is accessible: `https://YOUR_SITE.vercel.app/api/contact-form`
+3. Check Vercel Functions logs for error details
 
 ### Stripe payment not working
 
-1. Ensure `STRIPE_SECRET_KEY` is set in Netlify
+1. Ensure `STRIPE_SECRET_KEY` is set in Vercel
 2. Ensure `STRIPE_WEBHOOK_SECRET` matches the webhook in Stripe dashboard
 3. Check that the webhook URL is correct and accessible
 4. Verify the webhook is receiving events in Stripe dashboard
@@ -184,7 +182,7 @@ Before going live with real payments:
 ## Support
 
 If you encounter any issues:
-1. Check the Netlify Functions logs
+1. Check the Vercel Functions logs (Vercel Dashboard → Logs)
 2. Check the Resend dashboard for failed emails
 3. Check the Stripe dashboard for webhook errors
 4. Review the browser console for frontend errors
