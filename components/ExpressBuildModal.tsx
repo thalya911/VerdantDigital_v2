@@ -131,10 +131,10 @@ const ExpressBuildModal: React.FC<ExpressBuildModalProps> = ({ isOpen, onClose }
                 <h3 className="text-lg font-display font-bold text-brand-accent mb-4 uppercase text-center">What You Get:</h3>
                 <ul className="grid md:grid-cols-2 gap-3">
                   {[
-                    "Mobile-optimized website (loads in under 2 seconds)",
+                    "Mobile-optimized (loads in under 2 seconds)",
                     "Live in 7 days guaranteed",
-                    "Click-to-call buttons & quote request forms",
-                    "Ongoing hosting, security & unlimited updates ($99/mo)"
+                    "Click-to-call & quote request forms",
+                    "Hosting, security & unlimited updates ($99/mo)"
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3 text-sm text-brand-bone">
                       <Check size={16} className="text-brand-accent shrink-0 mt-0.5" strokeWidth={3} />
