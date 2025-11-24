@@ -23,15 +23,15 @@ const Workflow: React.FC<WorkflowProps> = ({ onOpenModal }) => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Left Column - Workflow Steps (Vertical) */}
-          <div className="flex flex-col justify-between h-[455px]">
+          <div className="flex flex-col gap-4 lg:gap-0 lg:justify-between lg:h-[455px]">
             {WORKFLOW.map((item, index) => (
               <div key={index} className="relative group">
-                <div className="flex gap-6 items-start bg-brand-black/50 p-6 rounded-xl border border-brand-border hover:border-brand-accent transition-all duration-300 group-hover:-translate-y-1">
-                  <div className="w-16 h-16 bg-brand-black border-2 border-brand-border rounded-full flex items-center justify-center text-2xl font-display font-bold text-white group-hover:border-brand-accent group-hover:text-brand-accent transition-colors shadow-xl shrink-0">
+                <div className="flex gap-4 md:gap-6 items-start bg-brand-black/50 p-4 md:p-6 rounded-xl border border-brand-border hover:border-brand-accent transition-all duration-300 group-hover:-translate-y-1">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-brand-black border-2 border-brand-border rounded-full flex items-center justify-center text-xl md:text-2xl font-display font-bold text-white group-hover:border-brand-accent group-hover:text-brand-accent transition-colors shadow-xl shrink-0">
                     0{item.step}
                   </div>
                   <div>
-                    <h3 className="text-xl font-display font-bold text-white mb-3">{item.title}</h3>
+                    <h3 className="text-lg md:text-xl font-display font-bold text-white mb-2 md:mb-3">{item.title}</h3>
                     <p className="text-brand-muted text-sm leading-relaxed">{item.description}</p>
                   </div>
                 </div>
