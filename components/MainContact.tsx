@@ -146,7 +146,7 @@ const MainContact: React.FC = () => {
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-brand-accent uppercase tracking-widest ml-1">Name</label>
                   <input
-                    type="text" name="name" required
+                    type="text" name="name"
                     value={formState.name} onChange={handleChange}
                     className="w-full bg-brand-surface border border-brand-border focus:border-brand-accent text-white rounded-lg p-3 outline-none transition-all text-sm"
                     placeholder="John Doe"
@@ -156,7 +156,7 @@ const MainContact: React.FC = () => {
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-brand-accent uppercase tracking-widest ml-1">Business Name</label>
                   <input
-                    type="text" name="business" required
+                    type="text" name="business"
                     value={formState.business} onChange={handleChange}
                     className="w-full bg-brand-surface border border-brand-border focus:border-brand-accent text-white rounded-lg p-3 outline-none transition-all text-sm"
                     placeholder="Acme Inc."
@@ -166,8 +166,8 @@ const MainContact: React.FC = () => {
 
               <div className="space-y-2">
                 <label className="text-xs font-bold text-brand-accent uppercase tracking-widest ml-1">Email Address</label>
-                <input 
-                  type="email" name="email" required
+                <input
+                  type="email" name="email"
                   value={formState.email} onChange={handleChange}
                   className="w-full bg-brand-surface border border-brand-border focus:border-brand-accent text-white rounded-lg p-3 outline-none transition-all text-sm"
                   placeholder="john@example.com"
