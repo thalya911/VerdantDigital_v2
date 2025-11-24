@@ -16,7 +16,7 @@ const CtaSection: React.FC<CtaSectionProps> = ({ onOpenModal }) => {
 
        <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
          <h2 className="text-3xl md:text-5xl font-display font-black text-brand-black mb-6 tracking-tight">
-           READY TO GET MORE TRADIE JOBS?
+           READY TO GET MORE JOBS?
          </h2>
 
          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
