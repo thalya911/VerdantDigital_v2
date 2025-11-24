@@ -23,8 +23,8 @@ interface CreateCheckoutSessionParams {
 
 export const createCheckoutSession = async (params: CreateCheckoutSessionParams) => {
   try {
-    // This should call your backend API endpoint
-    // You'll need to create this endpoint on your backend
+    console.log('Creating checkout session with params:', params);
+
     const response = await fetch('/api/create-checkout-session', {
       method: 'POST',
       headers: {
@@ -33,12 +33,22 @@ export const createCheckoutSession = async (params: CreateCheckoutSessionParams)
       body: JSON.stringify(params),
     });
 
+    console.log('Response status:', response.status);
+
     if (!response.ok) {
-      throw new Error('Failed to create checkout session');
+      const errorData = await response.json().catch(() => ({}));
+      console.error('Response error data:', errorData);
+      throw new Error(`Failed to create checkout session: ${JSON.stringify(errorData)}`);
     }
 
-    const { sessionId } = await response.json();
-    return sessionId;
+    const data = await response.json();
+    console.log('Response data:', data);
+
+    if (!data.sessionId) {
+      throw new Error('No sessionId in response');
+    }
+
+    return data.sessionId;
   } catch (error) {
     console.error('Error creating checkout session:', error);
     throw error;
@@ -46,11 +56,16 @@ export const createCheckoutSession = async (params: CreateCheckoutSessionParams)
 };
 
 export const redirectToCheckout = async (sessionId: string) => {
+  console.log('Redirecting to checkout with sessionId:', sessionId);
+  console.log('Stripe publishable key:', STRIPE_PUBLISHABLE_KEY ? 'Set' : 'Not set');
+
   const stripe = await getStripe();
   if (!stripe) {
-    throw new Error('Stripe failed to load');
+    console.error('Stripe failed to load - check publishable key');
+    throw new Error('Stripe failed to load - check publishable key in environment variables');
   }
 
+  console.log('Stripe loaded successfully, redirecting...');
   const { error } = await stripe.redirectToCheckout({ sessionId });
 
   if (error) {
