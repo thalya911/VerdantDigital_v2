@@ -4,32 +4,32 @@ import { ShoppingBag, TrendingUp, Code2, Layout, Globe, MousePointerClick, Arrow
 const services = [
   {
     title: "UX/UI Design",
-    desc: "Interface design that feels intuitive. We map customer journeys to reduce friction and increase engagement.",
+    desc: "Your customers get interfaces that feel natural and guide them exactly where you want them to go. Less confusion, more conversions.",
     icon: <Layout size={28} />
   },
   {
     title: "Custom App Development",
-    desc: "React, Node, Python. When off-the-shelf software doesn't fit, we build custom web applications to streamline your operations.",
+    desc: "When off-the-shelf doesn't cut it, you get a custom web application (React, Node, Python) built to solve your specific workflow challenges.",
     icon: <Code2 size={28} />
   },
   {
     title: "E-commerce Development",
-    desc: "High-converting storefronts. We specialise in Shopify builds that balance brand aesthetics with performance-based conversion optimisation.",
+    desc: "You get a Shopify storefront that looks premium and converts browsers into buyers. Your brand stands out, your sales go up.",
     icon: <ShoppingBag size={28} />
   },
   {
     title: "Performance Marketing",
-    desc: "Google Ads, Meta Ads, and TikTok. We manage ad spend with a focus on ROAS, not just vanity metrics like clicks.",
+    desc: "Your ad spend goes further with smarter targeting across Google, Meta and TikTok. You see real returns, not just vanity metrics.",
     icon: <TrendingUp size={28} />
   },
   {
     title: "SEO Strategy",
-    desc: "Long-term organic growth. Technical audits, content strategy, and authority building to own your niche.",
+    desc: "You own your niche with content strategy, technical optimisation and authority building that brings the right traffic for the long term.",
     icon: <Globe size={28} />
   },
   {
     title: "Conversion Optimisation",
-    desc: "Data-driven A/B testing. We analyse user behaviour to turn more of your current traffic into paying customers.",
+    desc: "Your current traffic starts converting better. Data-driven testing shows you exactly what makes more visitors become paying customers.",
     icon: <MousePointerClick size={28} />
   }
 ];

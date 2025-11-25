@@ -74,8 +74,8 @@ All emails are automatically sent to: **thalya@verdantlabs.com.au**
 
 | Variable Name | Value | Description |
 |--------------|-------|-------------|
-| `VITE_STRIPE_PUBLISHABLE` | `pk_test_...` | Stripe publishable key (frontend) |
-| `STRIPE_SECRET` | `sk_test_...` | Stripe secret key (backend) |
+| `VITE_STRIPE_PUBLISHABLE_KEY` | `pk_test_...` | Stripe publishable key (frontend) |
+| `STRIPE_SECRET_KEY` | `sk_test_...` | Stripe secret key (backend) |
 | `STRIPE_WEBHOOK_SECRET` | `whsec_...` | Stripe webhook signing secret |
 | `STRIPE_RECURRING_PRICE_ID` | `price_...` | Stripe recurring price ID for $99/mo |
 | `RESEND_API_KEY` | `re_...` | Resend API key for sending emails |
@@ -102,6 +102,10 @@ All emails are automatically sent to: **thalya@verdantlabs.com.au**
 2. Navigate to the contact section
 3. Fill out the form and submit
 4. Check that thalya@verdantlabs.com.au receives an email notification
+
+pk_test_51SVBDmIwwHLGd8BaFhIDLestyMz8u3TIzUs4XhnsZBS9UyvFggQCqhj4FwcIewo3v6a3kN9vv4RE2EaPjh7yjdof0004TNR0h4
+
+pk_live_51SVBDYIXN4PzuK3wlL9JEZua57lfB3jkeVwUMtPhI4NtGIsA7qpujVQbQXOI183iFjX2LdZ4h7sRjRE0tIzEb73V00FDOvz5Ub
 
 #### Test Payment Receipt
 1. Go to your website
@@ -163,7 +167,7 @@ All emails are automatically sent to: **thalya@verdantlabs.com.au**
 
 ### Stripe payment not working
 
-1. Ensure `STRIPE_SECRET` is set in Vercel
+1. Ensure `STRIPE_SECRET_KEY` is set in Vercel
 2. Ensure `STRIPE_WEBHOOK_SECRET` matches the webhook in Stripe dashboard
 3. Check that the webhook URL is correct and accessible
 4. Verify the webhook is receiving events in Stripe dashboard

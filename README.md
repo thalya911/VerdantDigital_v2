@@ -15,6 +15,12 @@ View your app in AI Studio: https://ai.studio/apps/drive/1q1ekKdqcneXYw5xZe9YI2u
 
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+2. Set the following environment variables in a `.env` file:
+   - `API_KEY`: Your Gemini API key.
+   - `STRIPE_SECRET_KEY`: Your Stripe secret key.
+   - `STRIPE_WEBHOOK_SECRET`: Your Stripe webhook secret.
+   - `STRIPE_RECURRING_PRICE_ID`: Your Stripe recurring price ID.
+   - `RESEND_API_KEY`: Your Resend API key.
+   - `VITE_STRIPE_PUBLISHABLE_KEY`: Your Stripe publishable key.
 3. Run the app:
    `npm run dev`

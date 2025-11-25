@@ -3,7 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Verdant Digital | Digital Growth Agency</title>
+
+    <!-- Primary Meta Tags -->
+    <title>Verdant Digital | Design-Led Websites, Apps & Performance Marketing</title>
+    <meta name="title" content="Verdant Digital | Design-Led Websites, Apps & Performance Marketing" />
+    <meta name="description" content="Brisbane-based digital agency specialising in design-led websites, custom applications, and performance marketing. Tradie websites live in 7 days from $399. Enterprise solutions for ambitious businesses." />
+    <meta name="keywords" content="web design Brisbane, tradie websites, custom web applications, performance marketing, Shopify Plus, React development, digital agency Brisbane, website development Australia" />
+    <meta name="author" content="Verdant Digital Pty Ltd" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://verdantdigital.com.au" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://verdantdigital.com.au/" />
+    <meta property="og:title" content="Verdant Digital | Design-Led Websites, Apps & Performance Marketing" />
+    <meta property="og:description" content="Brisbane-based digital agency specialising in design-led websites, custom applications, and performance marketing. Tradie websites live in 7 days from $399." />
+    <meta property="og:image" content="https://verdantdigital.com.au/og-image.jpg" />
+    <meta property="og:locale" content="en_AU" />
+    <meta property="og:site_name" content="Verdant Digital" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://verdantdigital.com.au/" />
+    <meta property="twitter:title" content="Verdant Digital | Design-Led Websites, Apps & Performance Marketing" />
+    <meta property="twitter:description" content="Brisbane-based digital agency specialising in design-led websites, custom applications, and performance marketing. Tradie websites live in 7 days from $399." />
+    <meta property="twitter:image" content="https://verdantdigital.com.au/twitter-image.jpg" />
+
+    <!-- Business/Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Verdant Digital Pty Ltd",
+      "image": "https://verdantdigital.com.au/logo.png",
+      "url": "https://verdantdigital.com.au",
+      "telephone": "+61-xxx-xxx-xxx",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Brisbane",
+        "addressRegion": "QLD",
+        "addressCountry": "AU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -27.4705,
+        "longitude": 153.0260
+      },
+      "sameAs": [
+        "https://facebook.com/verdantdigital",
+        "https://instagram.com/verdantdigital",
+        "https://linkedin.com/company/verdantdigital",
+        "https://twitter.com/verdantdigital"
+      ],
+      "priceRange": "$$",
+      "description": "Design-led websites, custom applications, and performance marketing engineered to grow your business."
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -13,7 +68,7 @@
               brand: {
                 black: '#0D0D0F', // Charcoal Black - Deep Background
                 surface: '#262626', // Soft Graphite - Cards
-                accent: '#00FF9D', // Neon Digital Mint - Primary Action
+                accent: '#00FFB3', // Neon Digital Mint - Primary Action (Brightened for accessibility)
                 glow: '#5CFFC2', // Lighter Mint - Hover highlights
                 muted: '#D9D9D9', // Silver Mist - Secondary text
                 bone: '#F4F4F0', // Bone White - Warm offset
@@ -41,31 +96,144 @@
       ::-webkit-scrollbar { width: 8px; }
       ::-webkit-scrollbar-track { background: #0D0D0F; }
       ::-webkit-scrollbar-thumb { background: #262626; border-radius: 4px; }
-      ::-webkit-scrollbar-thumb:hover { background: #00FF9D; }
+      ::-webkit-scrollbar-thumb:hover { background: #00FFB3; }
 
       /* Selection Color */
-      ::selection { background: #00FF9D; color: #0D0D0F; }
+      ::selection { background: #00FFB3; color: #0D0D0F; }
 
       /* Animations */
       .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; transform: translateY(20px); }
       @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
       
-      .text-glow { text-shadow: 0 0 20px rgba(0, 255, 157, 0.3); }
+      .text-glow { text-shadow: 0 0 20px rgba(0, 255, 179, 0.3); }
       .glass-panel { background: rgba(38, 38, 38, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
 
-      /* Reveal on Scroll Classes */
+      /* Reveal on Scroll Classes - Enhanced with Soft Landing */
       .reveal {
         opacity: 0;
         transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .reveal.active {
         opacity: 1;
         transform: translateY(0);
       }
-      .reveal-delay-100 { transition-delay: 100ms; }
-      .reveal-delay-200 { transition-delay: 200ms; }
-      .reveal-delay-300 { transition-delay: 300ms; }
+      .reveal-delay-100 {
+        transition-delay: 100ms;
+      }
+      .reveal-delay-200 {
+        transition-delay: 200ms;
+      }
+      .reveal-delay-300 {
+        transition-delay: 300ms;
+      }
+
+      /* Soft landing effect for headings */
+      .reveal h1,
+      .reveal h2,
+      .reveal h3 {
+        transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+                    transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+      }
+
+      /* Enhanced Interactive Elements */
+
+      /* Button Hover - Neon Glow Effect (exclude nav buttons) */
+      button:not(:disabled):not(nav button):not(header button):hover,
+      a[class*="bg-brand-accent"]:hover {
+        box-shadow: 0 0 20px rgba(0, 255, 179, 0.4),
+                    0 0 40px rgba(0, 255, 179, 0.2),
+                    0 4px 14px rgba(0, 255, 179, 0.3);
+        transform: translateY(-1px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Remove default button highlights in nav */
+      nav button:focus,
+      header button:focus,
+      nav button:active,
+      header button:active {
+        outline: none;
+        background: transparent;
+      }
+
+      /* Navigation Link Underline Animation - Left to Right */
+      nav button[class*="group"] .group-hover\:w-full {
+        transform-origin: left;
+        transition: width 0.3s ease-out;
+      }
+
+      /* Portfolio Tile Hover - Scale + Shadow Lift */
+      .group:hover img,
+      .group:hover > div {
+        transform: scale(1.02);
+        transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      /* Icon Animation - Only on Hover in Service/Philosophy Cards */
+      @keyframes iconBounce {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+
+      /* Icon hover bounce only for service/philosophy cards (exclude nav) */
+      section .group:hover .w-10 svg,
+      section .group:hover .w-12 svg {
+        animation: iconBounce 0.6s ease-in-out;
+      }
+
+      /* Remove nav icon animations */
+      nav svg,
+      header svg {
+        animation: none !important;
+      }
+
+      /* Smooth Icon Entry */
+      .reveal svg {
+        opacity: 0;
+        transform: scale(0.8);
+        transition: opacity 0.4s ease-out 0.2s,
+                    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+      }
+      .reveal.active svg {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Checkmark Animation */
+      @keyframes checkPop {
+        0% { transform: scale(0); opacity: 0; }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      .reveal.active [class*="Check"] {
+        animation: checkPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+      }
+
+      /* Arrow Animation */
+      @keyframes arrowSlide {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(4px); }
+      }
+      .reveal.active [class*="Arrow"] {
+        animation: arrowSlide 1.5s ease-in-out infinite;
+      }
+
+      /* Sticky CTA Slide In Animation */
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      .animate-slideInRight {
+        animation: slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
 
       /* Text Stream Animation - Left to Right */
       @keyframes stream {
@@ -89,14 +257,14 @@
         color: #0D0D0F;
 
         /* Green outline using text-stroke with paint-order to prevent inner stroke */
-        -webkit-text-stroke: 2px #00FF9D;
-        text-stroke: 2px #00FF9D;
+        -webkit-text-stroke: 2px #00FFB3;
+        text-stroke: 2px #00FFB3;
         paint-order: stroke fill;
 
         /* Green glow effect - reduced by 50% */
-        filter: drop-shadow(0 0 10px rgba(0, 255, 157, 0.4))
-                drop-shadow(0 0 20px rgba(0, 255, 157, 0.3))
-                drop-shadow(0 0 30px rgba(0, 255, 157, 0.2));
+        filter: drop-shadow(0 0 10px rgba(0, 255, 179, 0.4))
+                drop-shadow(0 0 20px rgba(0, 255, 179, 0.3))
+                drop-shadow(0 0 30px rgba(0, 255, 179, 0.2));
       }
     </style>
   <script type="importmap">

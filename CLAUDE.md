@@ -4,7 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a React 19 + TypeScript marketing website for Verdant Digital agency, built as a Google AI Studio app with Gemini API integration. The site features three distinct views (agency portfolio, tradie services, enquiry form) managed through internal state-based navigation rather than traditional routing.
+This is a React 19 + TypeScript marketing website for Verdant Digital agency, built as a Google AI Studio app with Gemini API integration. The site uses React Router for navigation with multiple page routes.
+
+**Legal Entity**: Verdant Labs Pty Ltd (ABN: 62 690 480 516 7)
+**Contact Email**: hello@verdantdigital.com.au
+**Social Media**:
+- Instagram: https://www.instagram.com/verdant.digital/
+- Facebook: https://www.facebook.com/share/1Aom3Vwm4c/?mibextid=wwXIfr
 
 ## Development Commands
 
@@ -47,21 +53,25 @@ The catch-all rewrite ensures SPA routing works (prevents 404s on client-side ro
 
 ## Architecture
 
-### Multi-View SPA Pattern
+### Routing Structure
 
-The app uses a custom state-based navigation system instead of React Router:
+The app uses React Router for navigation with the following routes:
 
-- **App.tsx** manages view state: `'agency' | 'tradie' | 'enquire' | 'success'`
-- Navigation via `handleNavigate(targetView, hash?)` passed through Header
-- Hash-based scrolling: `onNavigate('agency', 'expertise')` scrolls to `#expertise`
-- View changes trigger `window.scrollTo(0, 0)` to reset scroll position
-- Success view auto-detected from URL param: `?session_id=` triggers success page
+**Routes** (defined in App.tsx):
+- `/` - Agency homepage (MainHero, MainPhilosophy, MainExpertise, MainPortfolio, MainContact)
+- `/tradie` - Tradie services page (Hero, Comparison, Workflow, CtaSection, Faq, MainContact)
+- `/about` - About page with founders info, philosophy, how we work, why choose us
+- `/faq` - FAQ page with categorized questions
+- `/enquire` - Contact/enquiry form page
+- `/success` - Success page (shown after successful Stripe payment)
 
-**View Components**:
-- Agency: MainHero, MainExpertise, MainPhilosophy, MainPortfolio, MainContact
-- Tradie: Hero, Comparison, Workflow, CtaSection, Faq, MainContact
-- Enquire: EnquiryPage, MainContact
-- Success: SuccessPage (shown after successful Stripe payment)
+**Page Components**:
+- **AgencyPage**: Homepage with hero, philosophy, expertise, portfolio sections
+- **TradiePage**: Tradie-focused landing page with pricing and conversion focus
+- **About**: Company information, founders (Thalya Tilt MacSporran & Jacob Paterson), philosophy, process
+- **FaqPage**: Comprehensive FAQ organized into 5 categories (20+ questions)
+- **EnquiryPage**: Contact form
+- **SuccessPage**: Payment confirmation
 
 ### Scroll Animation System
 
@@ -153,10 +163,21 @@ redirectToCheckout(checkoutUrl) → Promise<void>
 ### Data & Constants
 
 All static content lives in **constants.tsx**:
-- `PACKAGES`: 3-tier pricing structure
-- `FAQS`, `TESTIMONIALS`, `BENEFITS`, `WORKFLOW`
+- `PACKAGES`: 3-tier pricing structure for tradie services
+- `FAQS`: Tradie-focused FAQs (used on /tradie page)
+- `FAQ_CATEGORIES`: Comprehensive categorized FAQs for /faq page (5 categories, 20+ questions)
+- `TESTIMONIALS`: Client testimonials
+- `BENEFITS`: Service benefits
+- `WORKFLOW`: Process workflow steps
 
-Types defined in **types.ts** (PackageItem, FaqItem, etc.)
+Types defined in **types.ts** (PackageItem, FaqItem, FaqCategory, etc.)
+
+**FAQ Categories** (FAQ_CATEGORIES):
+1. **Core FAQs**: What Verdant does, who it's for, pricing, timeline, support
+2. **Process-Related FAQs**: Getting started, content help, maintenance, work progress, requirements
+3. **Tech & Platform FAQs**: Platforms used, rebuilds, hosting, integrations
+4. **Results & Value FAQs**: Performance tracking, lead generation, proactive decision-making
+5. **Relationship & Delivery FAQs**: Who you work with, outsourcing, approach differences
 
 ## Key Technical Patterns
 
@@ -267,15 +288,17 @@ Three fonts loaded via Google Fonts (index.html):
 
 **CRITICAL**: Verdant builds, hosts, and manages ALL website changes. Clients do NOT manage their own sites.
 
-- **Accurate messaging**: "We build and host your site. Simply text or email us any changes (photos, text updates, new services) and we'll action them quickly—usually within 24 hours."
+- **Accurate messaging**: "We manage the platform, updates and improvements for you. You do not need technical skills or extra admin. You focus on the business, and we keep the digital side running properly."
+- **For tradie clients**: "We build and host your site. Simply text or email us any changes (photos, text updates, new services) and we'll action them quickly—usually within 24 hours."
 - **Never suggest**: Clients can manage/update their own site, use drag-and-drop editors, or have admin access
 - **Change request process**: Clients text or email change requests → Verdant actions them within 24 hours
 - **No self-service**: There is no client portal, CMS access, or DIY updates
 
 **FAQ & Benefits Guidelines**:
-- FAQ should emphasize "can I still work with you?" not "can I manage it?"
+- Correct FAQ wording: "Do we need to maintain the website ourselves?" Answer: "No. We manage the platform, updates and improvements for you..."
 - Benefits title: "Quick Updates on Request" (not "Dead Simple Updates")
 - Always clarify Verdant handles all technical work
+- Emphasize partnership and support, not self-management
 
 ### Language & Localization
 - **Australian English**: Use -ise/-isation spelling (optimise, not optimize)
@@ -289,3 +312,83 @@ Three fonts loaded via Google Fonts (index.html):
 - Service area updates note: "(updates SEO automatically)"
 - Portfolio: "BreadBloom" (one word, not "Bread Bloom")
 - Contact forms: All fields are optional (no `required` attributes)
+
+## About Page Content
+
+### Company Positioning
+Verdant Digital creates websites and digital platforms that help businesses operate with more **clarity, confidence and momentum**. Focus on:
+- Usability, structure, performance and outcomes (not just visual presentation)
+- Complete solutions where structure, technology and design work together
+- Reducing friction and supporting better decision-making
+
+### Founders
+**Thalya Tilt MacSporran** (Director)
+- Quote: "Better systems create better decisions, and better decisions create better businesses."
+
+**Jacob Paterson** (Director)
+- Quote: "Great technology should solve real problems and deliver results you can measure."
+
+**Founder Story Key Points**:
+- 12+ years' experience in insurance industry
+- Background in operations, systems, performance, and digital processes
+- Studies in behavioural science, computer science, design-thinking
+- Focus on helping businesses move from reactive to proactive
+
+### Philosophy
+"We believe websites should be created as complete solutions, not as isolated parts. The structure, the technology and the design all work together to create clarity, reduce friction and support better decision making for both the business and the customer."
+
+### How We Work (4-Step Process)
+1. **Discovery and Strategy**: Understanding business, customers, goals, requirements
+2. **Design and Architecture**: Planning flows, structure, technical approach together
+3. **Build and Iterate**: Clear cycles with regular check-ins, early feedback incorporation
+4. **Launch and Optimise**: Performance tracking, user behaviour insights, ongoing refinement
+
+### Services Offered
+- Modern, considered websites
+- Shopify and e-commerce builds
+- Digital solutions that reduce friction
+- Custom applications
+- Solutions for tradie businesses and established organisations
+
+## Mobile Responsiveness Best Practices
+
+The About page has been optimized for mobile with improved spacing:
+- Section padding: `py-12 md:py-16` (reduced on mobile)
+- Heading margins: `mb-10 md:mb-12` (more breathing room on mobile)
+- Grid gaps: `gap-8 md:gap-12` (tighter on mobile)
+- Text spacing: `space-y-5 md:space-y-6` (adjusted for mobile)
+- Component padding: `p-5 md:p-6` (cards and boxes)
+- Inner gaps: `gap-4 md:gap-6` (between flex items)
+
+Always provide mobile-first responsive spacing to prevent elements from feeling cramped on smaller screens.
+
+## Footer Configuration
+
+**Social Media Links** (Connect section):
+- Instagram: https://www.instagram.com/verdant.digital/ (primary social channel)
+- Facebook: https://www.facebook.com/share/1Aom3Vwm4c/?mibextid=wwXIfr
+- Email: hello@verdantdigital.com.au (mailto link with Mail icon)
+
+**Note**: LinkedIn and Twitter have been removed. Footer only displays Instagram, Facebook, and Email icons.
+
+**Footer Links**:
+- Quick Links section includes: About Us, Terms & Privacy, FAQs (`/faq`), Sitemap, Contact Us
+- FAQs link points to `/faq` (dedicated FAQ page), not `/#faq`
+- Copyright: "© [Year] Verdant Labs Pty Ltd. All rights reserved."
+
+## Key Component Files
+
+**Pages**:
+- `components/About.tsx`: Full about page with founders, philosophy, process
+- `components/FaqPage.tsx`: Categorized FAQ page (5 sections, 20+ questions)
+- `components/EnquiryPage.tsx`: Contact form
+- `components/SuccessPage.tsx`: Payment success confirmation
+
+**Shared Components**:
+- `components/Header.tsx`: Navigation header
+- `components/Footer.tsx`: Site footer with social links, Quick Links, copyright
+- `components/MainContact.tsx`: Contact form section (reused on multiple pages)
+
+**Constants & Types**:
+- `constants.tsx`: All static content (PACKAGES, FAQS, FAQ_CATEGORIES, TESTIMONIALS, etc.)
+- `types.ts`: TypeScript interfaces (PackageItem, FaqItem, FaqCategory, etc.)

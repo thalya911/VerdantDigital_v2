@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface PackageItem {
   name: string;
   priceBuild: number;
@@ -9,7 +11,12 @@ export interface PackageItem {
 
 export interface FaqItem {
   question: string;
-  answer: string;
+  answer: string | React.ReactNode;
+}
+
+export interface FaqCategory {
+  category: string;
+  faqs: FaqItem[];
 }
 
 export interface TestimonialItem {

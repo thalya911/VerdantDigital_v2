@@ -121,61 +121,43 @@ const ExpressBuildModal: React.FC<ExpressBuildModalProps> = ({ isOpen, onClose }
         <div className="p-6 md:p-10">
           {!showForm && !formSubmitted && (
             <div className="animate-fade-in-up">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-3 uppercase">Express Build - Get Started</h2>
-                <p className="text-brand-muted text-lg">Choose your path to a professional website</p>
-              </div>
-
-              {/* Brief Feature List */}
-              <div className="bg-brand-black border border-brand-accent/30 rounded-xl p-6 mb-8 max-w-3xl mx-auto">
-                <h3 className="text-lg font-display font-bold text-brand-accent mb-4 uppercase text-center">What You Get:</h3>
-                <ul className="grid md:grid-cols-2 gap-3">
-                  {[
-                    "Mobile-optimized (loads in under 2 seconds)",
-                    "Live in 7 days guaranteed",
-                    "Click-to-call & quote request forms",
-                    "Hosting, security & unlimited updates ($99/mo)"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-brand-bone">
-                      <Check size={16} className="text-brand-accent shrink-0 mt-0.5" strokeWidth={3} />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+              <div className="text-center mb-6">
+                <h2 className="text-2xl md:text-3xl font-display font-black text-white mb-2 uppercase">Express Build - Get Started</h2>
+                <p className="text-brand-muted text-sm">Choose your path to a professional website</p>
               </div>
 
               {/* Qualification Checkboxes */}
-              <div className="bg-brand-surface border border-brand-border rounded-xl p-6 mb-6 max-w-3xl mx-auto">
-                <h3 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Does your project need any of these?</h3>
-                <div className="space-y-3">
-                  <label className="flex items-start gap-3 cursor-pointer group">
+              <div className="bg-brand-surface border border-brand-border rounded-xl p-3 mb-6 max-w-xl mx-auto">
+                <h3 className="text-xs font-bold text-white mb-2 uppercase tracking-wider text-center">Does your project need any of these?</h3>
+                <div className="space-y-2">
+                  <label className="flex items-center justify-center gap-3 cursor-pointer group">
                     <input
                       type="checkbox"
                       checked={qualifications.moreThan5Pages}
                       onChange={() => handleQualificationChange('moreThan5Pages')}
-                      className="mt-1 w-4 h-4 accent-brand-accent cursor-pointer"
+                      className="w-4 h-4 accent-brand-accent cursor-pointer"
                     />
                     <span className="text-sm text-brand-bone group-hover:text-white transition-colors">
                       My project needs more than 5 pages
                     </span>
                   </label>
-                  <label className="flex items-start gap-3 cursor-pointer group">
+                  <label className="flex items-center justify-center gap-3 cursor-pointer group">
                     <input
                       type="checkbox"
                       checked={qualifications.ecommerceBooking}
                       onChange={() => handleQualificationChange('ecommerceBooking')}
-                      className="mt-1 w-4 h-4 accent-brand-accent cursor-pointer"
+                      className="w-4 h-4 accent-brand-accent cursor-pointer"
                     />
                     <span className="text-sm text-brand-bone group-hover:text-white transition-colors">
                       I need e-commerce or booking features
                     </span>
                   </label>
-                  <label className="flex items-start gap-3 cursor-pointer group">
+                  <label className="flex items-center justify-center gap-3 cursor-pointer group">
                     <input
                       type="checkbox"
                       checked={qualifications.customCalculators}
                       onChange={() => handleQualificationChange('customCalculators')}
-                      className="mt-1 w-4 h-4 accent-brand-accent cursor-pointer"
+                      className="w-4 h-4 accent-brand-accent cursor-pointer"
                     />
                     <span className="text-sm text-brand-bone group-hover:text-white transition-colors">
                       I need custom calculators
@@ -186,19 +168,19 @@ const ExpressBuildModal: React.FC<ExpressBuildModalProps> = ({ isOpen, onClose }
                 {/* Recommendation Message */}
                 {hasQualificationIssues && (
                   <div className="mt-4 pt-4 border-t border-brand-border">
-                    <div className="flex items-start gap-3 bg-brand-accent/10 border border-brand-accent/30 rounded-lg p-4">
-                      <AlertCircle size={20} className="text-brand-accent shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-sm text-white font-bold mb-1">We recommend a consultation for your needs</p>
-                        <a
-                          href="https://meetings-ap1.hubspot.com/thalya"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm text-brand-accent hover:text-white font-bold underline transition-colors"
-                        >
-                          BOOK FREE CALL →
-                        </a>
+                    <div className="bg-brand-accent/10 border border-brand-accent/30 rounded-lg p-4 text-center">
+                      <div className="flex justify-center mb-2">
+                        <AlertCircle size={20} className="text-brand-accent" />
                       </div>
+                      <p className="text-sm text-white font-bold mb-2">We recommend a consultation for your needs</p>
+                      <a
+                        href="https://meetings-ap1.hubspot.com/thalya"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-brand-accent hover:text-white font-bold underline transition-colors"
+                      >
+                        BOOK FREE CALL →
+                      </a>
                     </div>
                   </div>
                 )}
@@ -213,15 +195,15 @@ const ExpressBuildModal: React.FC<ExpressBuildModalProps> = ({ isOpen, onClose }
                   </div>
                   <h3 className="text-2xl font-display font-bold text-white mb-2">PAY NOW - START TODAY</h3>
                   <div className="flex items-baseline gap-2 mb-4">
-                    <span className="text-4xl font-display font-black text-brand-accent">$299</span>
+                    <span className="text-4xl font-display font-black text-brand-accent">$399</span>
                     <span className="text-brand-muted text-sm">to begin</span>
                   </div>
 
                   <ul className="space-y-2 mb-6 flex-grow">
                     {[
-                      "Strategy call within 24 hours",
-                      "Building starts immediately",
-                      "Live website in 7 days",
+                      "Strategy call scheduled within 24 hours",
+                      "Build begins after your strategy call",
+                      "Website live within 7 days of call",
                       "Then $99/mo (24 months)"
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-brand-bone">
@@ -231,12 +213,19 @@ const ExpressBuildModal: React.FC<ExpressBuildModalProps> = ({ isOpen, onClose }
                     ))}
                   </ul>
 
+                  <p className="text-xs text-brand-muted text-center mb-4 leading-relaxed">
+                    By proceeding with payment, I agree to the{' '}
+                    <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:underline">
+                      Terms and Conditions
+                    </a>
+                  </p>
+
                   <button
                     onClick={handleQuickPay}
                     disabled={isProcessing}
                     className="w-full bg-brand-accent hover:bg-white text-brand-black font-black text-lg py-4 px-6 rounded-lg transition-all uppercase tracking-wide shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {isProcessing ? 'Processing...' : 'PAY $299 NOW'}
+                    {isProcessing ? 'Processing...' : 'PAY $399 NOW'}
                   </button>
                   <p className="text-xs text-gray-500 text-center mt-3">Secure payment via Stripe</p>
                 </div>
@@ -289,7 +278,7 @@ const ExpressBuildModal: React.FC<ExpressBuildModalProps> = ({ isOpen, onClose }
 
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-display font-black text-white mb-3 uppercase">Project Details</h2>
-                <p className="text-brand-muted text-lg">Tell us about your business and we'll create a custom plan</p>
+                <p className="text-brand-muted text-lg">Tell us about your business and we'll create a custom plan before payment is required</p>
               </div>
 
               <form onSubmit={handleFormSubmit} className="max-w-3xl mx-auto space-y-6">

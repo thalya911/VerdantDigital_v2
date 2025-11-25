@@ -19,18 +19,30 @@ const MainPhilosophy: React.FC = () => {
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-black text-white leading-[1.1] mb-6 uppercase" style={{letterSpacing: '0.02em'}}>
             WE DON'T SEPARATE <br/>
-            <span className="animate-text-starspeed inline-block">DESIGN</span> <span className="animate-text-starspeed inline-block">FROM CODE.</span>
+            <span className="animate-text-starspeed inline-block">DESIGN FROM CODE.</span>
           </h2>
           <div className="space-y-4 text-brand-muted text-base lg:text-lg leading-relaxed font-light">
             <p>
-              Most agencies hand designs over the wall to developers. We think that's backwards. <span className="text-brand-accent font-medium" style={{textShadow: '0 0 20px rgba(0, 255, 157, 0.5)'}}>Our developers make design decisions. Our designers write code.</span>
+              Most agencies throw designs over the fence to developers. We think that's backwards.
             </p>
             <p>
-              This isn't about being full-stack for the sake of it, it's because the best digital products are built when the person optimising your checkout flow understands React performance, and the person architecting your database cares about typography.
+              At Verdant Digital, designers and developers work as one team. The people shaping your user flows understand performance. The people writing your code care about typography, clarity and how it feels to use.
             </p>
-            <p>
-              The result? Products that are technically sound and beautiful to use. No compromises, no translation gaps, no "that's not technically possible" excuses.
-            </p>
+            <p className="font-semibold text-white">What that means for you:</p>
+            <ul className="space-y-2 pl-4">
+              <li className="flex items-start gap-3">
+                <span className="text-brand-accent mt-1">•</span>
+                <span>Products that are fast, stable and beautiful to use</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-accent mt-1">•</span>
+                <span>Interfaces that reduce cognitive load so customers know exactly what to do next</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-accent mt-1">•</span>
+                <span>Fewer "that's not technically possible" roadblocks and rework</span>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -44,7 +56,7 @@ const MainPhilosophy: React.FC = () => {
               </div>
               <h3 className="text-lg font-display font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">Strategic Design</h3>
               <p className="text-brand-muted leading-relaxed font-light text-sm">
-                Every pixel serves a purpose. We move beyond vanity metrics to design user experiences that guide, inform, and convert your ideal customers.
+                You get a website where every layout, colour and interaction has a purpose. Your customers know exactly what to do next, turning more visits into real business outcomes.
               </p>
           </div>
 
@@ -55,7 +67,7 @@ const MainPhilosophy: React.FC = () => {
               </div>
               <h3 className="text-lg font-display font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">Technical Excellence</h3>
               <p className="text-brand-muted leading-relaxed font-light text-sm">
-                Function without friction. A pretty interface is useless if it's slow. We engineer robust, scalable platforms using modern tech stacks (React, Node, Shopify) that stand the test of time.
+                You get platforms (React, Node, Shopify) that are fast, stable and built to scale with your business. No frustrating slowdowns, no technical debt holding you back.
               </p>
           </div>
 
@@ -66,15 +78,19 @@ const MainPhilosophy: React.FC = () => {
               </div>
               <h3 className="text-lg font-display font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">Integrated Approach</h3>
               <p className="text-brand-muted leading-relaxed font-light text-sm">
-                We operate as an extension of your team. No black boxes or confusing jargon—just clear communication, full ownership, and shared goals.
+                You get a team that feels like your own. Clear updates, no confusing jargon, and people who care about your success as much as you do.
               </p>
           </div>
 
         </div>
 
-        <div className="mt-10 text-center md:text-left reveal reveal-delay-200">
-            <a href="#enquire" className="group inline-flex items-center gap-3 text-brand-accent font-bold uppercase tracking-widest hover:text-white transition-colors text-sm">
+        <div className="mt-10 flex flex-col md:flex-row gap-4 text-center md:text-left reveal reveal-delay-200">
+            <a href="#enquire" className="group inline-flex items-center justify-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-extrabold px-6 py-3 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all uppercase tracking-widest text-sm">
               Start a conversation
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="#philosophy" className="group inline-flex items-center justify-center gap-3 border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-brand-black font-bold px-6 py-3 rounded-lg transition-all uppercase tracking-widest text-sm">
+              Read more in About Us
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </a>
         </div>

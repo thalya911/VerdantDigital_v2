@@ -22,6 +22,10 @@ import MainContact from './components/MainContact';
 // Pages
 import EnquiryPage from './components/EnquiryPage';
 import SuccessPage from './components/SuccessPage';
+import About from './components/About';
+import FaqPage from './components/FaqPage';
+import TermsAndConditions from './components/TermsAndConditions';
+import TermsAndPrivacy from './components/TermsAndPrivacy';
 
 // Page layout components
 const AgencyPage: React.FC = () => (
@@ -45,6 +49,33 @@ const TradiePage: React.FC<{ onOpenModal: () => void }> = ({ onOpenModal }) => (
     <div className="fixed bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
 
     <div className="relative z-10">
+      {/* Section Navigation */}
+      <nav className="bg-brand-black border-b border-brand-border mt-[72px]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center gap-6 md:gap-8 py-3 md:py-2 overflow-x-auto">
+            <a href="#pricing" className="text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
+              Pricing
+            </a>
+            <span className="text-brand-border">|</span>
+            <a href="#comparison" className="text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
+              Why Us
+            </a>
+            <span className="text-brand-border">|</span>
+            <a href="#process" className="text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
+              Process
+            </a>
+            <span className="text-brand-border">|</span>
+            <a href="#faq" className="text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
+              FAQ
+            </a>
+            <span className="text-brand-border">|</span>
+            <a href="#enquire" className="text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
+              Contact
+            </a>
+          </div>
+        </div>
+      </nav>
+
       <Hero onOpenModal={onOpenModal} />
       {/* Packages section removed - Pricing now in Hero */}
       <Comparison />
@@ -59,7 +90,23 @@ const TradiePage: React.FC<{ onOpenModal: () => void }> = ({ onOpenModal }) => (
 // Main layout wrapper with scroll animations
 const AppContent: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const location = useLocation();
+
+  // Handle Scroll Progress
+  useEffect(() => {
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.scrollY;
+      const scrollableHeight = documentHeight - windowHeight;
+      const progress = (scrollTop / scrollableHeight) * 100;
+      setScrollProgress(Math.min(progress, 100));
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Handle Scroll Animations
   useEffect(() => {
@@ -71,7 +118,10 @@ const AppContent: React.FC = () => {
           }
         });
       },
-      { threshold: 0.1 }
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px' // Trigger slightly before element enters viewport
+      }
     );
 
     // Slight delay to ensure DOM is ready
@@ -80,10 +130,17 @@ const AppContent: React.FC = () => {
       elements.forEach((el) => observer.observe(el));
     }, 100);
 
-    // Safety net: force reveal after delay to prevent blank pages
+    // Safety net: force reveal after longer delay to prevent blank pages (only for above-fold content)
     const safetyTimeout = setTimeout(() => {
-       document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
-    }, 1000);
+       const viewportHeight = window.innerHeight;
+       document.querySelectorAll('.reveal').forEach(el => {
+         const rect = el.getBoundingClientRect();
+         // Only force reveal for elements in initial viewport
+         if (rect.top < viewportHeight) {
+           el.classList.add('active');
+         }
+       });
+    }, 2000);
 
     return () => {
       clearTimeout(timeoutId);
@@ -99,14 +156,26 @@ const AppContent: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-brand-black text-white selection:bg-brand-accent selection:text-brand-black">
+      {/* Scroll Progress Bar */}
+      <div className="fixed top-0 left-0 right-0 h-1 bg-brand-surface/20 z-[100]">
+        <div
+          className="h-full bg-gradient-to-r from-brand-accent to-brand-accent/60 transition-all duration-150 ease-out shadow-[0_0_10px_rgba(0,255,157,0.5)]"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
       <Header onOpenModal={() => setIsModalOpen(true)} />
 
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<AgencyPage />} />
           <Route path="/tradie" element={<TradiePage onOpenModal={() => setIsModalOpen(true)} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/faq" element={<FaqPage />} />
           <Route path="/enquire" element={<EnquiryPage />} />
           <Route path="/success" element={<SuccessPage />} />
+          <Route path="/terms" element={<TermsAndConditions />} />
+          <Route path="/terms-and-privacy" element={<TermsAndPrivacy />} />
         </Routes>
       </main>
 

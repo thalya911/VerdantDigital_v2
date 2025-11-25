@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     };
 
     if (mode === 'payment') {
-      // One-time payment for $299 setup
+      // One-time payment for $399 setup
       sessionConfig.line_items = [
         {
           price_data: {
@@ -36,7 +36,7 @@ export default async function handler(req, res) {
               name: 'Express Build - Setup Fee',
               description: 'One-time setup fee for your tradie website',
             },
-            unit_amount: 29900, // $299.00 in cents
+            unit_amount: 39900, // $399.00 in cents
           },
           quantity: 1,
         },

@@ -107,8 +107,8 @@ const MainContact: React.FC = () => {
                   <Clock size={20} />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold font-display text-lg">Fast Response</h4>
-                  <p className="text-brand-muted text-sm">We'll get back to you within 24 hours.</p>
+                  <h3 className="text-white font-bold font-display text-lg">Fast Response</h3>
+                  <p className="text-brand-muted text-sm">You'll hear from us within 24 hours.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -116,7 +116,7 @@ const MainContact: React.FC = () => {
                   <MapPin size={20} />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold font-display text-lg">Australian Based</h4>
+                  <h3 className="text-white font-bold font-display text-lg">Australian Based</h3>
                   <p className="text-brand-muted text-sm">Local team, local support.</p>
                 </div>
               </div>
@@ -125,7 +125,7 @@ const MainContact: React.FC = () => {
                   <MessageSquare size={20} />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold font-display text-lg">No Obligation</h4>
+                  <h3 className="text-white font-bold font-display text-lg">No Obligation</h3>
                   <p className="text-brand-muted text-sm">Free consultation to discuss your needs.</p>
                 </div>
               </div>
@@ -215,7 +215,7 @@ const MainContact: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-brand-accent hover:bg-white text-brand-black font-extrabold text-lg py-3 rounded-lg shadow-[0_4px_14px_rgba(0,255,157,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,157,0.6)] transition-all flex items-center justify-center gap-3 mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-brand-accent hover:bg-white text-brand-black font-extrabold text-lg py-3 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all flex items-center justify-center gap-3 mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
                 {!isSubmitting && <Send size={18} />}

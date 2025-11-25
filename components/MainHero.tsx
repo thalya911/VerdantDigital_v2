@@ -33,16 +33,16 @@ const MainHero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="max-w-5xl reveal">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.85] mb-6" style={{fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.01em'}}>
-            FORM MEETS <br/>
+            WHERE FORM <br/>
             <span ref={acceleratedRef} className="animate-text-starspeed inline-block">
-              FUNCTION.
+              MEETS FUNCTION
             </span>
           </h1>
 
           <div className="mb-8 w-full">
-            <div className="px-4 py-2.5 rounded-lg bg-brand-surface/30 border border-brand-border/50 backdrop-blur-md" style={{boxShadow: '0 0 30px rgba(0, 255, 157, 0.2)'}}>
+            <div className="px-4 py-2.5 rounded-lg bg-brand-surface/30 border border-brand-border/50 backdrop-blur-md" style={{boxShadow: '0 0 30px rgba(0, 255, 179, 0.2)'}}>
               <p className="text-base md:text-lg text-brand-muted leading-relaxed font-light">
-                Design-led custom applications, e-commerce development and performance marketing, engineered for <span className="text-brand-accent font-medium" style={{textShadow: '0 0 20px rgba(0, 255, 157, 0.5)'}}>growth</span>.
+                Design-led websites, custom applications, and performance marketing engineered to <span className="text-brand-accent font-medium" style={{textShadow: '0 0 20px rgba(0, 255, 179, 0.5)'}}>grow your business</span>.
               </p>
             </div>
           </div>
@@ -51,7 +51,7 @@ const MainHero: React.FC = () => {
           <div className="mb-16">
             <a
               href="#enquire"
-              className="inline-flex items-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-black text-lg px-8 py-3 rounded-lg shadow-[0_4px_20px_rgba(0,255,157,0.4)] hover:shadow-[0_6px_30px_rgba(0,255,157,0.6)] transition-all duration-300 group uppercase tracking-wide"
+              className="inline-flex items-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-black text-lg px-8 py-3 rounded-lg shadow-[0_4px_20px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_30px_rgba(0,255,179,0.6)] transition-all duration-300 group uppercase tracking-wide"
             >
               Book Strategy Call
               <ArrowDown size={20} className="rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
@@ -63,23 +63,23 @@ const MainHero: React.FC = () => {
              
              {/* Clarified Technology Section with visual badges */}
              <div className="flex flex-wrap gap-3 md:gap-5">
-                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,157,0.2)] transition-all duration-300 group cursor-default">
-                  <ShoppingCart size={16} className="text-brand-accent drop-shadow-[0_0_8px_rgba(0,255,157,0.5)]" />
+                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,179,0.2)] transition-all duration-300 group cursor-default">
+                  <ShoppingCart size={16} className="text-brand-accent drop-shadow-[0_0_8px_rgba(0,255,179,0.5)]" />
                   <span className="text-white font-bold text-xs tracking-wide">Shopify Plus</span>
                 </div>
 
-                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,157,0.2)] transition-all duration-300 group cursor-default">
-                  <Code2 size={16} className="text-brand-accent drop-shadow-[0_0_8px_rgba(0,255,157,0.5)]" />
+                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,179,0.2)] transition-all duration-300 group cursor-default">
+                  <Code2 size={16} className="text-brand-accent drop-shadow-[0_0_8px_rgba(0,255,179,0.5)]" />
                   <span className="text-white font-bold text-xs tracking-wide">React / Next.js</span>
                 </div>
 
-                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,157,0.2)] transition-all duration-300 group cursor-default">
-                  <Globe2 size={16} className="text-brand-accent drop-shadow-[0_0_8px_rgba(0,255,157,0.5)]" />
+                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,179,0.2)] transition-all duration-300 group cursor-default">
+                  <Globe2 size={16} className="text-brand-accent drop-shadow-[0_0_8px_rgba(0,255,179,0.5)]" />
                   <span className="text-white font-bold text-xs tracking-wide">Google Ads</span>
                 </div>
 
-                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,157,0.2)] transition-all duration-300 group cursor-default">
-                  <Server size={16} className="text-brand-accent drop-shadow-[0_0_8px_rgba(0,255,157,0.5)]" />
+                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,179,0.2)] transition-all duration-300 group cursor-default">
+                  <Server size={16} className="text-brand-accent drop-shadow-[0_0_8px_rgba(0,255,179,0.5)]" />
                   <span className="text-white font-bold text-xs tracking-wide">AWS Cloud</span>
                 </div>
              </div>

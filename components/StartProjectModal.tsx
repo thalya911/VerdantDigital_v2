@@ -34,17 +34,17 @@ const StartProjectModal: React.FC<StartProjectModalProps> = ({ isOpen, onClose }
           <div className="grid md:grid-cols-2 gap-6 text-left">
             
             {/* Express Build */}
-            <div className="bg-brand-black border-2 border-brand-accent rounded-xl p-6 md:p-8 relative flex flex-col shadow-[0_0_30px_rgba(0,255,157,0.05)]">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-accent text-brand-black text-xs font-bold uppercase tracking-widest py-1.5 px-4 rounded-full shadow-[0_0_15px_rgba(0,255,157,0.4)] whitespace-nowrap flex items-center gap-2">
+            <div className="bg-brand-black border-2 border-brand-accent rounded-xl p-6 md:p-8 relative flex flex-col shadow-[0_0_30px_rgba(0,255,179,0.05)]">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-accent text-brand-black text-xs font-bold uppercase tracking-widest py-1.5 px-4 rounded-full shadow-[0_0_15px_rgba(0,255,179,0.4)] whitespace-nowrap flex items-center gap-2">
                  Most Popular
               </div>
               
               <div className="mb-6 pt-2">
                 <h3 className="text-2xl font-display font-bold text-white mb-1">Express Build</h3>
-                <p className="text-brand-muted text-sm mb-4">Pay now, start immediately</p>
-                <div className="flex items-baseline gap-1 mb-1">
-                   <span className="text-3xl font-bold text-white">$299</span>
-                   <span className="text-brand-muted text-sm font-bold">+ $99/mo</span>
+                <p className="text-brand-muted text-sm mb-4">Book a call, then get your website underway</p>
+                <div className="flex flex-col gap-0.5 mb-1">
+                   <span className="text-2xl font-bold text-white">$399 setup</span>
+                   <span className="text-brand-muted text-sm font-bold">+ $99/mo for 24 months</span>
                 </div>
               </div>
 
@@ -52,13 +52,13 @@ const StartProjectModal: React.FC<StartProjectModalProps> = ({ isOpen, onClose }
                 <h4 className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-3">What you get upfront:</h4>
                 <ul className="space-y-2 mb-6">
                   {[
-                    "Mobile-optimised website (loads in under 2 seconds)",
+                    "5 pages (Home, Services, About, Gallery, Contact)",
+                    "Contact & Quote Request forms",
+                    "Mobile-optimised website",
                     "Google-friendly structure",
                     "Click-to-call buttons on every page",
-                    "Quote request forms that work",
-                    "Photo gallery for your best jobs",
-                    "Service area mapping for local SEO",
-                    "Lead tracking dashboard"
+                    "Photo gallery for your completed jobs",
+                    "Service area mapping for local visibility"
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3 text-sm text-brand-bone">
                       <div className="bg-brand-accent/10 p-0.5 rounded-full mt-0.5">
@@ -72,9 +72,10 @@ const StartProjectModal: React.FC<StartProjectModalProps> = ({ isOpen, onClose }
                 <h4 className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-3">Then, every month:</h4>
                 <ul className="space-y-2">
                   {[
-                    "Hosting & security (worth $50/mo)",
-                    "Unlimited updates & edits",
-                    "Monthly analytics report",
+                    "Hosting and security",
+                    "Unlimited updates and edits",
+                    "Mobile optimisation maintenance",
+                    "Monthly performance summary",
                     "Priority support"
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3 text-sm text-brand-bone">
@@ -86,16 +87,9 @@ const StartProjectModal: React.FC<StartProjectModalProps> = ({ isOpen, onClose }
                   ))}
                 </ul>
               </div>
-              
-              <div className="bg-brand-surface/50 rounded-lg p-4 mb-6 border border-brand-border">
-                 <p className="text-xs text-brand-muted leading-relaxed">
-                   <span className="text-brand-accent font-bold block mb-1 text-[10px] uppercase tracking-wider">✓ Perfect for:</span>
-                   Tradies who want the complete foundation package with ongoing support.
-                 </p>
-              </div>
 
               <button
-                className="w-full block text-center bg-brand-accent hover:bg-white text-brand-black font-bold py-4 px-6 rounded-lg transition-all uppercase tracking-wide shadow-[0_4px_14px_rgba(0,255,157,0.3)] hover:shadow-[0_6px_20px_rgba(0,255,157,0.5)] hover:-translate-y-1 transform"
+                className="w-full block text-center bg-brand-accent hover:bg-white text-brand-black font-bold py-4 px-6 rounded-lg transition-all uppercase tracking-wide shadow-[0_4px_14px_rgba(0,255,179,0.3)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.5)] hover:-translate-y-1 transform"
                 onClick={() => setIsExpressModalOpen(true)}
               >
                 Start Now
