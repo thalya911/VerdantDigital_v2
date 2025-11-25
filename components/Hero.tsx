@@ -25,12 +25,17 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                 Accepting New Clients
               </div>
 
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[0.85] mb-8" style={{fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.01em'}}>
-                WEBSITES THAT TURN<br/>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[0.95] mb-6" style={{fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.01em'}}>
+                STOP LOSING JOBS TO<br/>
                 <span className="animate-text-starspeed inline-block">
-                  CLICKS INTO JOBS.
+                  COMPETITORS WITH<br/>
+                  BETTER WEBSITES
                 </span>
               </h1>
+
+              <p className="text-xl md:text-2xl text-brand-accent font-bold mb-8 max-w-3xl mx-auto leading-relaxed">
+                Mobile-first sites that convert lookers into bookers. Live in 7 days.
+              </p>
 
               {/* Key Benefits List */}
               <div className="space-y-3 mb-0 max-w-2xl mx-auto">
@@ -86,7 +91,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                       {/* Valued At Strikethrough */}
                       <div className="text-center mb-6">
                         <div className="relative inline-block">
-                          <span className="text-gray-500 text-sm font-bold">VALUED AT $2,500</span>
+                          <span className="text-gray-500 text-sm font-bold">VALUED AT $5,000</span>
                           <div className="absolute top-1/2 left-0 w-full h-0.5 bg-red-500 rotate-[-5deg]"></div>
                         </div>
                       </div>
@@ -100,19 +105,21 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                         <span className="text-2xl font-light text-white/40 block my-3">+</span>
                         <div>
                           <span className="text-4xl md:text-5xl font-display font-black text-white tracking-tighter leading-none block">$99</span>
-                          <span className="text-brand-muted font-bold text-xs uppercase tracking-widest mt-2 block">/mo [Ongoing]</span>
+                          <span className="text-brand-muted font-bold text-xs uppercase tracking-widest mt-2 block">/mo [24 Months]</span>
                         </div>
                       </div>
                     </div>
 
                     {/* CTA Button */}
                     <div>
-                      <button
-                        onClick={onOpenModal}
+                      <a
+                        href="https://meetings-ap1.hubspot.com/thalya"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-full bg-brand-accent hover:bg-white text-brand-black font-black text-sm py-3 px-4 rounded-xl shadow-[0_4px_20px_rgba(0,255,157,0.4)] hover:shadow-[0_6px_30px_rgba(0,255,157,0.6)] transition-all flex items-center justify-center gap-2 uppercase tracking-wide transform group-hover:-translate-y-1"
                       >
-                        GET STARTED - $299 SETUP
-                      </button>
+                        START YOUR BUILD - BOOK DISCOVERY CALL
+                      </a>
                     </div>
                   </div>
 
@@ -198,7 +205,8 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
 
                       <div className="border-t border-orange-500/20 pt-2">
                         <p className="text-orange-400 text-xs font-bold mb-0.5">Typical results:</p>
-                        <p className="text-white text-xs">20-40 leads/mo • $10-15/lead</p>
+                        <p className="text-white text-xs mb-1">20-40 leads/mo • $10-15/lead</p>
+                        <p className="text-gray-500 text-[10px] italic">*Results may vary based on location and industry</p>
                       </div>
                     </div>
                   </div>

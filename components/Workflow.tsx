@@ -16,9 +16,14 @@ const Workflow: React.FC<WorkflowProps> = ({ onOpenModal }) => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-display font-black text-white mb-6 uppercase tracking-tight">FROM START TO LIVE IN 7 DAYS</h2>
-          <button onClick={onOpenModal} className="inline-flex items-center text-brand-accent font-bold uppercase tracking-widest hover:text-white transition-colors">
-            Start your build <ArrowRight className="ml-2" size={20} />
-          </button>
+          <a
+            href="https://meetings-ap1.hubspot.com/thalya"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center text-brand-accent font-bold uppercase tracking-widest hover:text-white transition-colors"
+          >
+            Start Your Build - Book Discovery Call <ArrowRight className="ml-2" size={20} />
+          </a>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">

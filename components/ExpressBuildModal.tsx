@@ -222,7 +222,7 @@ const ExpressBuildModal: React.FC<ExpressBuildModalProps> = ({ isOpen, onClose }
                       "Strategy call within 24 hours",
                       "Building starts immediately",
                       "Live website in 7 days",
-                      "Then $99/mo ongoing support"
+                      "Then $99/mo (24 months)"
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-brand-bone">
                         <Check size={16} className="text-brand-accent shrink-0 mt-0.5" strokeWidth={3} />

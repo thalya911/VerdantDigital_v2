@@ -20,20 +20,20 @@ const CtaSection: React.FC<CtaSectionProps> = ({ onOpenModal }) => {
          </h2>
 
          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-            <button
-              onClick={onOpenModal}
-              className="bg-brand-black text-white hover:bg-brand-surface font-bold text-base py-3 px-6 rounded-lg shadow-xl transition-all flex items-center gap-2 transform hover:-translate-y-1"
-            >
-              See Your Options
-              <ArrowRight size={18} />
-            </button>
             <a
               href="https://meetings-ap1.hubspot.com/thalya"
               target="_blank"
               rel="noopener noreferrer"
+              className="bg-brand-black text-white hover:bg-brand-surface font-bold text-base py-3 px-6 rounded-lg shadow-xl transition-all flex items-center gap-2 transform hover:-translate-y-1"
+            >
+              Start Your Build - Book Discovery Call
+              <ArrowRight size={18} />
+            </a>
+            <a
+              href="/#work"
               className="bg-white/20 hover:bg-white/30 text-brand-black border-2 border-brand-black font-bold text-base py-3 px-6 rounded-lg transition-all inline-block"
             >
-              Book Free 15-Min Call
+              See Live Examples
             </a>
          </div>
 

@@ -25,18 +25,17 @@ const Comparison: React.FC = () => {
             </div>
             
             <h2 className="text-3xl lg:text-4xl font-display font-bold text-white mb-6">
-              You're a pro at your trade. <br/>
-              <span className="text-brand-muted">But is your website costing you jobs?</span>
+              Is your website <span className="text-brand-muted">costing you jobs?</span>
             </h2>
 
-            <div className="space-y-8 mt-4">
+            <div className="space-y-6 mt-4">
               <div className="flex gap-4">
                 <div className="w-10 h-10 bg-brand-black rounded-full flex items-center justify-center flex-shrink-0 text-red-500 border border-brand-border shadow-lg">
                   <TrendingDown size={18} />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white mb-1">Low Enquiries</h3>
-                  <p className="text-brand-muted text-xs lg:text-sm leading-relaxed">Your phone should be ringing. Instead, visitors land on your site, can't find your number, and call your competitor instead. Every day without a proper lead system is money walking out the door.</p>
+                  <h3 className="text-base font-bold text-white mb-1">Phone Not Ringing</h3>
+                  <p className="text-brand-muted text-xs lg:text-sm leading-relaxed">Visitors can't find your number. They call your competitor instead.</p>
                 </div>
               </div>
 
@@ -45,18 +44,8 @@ const Comparison: React.FC = () => {
                   <AlertTriangle size={18} />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white mb-1">Looks Like 2010, Feels Like Amateur Hour</h3>
-                  <p className="text-brand-muted text-xs lg:text-sm leading-relaxed">Customers judge you in 3 seconds. If your website screams "outdated," they assume your work does too. Even if you're the best in town, they'll never know.</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                 <div className="w-10 h-10 bg-brand-black rounded-full flex items-center justify-center flex-shrink-0 text-red-500 border border-brand-border shadow-lg">
-                  <Clock size={18} />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-white mb-1">Zero Traffic = Zero Leads</h3>
-                  <p className="text-brand-muted text-xs lg:text-sm leading-relaxed">You spent $2,000 on a website that gets 4 visitors a month. A beautiful site nobody sees is just an expensive digital brochure gathering dust.</p>
+                  <h3 className="text-base font-bold text-white mb-1">Looks Outdated</h3>
+                  <p className="text-brand-muted text-xs lg:text-sm leading-relaxed">Customers judge you in 3 seconds. Outdated site = they assume outdated work.</p>
                 </div>
               </div>
             </div>
@@ -71,17 +60,17 @@ const Comparison: React.FC = () => {
             </div>
 
             <h2 className="text-3xl lg:text-4xl font-display font-black text-white mb-6">
-              BUILT FOR TRADIES WHO <br/> <span className="text-brand-accent">WANT LEADS, NOT EXCUSES.</span>
+              <span className="text-brand-accent">LEADS, NOT EXCUSES.</span>
             </h2>
 
-            <div className="space-y-8 mt-4 relative z-10">
+            <div className="space-y-6 mt-4 relative z-10">
               <div className="flex gap-4 group">
                 <div className="w-10 h-10 bg-brand-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 text-brand-accent border border-brand-accent/20 group-hover:scale-110 transition-transform">
                   <Smartphone size={20} />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white mb-1">Every Element Built to Convert</h3>
-                  <p className="text-gray-400 text-xs lg:text-sm leading-relaxed">Giant click-to-call buttons. Quote forms above the fold. Mobile-first design because 80% of your customers search on their phone while they're standing in front of the problem you solve.</p>
+                  <h3 className="text-base font-bold text-white mb-1">Built to Convert</h3>
+                  <p className="text-gray-400 text-xs lg:text-sm leading-relaxed">Click-to-call buttons. Quote forms above the fold. Mobile-first design.</p>
                 </div>
               </div>
 
@@ -91,17 +80,7 @@ const Comparison: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-white mb-1">Live in 7 Days</h3>
-                  <p className="text-gray-400 text-xs lg:text-sm leading-relaxed">No 12-week waits. No "we're still working on it." You'll be taking calls from your new site within a week. Fast doesn't mean sloppy—it means we know what works.</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4 group">
-                <div className="w-10 h-10 bg-brand-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 text-brand-accent border border-brand-accent/20 group-hover:scale-110 transition-transform">
-                  <TrendingUp size={20} />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-white mb-1">Built to Grow With You</h3>
-                  <p className="text-gray-400 text-xs lg:text-sm leading-relaxed">Start with the foundation. Add Google Ads when you're ready to scale. Need a booking system in 6 months? We've got you. This isn't a "set and forget" – it's a partnership.</p>
+                  <p className="text-gray-400 text-xs lg:text-sm leading-relaxed">No 12-week waits. You'll be taking calls from your new site within a week.</p>
                 </div>
               </div>
             </div>
