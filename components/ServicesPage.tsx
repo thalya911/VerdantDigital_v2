@@ -386,18 +386,18 @@ const ServicesPage: React.FC = () => {
         <div className="mt-20 reveal">
           <div className="bg-brand-surface/20 border border-brand-border rounded-2xl p-8 md:p-12">
             <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-block mb-4 px-3 py-1 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded">
+              <div className="inline-block mb-4 px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[10px] font-bold uppercase tracking-widest rounded">
                 Self-Service Resources
               </div>
               <h2 className="text-2xl md:text-4xl font-display font-black text-white mb-4 uppercase leading-tight">
-                Free Digital Marketing <span className="text-brand-accent">Guides</span>
+                Free Digital Marketing <span className="text-orange-500">Guides</span>
               </h2>
               <p className="text-brand-muted text-base md:text-lg mb-6 leading-relaxed">
                 We understand not every business has thousands of dollars to invest in full-service digital marketing packages. That's why we've built a series of free guides to help you tackle certain aspects yourself with proven strategies and clear instructions.
               </p>
               <a
                 href="/resources"
-                className="inline-flex items-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold py-4 px-8 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all uppercase tracking-widest text-sm"
+                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-white text-brand-black hover:text-brand-black font-extrabold py-4 px-8 rounded-lg shadow-[0_4px_14px_rgba(249,115,22,0.4)] hover:shadow-[0_6px_20px_rgba(249,115,22,0.6)] transition-all uppercase tracking-widest text-sm"
               >
                 View Free Resource Library
                 <ArrowRight size={18} />

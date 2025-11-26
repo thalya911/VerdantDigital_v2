@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Home, Briefcase, HelpCircle, Mail, FileText, Building2 } from 'lucide-react';
+import { Home, Briefcase, HelpCircle, Mail, FileText, Building2, BookOpen } from 'lucide-react';
 
 const Sitemap: React.FC = () => {
   const navigate = useNavigate();
@@ -21,6 +21,15 @@ const Sitemap: React.FC = () => {
       icon: Building2,
       links: [
         { name: 'Tradies', path: '/tradie', description: 'Express Build package for trade businesses' },
+      ]
+    },
+    {
+      title: 'Free Resources',
+      icon: BookOpen,
+      links: [
+        { name: 'Resource Library', path: '/resources', description: 'Self-service digital marketing guides' },
+        { name: 'Complete Advertising Guide', path: '/resources/advertising-guide', description: 'Comprehensive guide to online advertising' },
+        { name: 'Conversion Psychology Playbook', path: '/resources/conversion-psychology', description: 'How users think, decide, and convert' },
       ]
     },
     {
