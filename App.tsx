@@ -67,18 +67,18 @@ const TradiePage: React.FC<{ onOpenModal: () => void }> = ({ onOpenModal }) => {
 
     <div className="relative z-10">
       {/* Section Navigation */}
-      <nav className={`fixed left-0 right-0 bg-brand-black/95 backdrop-blur-md border-b border-brand-border z-40 transition-all duration-300 ${scrolled ? 'top-[56px] md:top-[52px]' : 'top-[48px] md:top-[52px]'}`}>
+      <nav className={`fixed left-0 right-0 bg-brand-black/95 backdrop-blur-md border-b border-brand-border transition-all duration-300 ${scrolled ? 'top-0 md:top-[52px] z-50' : 'top-[48px] md:top-[52px] z-40'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile: Stacked Layout */}
-          <div className="md:hidden py-3">
+          <div className={`md:hidden transition-all duration-300 ${scrolled ? 'py-2' : 'py-3'}`}>
             {/* Breadcrumb */}
-            <div className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider mb-2">
+            <div className={`flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider transition-all duration-300 ${scrolled ? 'mb-0' : 'mb-2'}`}>
               <span className="text-brand-muted">Industries</span>
               <span className="text-brand-muted">›</span>
               <span className="text-brand-accent">Tradies</span>
             </div>
             {/* Navigation Links - Scrollable */}
-            <div className="flex items-center gap-3 overflow-x-auto pb-1 scrollbar-hide">
+            <div className={`flex items-center gap-3 overflow-x-auto pb-1 scrollbar-hide transition-all duration-300 ${scrolled ? 'hidden' : 'flex'}`}>
               <a href="#pricing" className="text-[10px] font-semibold uppercase tracking-wider text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
                 Pricing
               </a>
