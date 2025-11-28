@@ -58,7 +58,40 @@ const TradiePage: React.FC<{ onOpenModal: () => void }> = ({ onOpenModal }) => (
       {/* Section Navigation */}
       <nav className="bg-brand-black border-b border-brand-border mt-[72px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-3 md:py-2 overflow-x-auto">
+          {/* Mobile: Stacked Layout */}
+          <div className="md:hidden py-3">
+            {/* Breadcrumb */}
+            <div className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider mb-2">
+              <span className="text-brand-muted">Industries</span>
+              <span className="text-brand-muted">›</span>
+              <span className="text-brand-accent">Tradies</span>
+            </div>
+            {/* Navigation Links - Scrollable */}
+            <div className="flex items-center gap-3 overflow-x-auto pb-1 scrollbar-hide">
+              <a href="#pricing" className="text-[10px] font-semibold uppercase tracking-wider text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
+                Pricing
+              </a>
+              <span className="text-brand-border text-xs">|</span>
+              <a href="#comparison" className="text-[10px] font-semibold uppercase tracking-wider text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
+                Why Us
+              </a>
+              <span className="text-brand-border text-xs">|</span>
+              <a href="#process" className="text-[10px] font-semibold uppercase tracking-wider text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
+                Process
+              </a>
+              <span className="text-brand-border text-xs">|</span>
+              <a href="#faq" className="text-[10px] font-semibold uppercase tracking-wider text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
+                FAQ
+              </a>
+              <span className="text-brand-border text-xs">|</span>
+              <a href="#enquire" className="text-[10px] font-semibold uppercase tracking-wider text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
+                Contact
+              </a>
+            </div>
+          </div>
+
+          {/* Desktop: Horizontal Layout */}
+          <div className="hidden md:flex items-center justify-between py-2">
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest whitespace-nowrap">
               <span className="text-brand-muted">Industries</span>
@@ -67,7 +100,7 @@ const TradiePage: React.FC<{ onOpenModal: () => void }> = ({ onOpenModal }) => (
             </div>
 
             {/* Navigation Links */}
-            <div className="flex items-center gap-6 md:gap-8">
+            <div className="flex items-center gap-6 lg:gap-8">
               <a href="#pricing" className="text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
                 Pricing
               </a>
