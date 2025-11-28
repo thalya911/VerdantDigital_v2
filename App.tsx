@@ -56,7 +56,7 @@ const TradiePage: React.FC<{ onOpenModal: () => void }> = ({ onOpenModal }) => (
 
     <div className="relative z-10">
       {/* Section Navigation */}
-      <nav className="sticky top-[71px] bg-brand-black/95 backdrop-blur-md border-b border-brand-border z-40">
+      <nav className="sticky top-[4.4rem] bg-brand-black/95 backdrop-blur-md border-b border-brand-border z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile: Stacked Layout */}
           <div className="md:hidden py-3">
