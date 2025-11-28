@@ -52,7 +52,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                 <p className="text-sm md:text-base text-brand-muted font-semibold mb-4 text-left">
                   What you can expect:
                 </p>
-                <div className="space-y-3 mb-0">
+                <div className="space-y-2 mb-0">
                   {[
                     "Job enquiries sent directly to you",
                     "Professional design that builds trust",
@@ -60,10 +60,10 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                     "Fully managed and maintained"
                   ].map((benefit, i) => (
                     <div key={i} className="flex gap-3 items-start justify-start">
-                      <div className="mt-1 bg-brand-accent rounded-full p-0.5 shrink-0">
+                      <div className="mt-0.5 bg-brand-accent rounded-full p-0.5 shrink-0">
                         <Check size={12} className="text-brand-black stroke-[4]" />
                       </div>
-                      <span className="text-base md:text-lg text-brand-bone leading-tight text-left">{benefit}</span>
+                      <span className="text-sm md:text-base text-brand-bone leading-snug text-left">{benefit}</span>
                     </div>
                   ))}
                 </div>
