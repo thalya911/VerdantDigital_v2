@@ -166,8 +166,8 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                 <div className="grid md:grid-cols-2 gap-6 mb-6 text-left px-8 md:px-12">
                   {/* What You Get Upfront */}
                   <div>
-                    <h4 className="text-sm font-bold text-brand-accent uppercase tracking-widest mb-3">What you get straight away:</h4>
-                    <div className="space-y-2">
+                    <h4 className="text-sm font-bold text-brand-accent uppercase tracking-widest mb-2">What you get straight away:</h4>
+                    <div className="space-y-1">
                       {[
                         "Mobile-optimised website",
                         "Google-friendly structure",
@@ -177,11 +177,11 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                         "Service area mapping for local SEO",
                         "Lead dashboard to track enquiries"
                       ].map((item, i) => (
-                        <div key={i} className="flex gap-2.5 items-start">
+                        <div key={i} className="flex gap-2 items-start">
                           <div className="mt-0.5 bg-brand-accent rounded-full p-0.5 shrink-0">
-                            <Check size={12} className="text-brand-black stroke-[4]" />
+                            <Check size={10} className="text-brand-black stroke-[4]" />
                           </div>
-                          <span className="text-sm text-gray-300 leading-relaxed">{item}</span>
+                          <span className="text-xs text-gray-300 leading-tight">{item}</span>
                         </div>
                       ))}
                     </div>
@@ -189,8 +189,8 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
 
                   {/* Then, Every Month */}
                   <div>
-                    <h4 className="text-sm font-bold text-brand-accent uppercase tracking-widest mb-3">Then, every month:</h4>
-                    <div className="space-y-2">
+                    <h4 className="text-sm font-bold text-brand-accent uppercase tracking-widest mb-2">Then, every month:</h4>
+                    <div className="space-y-1">
                       {[
                         "Hosting and security",
                         "Unlimited updates and edits",
@@ -198,11 +198,11 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                         "Monthly analytics report",
                         "Priority support"
                       ].map((item, i) => (
-                        <div key={i} className="flex gap-2.5 items-start">
+                        <div key={i} className="flex gap-2 items-start">
                           <div className="mt-0.5 bg-brand-accent rounded-full p-0.5 shrink-0">
-                            <Check size={12} className="text-brand-black stroke-[4]" />
+                            <Check size={10} className="text-brand-black stroke-[4]" />
                           </div>
-                          <span className="text-sm text-gray-300 leading-relaxed">{item}</span>
+                          <span className="text-xs text-gray-300 leading-tight">{item}</span>
                         </div>
                       ))}
                     </div>
