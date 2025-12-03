@@ -15,7 +15,7 @@ const MainHero: React.FC = () => {
   return (
     <section className="relative bg-brand-black pt-40 pb-20 lg:pt-60 lg:pb-40 overflow-hidden min-h-screen flex flex-col justify-center">
       {/* Threads Background Animation */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-brand-black">
         <Threads
           color={[0, 1, 0.616]}
           amplitude={1.5}
