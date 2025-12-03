@@ -13,7 +13,7 @@ const MainHero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative bg-brand-black pt-40 pb-20 lg:pt-60 lg:pb-40 overflow-hidden min-h-screen flex flex-col justify-center">
+    <section className="relative bg-brand-black pt-40 pb-20 lg:pt-60 lg:pb-40 overflow-hidden min-h-screen flex flex-col justify-center" style={{ isolation: 'isolate', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}>
       {/* Threads Background Animation */}
       <div className="absolute inset-0 z-0 bg-brand-black">
         <Threads
@@ -25,10 +25,10 @@ const MainHero: React.FC = () => {
       </div>
 
       {/* Background Effects - CSS-based grain instead of external SVG */}
-      <div className="absolute inset-0 z-1 opacity-20 mix-blend-overlay pointer-events-none grain-texture"></div>
+      <div className="absolute inset-0 z-1 opacity-20 mix-blend-overlay pointer-events-none grain-texture" style={{ transform: 'translateZ(0)', willChange: 'transform' }}></div>
 
       {/* Animated Gradient Blob */}
-      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none animate-pulse duration-[10000ms] z-1"></div>
+      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none animate-pulse duration-[10000ms] z-1" style={{ transform: 'translateZ(0)', willChange: 'transform' }}></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="max-w-5xl reveal">

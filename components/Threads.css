@@ -5,6 +5,11 @@
   height: 100%;
   pointer-events: none;
   background-color: #0D0D0F;
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .threads-container canvas {
