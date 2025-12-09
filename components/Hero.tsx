@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, PhoneCall, Check, Home, Wrench, User, Images, Mail, Zap, Award, MapPin, Headphones } from 'lucide-react';
+import { trackStartBuildClick } from '../services/analytics';
 
 interface HeroProps {
   onOpenModal: () => void;
@@ -39,7 +40,10 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
               {/* CTA Button */}
               <div className="mb-8">
                 <button
-                  onClick={onOpenModal}
+                  onClick={() => {
+                    trackStartBuildClick('hero_main');
+                    onOpenModal();
+                  }}
                   className="group inline-flex items-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-extrabold px-8 py-4 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all uppercase tracking-widest text-sm"
                 >
                   Start Your Build
@@ -154,7 +158,10 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                   {/* CTA Button */}
                   <div className="max-w-sm mx-auto">
                     <button
-                      onClick={onOpenModal}
+                      onClick={() => {
+                        trackStartBuildClick('pricing_card');
+                        onOpenModal();
+                      }}
                       className="w-full bg-brand-accent hover:bg-white text-brand-black font-black text-sm py-3 px-6 rounded-xl shadow-[0_4px_20px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_30px_rgba(0,255,179,0.6)] transition-all flex items-center justify-center gap-2 uppercase tracking-wide transform group-hover:-translate-y-1"
                     >
                       Start Your Build

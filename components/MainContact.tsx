@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Send, Clock, MapPin, MessageSquare } from 'lucide-react';
+import { trackFormSubmit, trackFormStart } from '../services/analytics';
 
 const MainContact: React.FC = () => {
   const [formState, setFormState] = useState({
@@ -36,6 +37,7 @@ const MainContact: React.FC = () => {
   }, []);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasStartedForm, setHasStartedForm] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,6 +55,7 @@ const MainContact: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
+        trackFormSubmit('main_contact', true);
         alert('✓ Message sent!\n\nThanks for getting in touch. We\'ll get back to you within 24 hours.\n\nYou should receive a confirmation email shortly.');
         // Reset form
         setFormState({
@@ -65,7 +68,9 @@ const MainContact: React.FC = () => {
           helpWith: '',
           message: ''
         });
+        setHasStartedForm(false);
       } else {
+        trackFormSubmit('main_contact', false);
         alert('Something went wrong.\n\nPlease try again, or email us directly at hello@verdantdigital.com.au');
       }
     } catch (error) {
@@ -77,6 +82,11 @@ const MainContact: React.FC = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    // Track form start on first interaction
+    if (!hasStartedForm) {
+      trackFormStart('main_contact');
+      setHasStartedForm(true);
+    }
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 

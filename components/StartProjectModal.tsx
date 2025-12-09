@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Check, ShieldCheck, Users, MapPin } from 'lucide-react';
 import ExpressBuildModal from './ExpressBuildModal';
 import ContactFormModal from './ContactFormModal';
+import { trackModalOpen, trackCtaClick } from '../services/analytics';
 
 interface StartProjectModalProps {
   isOpen: boolean;
@@ -11,6 +12,13 @@ interface StartProjectModalProps {
 const StartProjectModal: React.FC<StartProjectModalProps> = ({ isOpen, onClose }) => {
   const [isExpressModalOpen, setIsExpressModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  // Track modal open
+  useEffect(() => {
+    if (isOpen) {
+      trackModalOpen('start_project');
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -92,7 +100,10 @@ const StartProjectModal: React.FC<StartProjectModalProps> = ({ isOpen, onClose }
 
               <button
                 className="w-full block text-center bg-brand-accent hover:bg-white text-brand-black font-bold py-4 px-6 rounded-lg transition-all uppercase tracking-wide shadow-[0_4px_14px_rgba(0,255,179,0.3)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.5)] hover:-translate-y-1 transform"
-                onClick={() => setIsExpressModalOpen(true)}
+                onClick={() => {
+                  trackCtaClick('express_build_start', 'start_project_modal');
+                  setIsExpressModalOpen(true);
+                }}
               >
                 Start Now
                 <span className="block text-[10px] opacity-70 font-normal normal-case mt-0.5">No waiting, instant setup</span>
@@ -134,7 +145,10 @@ const StartProjectModal: React.FC<StartProjectModalProps> = ({ isOpen, onClose }
               </div>
 
               <button
-                onClick={() => setIsContactModalOpen(true)}
+                onClick={() => {
+                  trackCtaClick('consultation_start', 'start_project_modal');
+                  setIsContactModalOpen(true);
+                }}
                 className="w-full block text-center bg-transparent border-2 border-brand-border hover:border-brand-accent text-white hover:text-brand-accent font-bold py-4 px-6 rounded-lg transition-all uppercase tracking-wide group"
               >
                 GET IN TOUCH

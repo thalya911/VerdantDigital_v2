@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Check, Zap, FileText, ArrowRight, AlertCircle } from 'lucide-react';
 import { createCheckoutSession, redirectToCheckout } from '../services/stripeService';
 import ContactFormModal from './ContactFormModal';
+import { trackModalOpen, trackCheckoutStart, trackFormSubmit, trackCtaClick } from '../services/analytics';
 
 interface ExpressBuildModalProps {
   isOpen: boolean;
@@ -30,9 +31,10 @@ const ExpressBuildModal: React.FC<ExpressBuildModalProps> = ({ isOpen, onClose }
     advertising: false
   });
 
-  // Reset states when modal opens
+  // Reset states when modal opens & track
   useEffect(() => {
     if (isOpen) {
+      trackModalOpen('express_build');
       setShowForm(false);
       setFormSubmitted(false);
       setIsProcessing(false);
@@ -71,6 +73,7 @@ const ExpressBuildModal: React.FC<ExpressBuildModalProps> = ({ isOpen, onClose }
 
   const handleQuickPay = async () => {
     setIsProcessing(true);
+    trackCheckoutStart('Express Build - Tradie Website', 399);
 
     try {
       // Create Stripe Checkout session for subscription
@@ -105,6 +108,7 @@ const ExpressBuildModal: React.FC<ExpressBuildModalProps> = ({ isOpen, onClose }
     setTimeout(() => {
       setIsProcessing(false);
       setFormSubmitted(true);
+      trackFormSubmit('express_build_details', true);
     }, 1000);
   };
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, Send } from 'lucide-react';
+import { trackModalOpen, trackFormSubmit, trackFormStart } from '../services/analytics';
 
 interface ContactFormModalProps {
   isOpen: boolean;
@@ -21,6 +22,15 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, pr
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasStartedForm, setHasStartedForm] = useState(false);
+
+  // Track modal open
+  useEffect(() => {
+    if (isOpen) {
+      trackModalOpen('contact_form');
+      setHasStartedForm(false);
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (initialMessage) {
@@ -47,6 +57,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, pr
       const data = await response.json();
 
       if (response.ok) {
+        trackFormSubmit('contact_modal', true);
         alert('✓ Message sent!\n\nThanks for getting in touch. We\'ll get back to you within 24 hours.\n\nYou should receive a confirmation email shortly.');
         onClose();
         // Reset form
@@ -61,6 +72,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, pr
           message: ''
         });
       } else {
+        trackFormSubmit('contact_modal', false);
         alert('Something went wrong.\n\nPlease try again, or email us directly at hello@verdantdigital.com.au');
       }
     } catch (error) {
@@ -72,6 +84,11 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, pr
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    // Track form start on first interaction
+    if (!hasStartedForm) {
+      trackFormStart('contact_modal');
+      setHasStartedForm(true);
+    }
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
