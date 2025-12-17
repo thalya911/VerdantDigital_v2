@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, ShieldCheck, Zap, Info } from 'lucide-react';
+import { Check, Zap, Info } from 'lucide-react';
 
 const Packages: React.FC = () => {
   return (

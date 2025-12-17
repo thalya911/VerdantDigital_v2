@@ -5,28 +5,30 @@ const About: React.FC = () => {
   return (
     <div className="bg-brand-black">
       {/* Section Navigation */}
-      <nav className="bg-brand-black border-b border-brand-border mt-[72px]">
+      <nav className="bg-brand-black border-b border-brand-border mt-[56px] md:mt-[64px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center gap-6 md:gap-8 py-3 md:py-2 overflow-x-auto">
-            <a href="#about" className="text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
-              About Us
-            </a>
-            <span className="text-brand-border">|</span>
-            <a href="#founders" className="text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
-              Founders
-            </a>
-            <span className="text-brand-border">|</span>
-            <a href="#philosophy" className="text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
-              Philosophy
-            </a>
-            <span className="text-brand-border">|</span>
-            <a href="#how-we-work" className="text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
-              How We Work
-            </a>
-            <span className="text-brand-border">|</span>
-            <a href="#why-choose-us" className="text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap">
-              Why Choose Us
-            </a>
+          <div className="overflow-x-auto">
+            <div className="flex items-center justify-center gap-4 md:gap-6 py-3 md:py-2 min-w-max w-fit mx-auto">
+              <a href="#about" className="flex items-center text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap leading-none">
+                About Us
+              </a>
+              <span className="text-brand-border leading-none">|</span>
+              <a href="#founders" className="flex items-center text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap leading-none">
+                Founders
+              </a>
+              <span className="text-brand-border leading-none">|</span>
+              <a href="#philosophy" className="flex items-center text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap leading-none">
+                Philosophy
+              </a>
+              <span className="text-brand-border leading-none">|</span>
+              <a href="#how-we-work" className="flex items-center text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap leading-none">
+                How We Work
+              </a>
+              <span className="text-brand-border leading-none">|</span>
+              <a href="#why-choose-us" className="flex items-center text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap leading-none">
+                Why Choose Us
+              </a>
+            </div>
           </div>
         </div>
       </nav>

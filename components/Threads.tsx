@@ -138,15 +138,15 @@ interface ThreadsProps {
 function isWebGLAvailable(): boolean {
   try {
     const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl') as WebGLRenderingContext | null;
     if (!gl) return false;
 
     // Check if it's a software renderer (often indicates poor performance)
-    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+    const debugInfo = (gl as WebGLRenderingContext).getExtension('WEBGL_debug_renderer_info');
     if (debugInfo) {
-      const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+      const renderer = (gl as WebGLRenderingContext).getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
       // Avoid software renderers like SwiftShader
-      if (renderer && renderer.toLowerCase().includes('swift')) return false;
+      if (renderer && typeof renderer === 'string' && renderer.toLowerCase().includes('swift')) return false;
     }
 
     return true;
@@ -178,7 +178,7 @@ const Threads: React.FC<ThreadsProps> = ({
   ...rest
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const animationFrameId = useRef<number>();
+  const animationFrameId = useRef<number | undefined>(undefined);
   const [shouldRender, setShouldRender] = useState<boolean>(true);
   const [webglFailed, setWebglFailed] = useState<boolean>(false);
 

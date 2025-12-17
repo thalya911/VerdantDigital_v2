@@ -55,7 +55,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, pr
         body: JSON.stringify(formState),
       });
 
-      const data = await response.json();
+      await response.json();
 
       if (response.ok) {
         trackFormSubmit('contact_modal', true);

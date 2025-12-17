@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { generateTradieContent } from '../services/geminiService';
-import { Sparkles, Loader2, Copy, Check, Terminal, Zap, ChevronRight, Send, ArrowRight } from 'lucide-react';
+import { Sparkles, Loader2, Copy, Check, Zap, ChevronRight, Send, ArrowRight } from 'lucide-react';
 
 const ContentGenerator: React.FC = () => {
   const [trade, setTrade] = useState('');

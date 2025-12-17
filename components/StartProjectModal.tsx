@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Check, ShieldCheck, Users, MapPin } from 'lucide-react';
+import { X, Check, ShieldCheck, MapPin } from 'lucide-react';
 import ExpressBuildModal from './ExpressBuildModal';
 import ContactFormModal from './ContactFormModal';
 import { trackModalOpen, trackCtaClick } from '../services/analytics';

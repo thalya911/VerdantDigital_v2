@@ -1,4 +1,3 @@
-import React from 'react';
 import { PackageItem, FaqItem, FaqCategory, TestimonialItem, BenefitItem, WorkflowStep } from './types';
 
 export const PACKAGES: PackageItem[] = [

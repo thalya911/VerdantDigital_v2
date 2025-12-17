@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Clarity from '@microsoft/clarity';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -13,7 +13,6 @@ Clarity.init(CLARITY_PROJECT_ID);
 // Tradie Components
 import Hero from './components/Hero';
 import Comparison from './components/Comparison';
-// import Packages from './components/Packages'; // Removed as per request to move deal to hero
 import Workflow from './components/Workflow';
 import Faq from './components/Faq';
 import CtaSection from './components/CtaSection';
@@ -85,7 +84,7 @@ const TradiePage: React.FC<{ onOpenModal: () => void }> = ({ onOpenModal }) => {
           {/* Mobile/Tablet: Responsive Layout */}
           <div className="lg:hidden py-2">
             {/* Single row: Breadcrumb + Nav Links */}
-            <div className="flex items-center gap-4 overflow-x-auto scrollbar-hide">
+            <div className="flex items-center gap-4 overflow-x-auto">
               {/* Breadcrumb */}
               <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider flex-shrink-0">
                 <span className="text-brand-muted">Industries</span>

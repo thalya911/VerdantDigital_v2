@@ -5,7 +5,7 @@ interface CtaSectionProps {
   onOpenModal: () => void;
 }
 
-const CtaSection: React.FC<CtaSectionProps> = ({ onOpenModal }) => {
+const CtaSection: React.FC<CtaSectionProps> = ({ onOpenModal: _onOpenModal }) => {
   return (
     <section className="py-16 bg-brand-accent relative overflow-hidden">
        {/* Animated Divider */}

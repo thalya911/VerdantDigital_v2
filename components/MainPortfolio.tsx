@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
   {

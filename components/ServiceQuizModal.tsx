@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, ArrowRight, ArrowLeft, CheckCircle2, HelpCircle, DollarSign, TrendingUp, Wrench, Search, Code, Lightbulb, Hammer, Check as CheckIcon, Rocket, MessageCircleQuestion, CreditCard, Calendar, Clock, Waves, Store, Briefcase, Package, Users, MessageSquare, Phone, ShoppingCart, Zap } from 'lucide-react';
+import { X, ArrowRight, ArrowLeft, CheckCircle2, HelpCircle, DollarSign, TrendingUp, Wrench, Search, Code, Lightbulb, Hammer, Check as CheckIcon, Rocket, MessageCircleQuestion, CreditCard, Calendar, Clock, Waves, Store, Briefcase, Package, MessageSquare, Phone, ShoppingCart } from 'lucide-react';
 
 interface ServiceQuizModalProps {
   isOpen: boolean;
@@ -367,7 +367,7 @@ const ServiceQuizModal: React.FC<ServiceQuizModalProps> = ({ isOpen, onClose, on
                 </button>
               </div>
             </>
-          ) : (
+          ) : currentQuestion ? (
             <>
               {/* Quiz Questions - Header */}
               <div className="text-center mb-8">
@@ -428,9 +428,9 @@ const ServiceQuizModal: React.FC<ServiceQuizModalProps> = ({ isOpen, onClose, on
                             <span className="font-semibold text-white group-hover:text-brand-accent transition-colors block">
                               {option.label}
                             </span>
-                            {option.description && (
+                            {'description' in option && (option as { description?: string }).description && (
                               <span className="text-xs text-brand-muted mt-1 block">
-                                {option.description}
+                                {(option as { description?: string }).description}
                               </span>
                             )}
                           </div>
@@ -486,7 +486,7 @@ const ServiceQuizModal: React.FC<ServiceQuizModalProps> = ({ isOpen, onClose, on
                 </button>
               </div>
             </>
-          )}
+          ) : null}
         </div>
       </div>
     </div>

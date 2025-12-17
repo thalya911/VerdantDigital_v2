@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, PhoneCall, Check, Home, Wrench, User, Images, Mail, Zap, Award, MapPin, Headphones } from 'lucide-react';
+import { ArrowRight, Check, Home, Wrench, User, Images, Mail, Zap, Award, MapPin, Headphones } from 'lucide-react';
 import { trackStartBuildClick } from '../services/analytics';
 
 interface HeroProps {

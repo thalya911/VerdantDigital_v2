@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Check, Zap, FileText, ArrowRight, AlertCircle } from 'lucide-react';
 import { createCheckoutSession, redirectToCheckout } from '../services/stripeService';
 import ContactFormModal from './ContactFormModal';
-import { trackModalOpen, trackCheckoutStart, trackFormSubmit, trackCtaClick } from '../services/analytics';
+import { trackModalOpen, trackCheckoutStart, trackFormSubmit } from '../services/analytics';
 
 interface ExpressBuildModalProps {
   isOpen: boolean;

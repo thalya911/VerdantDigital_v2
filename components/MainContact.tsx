@@ -52,7 +52,7 @@ const MainContact: React.FC = () => {
         body: JSON.stringify(formState),
       });
 
-      const data = await response.json();
+      await response.json();
 
       if (response.ok) {
         trackFormSubmit('main_contact', true);

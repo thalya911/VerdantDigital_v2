@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Home, Briefcase, HelpCircle, Mail, FileText, Building2, BookOpen } from 'lucide-react';
+import { Home, Briefcase, HelpCircle, Mail, Building2, BookOpen } from 'lucide-react';
 
 const Sitemap: React.FC = () => {
   const navigate = useNavigate();
