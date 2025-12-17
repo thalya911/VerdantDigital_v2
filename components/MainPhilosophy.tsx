@@ -14,7 +14,7 @@ const MainPhilosophy: React.FC = () => {
         
         {/* Header Section */}
         <div className="mb-12 reveal">
-          <div className="inline-block mb-4 px-3 py-1 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded">
+          <div className="inline-block mb-4 px-3 py-1 bg-brand-accent/20 border border-brand-accent/40 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded">
             Our Philosophy
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-black text-white leading-[1.1] mb-6 uppercase" style={{letterSpacing: '0.02em'}}>
@@ -50,8 +50,8 @@ const MainPhilosophy: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-6 reveal reveal-delay-100">
 
           {/* Strategic Design */}
-          <div className="bg-brand-surface/30 border border-brand-border rounded-lg p-4 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300 flex flex-col items-start">
-             <div className="w-10 h-10 bg-brand-black border border-brand-border rounded-lg flex items-center justify-center text-brand-muted group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-4 shadow-lg">
+          <div className="bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/20 md:border-brand-border rounded-lg p-4 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300 flex flex-col items-start">
+             <div className="w-10 h-10 bg-brand-black border border-brand-accent/30 md:border-brand-border rounded-lg flex items-center justify-center text-brand-accent group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-4 shadow-lg">
                 <Target size={24} />
               </div>
               <h3 className="text-lg font-display font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">Strategic Design</h3>
@@ -61,8 +61,8 @@ const MainPhilosophy: React.FC = () => {
           </div>
 
           {/* Technical Excellence */}
-          <div className="bg-brand-surface/30 border border-brand-border rounded-lg p-4 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300 flex flex-col items-start">
-             <div className="w-10 h-10 bg-brand-black border border-brand-border rounded-lg flex items-center justify-center text-brand-muted group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-4 shadow-lg">
+          <div className="bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/20 md:border-brand-border rounded-lg p-4 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300 flex flex-col items-start">
+             <div className="w-10 h-10 bg-brand-black border border-brand-accent/30 md:border-brand-border rounded-lg flex items-center justify-center text-brand-accent group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-4 shadow-lg">
                 <Layers size={24} />
               </div>
               <h3 className="text-lg font-display font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">Technical Excellence</h3>
@@ -72,8 +72,8 @@ const MainPhilosophy: React.FC = () => {
           </div>
 
           {/* Integrated Approach */}
-          <div className="bg-brand-surface/30 border border-brand-border rounded-lg p-4 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300 flex flex-col items-start">
-             <div className="w-10 h-10 bg-brand-black border border-brand-border rounded-lg flex items-center justify-center text-brand-muted group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-4 shadow-lg">
+          <div className="bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/20 md:border-brand-border rounded-lg p-4 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300 flex flex-col items-start">
+             <div className="w-10 h-10 bg-brand-black border border-brand-accent/30 md:border-brand-border rounded-lg flex items-center justify-center text-brand-accent group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-4 shadow-lg">
                 <Users size={24} />
               </div>
               <h3 className="text-lg font-display font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">Integrated Approach</h3>

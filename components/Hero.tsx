@@ -18,7 +18,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           <div className="max-w-4xl mx-auto">
             <div className="text-left reveal">
 
-              <div className="inline-flex items-center gap-3 px-4 py-2 rounded bg-brand-surface/50 border border-brand-accent/20 text-brand-accent text-xs font-bold uppercase tracking-widest mb-8 hover:border-brand-accent/50 transition-colors cursor-default backdrop-blur-sm">
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded bg-brand-surface/70 border border-brand-accent/40 text-brand-accent text-xs font-bold uppercase tracking-widest mb-8 hover:border-brand-accent/50 transition-colors cursor-default backdrop-blur-sm">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-accent"></span>
@@ -75,28 +75,28 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                 {/* Trust Badges */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8 pt-8 border-t border-brand-border/30">
                   {/* 7-Day Launch */}
-                  <div className="flex flex-col items-center text-center p-3 bg-brand-surface/30 border border-brand-border/40 rounded-lg hover:border-brand-accent/40 transition-colors">
+                  <div className="flex flex-col items-center text-center p-3 bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/30 md:border-brand-border/40 rounded-lg hover:border-brand-accent/40 transition-colors">
                     <Zap size={20} className="text-brand-accent mb-2" />
                     <span className="text-xs font-bold text-white leading-tight">7-Day Launch</span>
                     <span className="text-[10px] text-brand-muted mt-0.5">Guaranteed</span>
                   </div>
 
                   {/* Australian Owned */}
-                  <div className="flex flex-col items-center text-center p-3 bg-brand-surface/30 border border-brand-border/40 rounded-lg hover:border-brand-accent/40 transition-colors">
+                  <div className="flex flex-col items-center text-center p-3 bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/30 md:border-brand-border/40 rounded-lg hover:border-brand-accent/40 transition-colors">
                     <MapPin size={20} className="text-brand-accent mb-2" />
                     <span className="text-xs font-bold text-white leading-tight">Australian</span>
                     <span className="text-[10px] text-brand-muted mt-0.5">Owned & Operated</span>
                   </div>
 
                   {/* Built for Tradies */}
-                  <div className="flex flex-col items-center text-center p-3 bg-brand-surface/30 border border-brand-border/40 rounded-lg hover:border-brand-accent/40 transition-colors">
+                  <div className="flex flex-col items-center text-center p-3 bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/30 md:border-brand-border/40 rounded-lg hover:border-brand-accent/40 transition-colors">
                     <Award size={20} className="text-brand-accent mb-2" />
                     <span className="text-xs font-bold text-white leading-tight">Built for</span>
                     <span className="text-[10px] text-brand-muted mt-0.5">Trade Businesses</span>
                   </div>
 
                   {/* Priority Support */}
-                  <div className="flex flex-col items-center text-center p-3 bg-brand-surface/30 border border-brand-border/40 rounded-lg hover:border-brand-accent/40 transition-colors">
+                  <div className="flex flex-col items-center text-center p-3 bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/30 md:border-brand-border/40 rounded-lg hover:border-brand-accent/40 transition-colors">
                     <Headphones size={20} className="text-brand-accent mb-2" />
                     <span className="text-xs font-bold text-white leading-tight">Priority</span>
                     <span className="text-[10px] text-brand-muted mt-0.5">Support Included</span>
@@ -217,7 +217,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                 </div>
 
                 {/* Partnership Terms - Full Width Bottom */}
-                <div className="text-center bg-brand-accent/10 border border-brand-accent/20 rounded-lg p-4">
+                <div className="text-center bg-brand-accent/20 border border-brand-accent/40 rounded-lg p-4">
                   <div className="flex items-center justify-center gap-2 text-brand-accent font-bold text-xs mb-2">
                     <Check className="bg-brand-accent text-brand-black rounded-full p-0.5" size={14} strokeWidth={3} />
                     <span className="uppercase tracking-wider">Partnership Terms</span>
@@ -285,7 +285,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                   <div className="bg-brand-black p-6 md:p-8">
                     <div className="grid gap-4">
                       {/* Home Page */}
-                      <div className="bg-brand-surface/40 border-l-4 border-brand-accent rounded-r-lg p-4 hover:bg-brand-surface/60 transition-all">
+                      <div className="bg-brand-surface/60 md:bg-brand-surface/40 border-l-4 border-brand-accent rounded-r-lg p-4 hover:bg-brand-surface/60 transition-all">
                         <div className="flex items-start gap-3">
                           <Home size={18} className="text-brand-accent mt-1 shrink-0" />
                           <div>
@@ -296,7 +296,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                       </div>
 
                       {/* Services Page */}
-                      <div className="bg-brand-surface/40 border-l-4 border-blue-500/50 rounded-r-lg p-4 hover:bg-brand-surface/60 transition-all">
+                      <div className="bg-brand-surface/60 md:bg-brand-surface/40 border-l-4 border-blue-500 md:border-blue-500/50 rounded-r-lg p-4 hover:bg-brand-surface/60 transition-all">
                         <div className="flex items-start gap-3">
                           <Wrench size={18} className="text-blue-400 mt-1 shrink-0" />
                           <div>
@@ -307,7 +307,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                       </div>
 
                       {/* About Page */}
-                      <div className="bg-brand-surface/40 border-l-4 border-purple-500/50 rounded-r-lg p-4 hover:bg-brand-surface/60 transition-all">
+                      <div className="bg-brand-surface/60 md:bg-brand-surface/40 border-l-4 border-purple-500 md:border-purple-500/50 rounded-r-lg p-4 hover:bg-brand-surface/60 transition-all">
                         <div className="flex items-start gap-3">
                           <User size={18} className="text-purple-400 mt-1 shrink-0" />
                           <div>
@@ -318,7 +318,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                       </div>
 
                       {/* Gallery Page */}
-                      <div className="bg-brand-surface/40 border-l-4 border-orange-500/50 rounded-r-lg p-4 hover:bg-brand-surface/60 transition-all">
+                      <div className="bg-brand-surface/60 md:bg-brand-surface/40 border-l-4 border-orange-500 md:border-orange-500/50 rounded-r-lg p-4 hover:bg-brand-surface/60 transition-all">
                         <div className="flex items-start gap-3">
                           <Images size={18} className="text-orange-400 mt-1 shrink-0" />
                           <div>
@@ -329,7 +329,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                       </div>
 
                       {/* Contact Page */}
-                      <div className="bg-brand-surface/40 border-l-4 border-green-500/50 rounded-r-lg p-4 hover:bg-brand-surface/60 transition-all">
+                      <div className="bg-brand-surface/60 md:bg-brand-surface/40 border-l-4 border-green-500 md:border-green-500/50 rounded-r-lg p-4 hover:bg-brand-surface/60 transition-all">
                         <div className="flex items-start gap-3">
                           <Mail size={18} className="text-green-400 mt-1 shrink-0" />
                           <div>

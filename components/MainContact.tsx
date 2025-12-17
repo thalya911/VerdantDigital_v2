@@ -103,7 +103,7 @@ const MainContact: React.FC = () => {
           
           {/* Left Side - Content */}
           <div>
-            <div className="inline-block mb-6 px-3 py-1 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded">
+            <div className="inline-block mb-6 px-3 py-1 bg-brand-accent/20 border border-brand-accent/40 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded">
               GET IN TOUCH
             </div>
             
@@ -117,7 +117,7 @@ const MainContact: React.FC = () => {
 
             <div className="space-y-6 mb-10">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-brand-black border border-brand-border rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 shadow-lg">
+                <div className="w-10 h-10 bg-brand-black border border-brand-accent/40 rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 shadow-lg">
                   <Clock size={20} />
                 </div>
                 <div>
@@ -126,7 +126,7 @@ const MainContact: React.FC = () => {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-brand-black border border-brand-border rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 shadow-lg">
+                <div className="w-10 h-10 bg-brand-black border border-brand-accent/40 rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 shadow-lg">
                   <MapPin size={20} />
                 </div>
                 <div>
@@ -135,7 +135,7 @@ const MainContact: React.FC = () => {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-brand-black border border-brand-border rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 shadow-lg">
+                <div className="w-10 h-10 bg-brand-black border border-brand-accent/40 rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 shadow-lg">
                   <MessageSquare size={20} />
                 </div>
                 <div>
@@ -154,7 +154,7 @@ const MainContact: React.FC = () => {
           </div>
 
           {/* Right Side - Form */}
-          <div className="bg-brand-black border border-brand-border p-6 md:p-8 rounded-2xl shadow-2xl h-fit w-full mt-0 md:mt-12">
+          <div className="bg-brand-surface/50 md:bg-brand-black border border-brand-accent/30 md:border-brand-border p-6 md:p-8 rounded-2xl shadow-2xl h-fit w-full mt-0 md:mt-12">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">

@@ -63,22 +63,22 @@ const MainHero: React.FC = () => {
 
              {/* Clarified Technology Section with visual badges */}
              <div className="flex flex-wrap gap-3 md:gap-5">
-                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,179,0.2)] transition-all duration-300 group cursor-default">
+                <div className="flex items-center gap-2 bg-brand-surface/50 md:bg-white/5 backdrop-blur-sm border border-brand-accent/30 md:border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,179,0.2)] transition-all duration-300 group cursor-default">
                   <ShoppingCart size={16} className="text-brand-accent drop-shadow-[0_0_8px_rgba(0,255,179,0.5)]" />
                   <span className="text-white font-bold text-xs tracking-wide">Shopify Plus</span>
                 </div>
 
-                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,179,0.2)] transition-all duration-300 group cursor-default">
+                <div className="flex items-center gap-2 bg-brand-surface/50 md:bg-white/5 backdrop-blur-sm border border-brand-accent/30 md:border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,179,0.2)] transition-all duration-300 group cursor-default">
                   <Code2 size={16} className="text-brand-accent drop-shadow-[0_0_8px_rgba(0,255,179,0.5)]" />
                   <span className="text-white font-bold text-xs tracking-wide">React / Next.js</span>
                 </div>
 
-                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,179,0.2)] transition-all duration-300 group cursor-default">
+                <div className="flex items-center gap-2 bg-brand-surface/50 md:bg-white/5 backdrop-blur-sm border border-brand-accent/30 md:border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,179,0.2)] transition-all duration-300 group cursor-default">
                   <Globe2 size={16} className="text-brand-accent drop-shadow-[0_0_8px_rgba(0,255,179,0.5)]" />
                   <span className="text-white font-bold text-xs tracking-wide">Google Ads</span>
                 </div>
 
-                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,179,0.2)] transition-all duration-300 group cursor-default">
+                <div className="flex items-center gap-2 bg-brand-surface/50 md:bg-white/5 backdrop-blur-sm border border-brand-accent/30 md:border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand-accent hover:shadow-[0_0_15px_rgba(0,255,179,0.2)] transition-all duration-300 group cursor-default">
                   <Server size={16} className="text-brand-accent drop-shadow-[0_0_8px_rgba(0,255,179,0.5)]" />
                   <span className="text-white font-bold text-xs tracking-wide">AWS Cloud</span>
                 </div>

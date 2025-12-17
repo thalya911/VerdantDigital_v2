@@ -46,7 +46,7 @@ const MainExpertise: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="mb-16 reveal text-left">
-          <div className="inline-block mb-4 px-3 py-1 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded">
+          <div className="inline-block mb-4 px-3 py-1 bg-brand-accent/20 border border-brand-accent/40 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded">
             OUR EXPERTISE
           </div>
           <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-[1.1] uppercase tracking-tight max-w-3xl">
@@ -59,10 +59,10 @@ const MainExpertise: React.FC = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-brand-surface/30 border border-brand-border rounded-lg p-4 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300 reveal flex flex-col items-start"
+              className="bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/20 md:border-brand-border rounded-lg p-4 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300 reveal flex flex-col items-start"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="w-10 h-10 bg-brand-black border border-brand-border rounded-lg flex items-center justify-center text-brand-muted group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-4 shadow-lg">
+              <div className="w-10 h-10 bg-brand-black border border-brand-accent/30 md:border-brand-border rounded-lg flex items-center justify-center text-brand-accent group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-4 shadow-lg">
                 {service.icon}
               </div>
               <h3 className="text-lg font-display font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">
