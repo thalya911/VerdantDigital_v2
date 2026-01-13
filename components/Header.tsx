@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Hammer, ChevronDown } from 'lucide-react';
 
 interface HeaderProps {
@@ -13,6 +13,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal, onOpenAuditModal }) => {
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Throttled scroll handler using requestAnimationFrame
   useEffect(() => {
@@ -43,6 +44,13 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal, onOpenAuditModal }) => {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }, 100);
+  };
+
+  // Handle navigation with menu close
+  const handleNavClick = (path: string) => {
+    setIsMenuOpen(false);
+    setMobileServicesOpen(false);
+    navigate(path);
   };
 
   // Close mobile menu
@@ -91,29 +99,49 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal, onOpenAuditModal }) => {
 
               {/* Our Services Dropdown */}
               <div className="relative group h-full flex items-center">
-                <span className="flex items-center gap-1 text-sm font-semibold uppercase tracking-widest font-display text-brand-muted group-hover:text-brand-accent transition-colors py-4 cursor-default">
-                    Our Services <ChevronDown size={14} />
-                </span>
-                <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-4 group-hover:translate-y-0">
+                <button className="flex items-center gap-1 text-sm font-semibold uppercase tracking-widest font-display text-brand-muted group-hover:text-brand-accent transition-colors py-4">
+                    Services <ChevronDown size={14} />
+                </button>
+                <div className="absolute top-full left-0 pt-2 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-4 group-hover:translate-y-0">
                     <div className="bg-brand-black border border-brand-border rounded-xl shadow-2xl overflow-hidden p-2 flex flex-col gap-1 relative z-50">
                         <button
-                            onClick={() => onOpenAuditModal?.()}
-                            className="w-full text-left px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-widest font-display text-brand-accent hover:bg-brand-surface hover:text-white transition-colors"
-                        >
-                            Free Website Audit
-                        </button>
-                        <Link
-                            to="/services"
-                            className="block px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-widest font-display text-brand-muted hover:bg-brand-surface hover:text-brand-accent transition-colors"
+                            onClick={() => handleNavClick('/services')}
+                            className="w-full text-left px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-widest font-display text-brand-muted hover:bg-brand-surface hover:text-brand-accent transition-colors"
                         >
                             Services Overview
-                        </Link>
-                        <Link
-                            to="/resources"
-                            className="block px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-widest font-display text-brand-muted hover:bg-brand-surface hover:text-brand-accent transition-colors"
+                        </button>
+                        <div className="h-px bg-brand-border my-1"></div>
+                        <button
+                            onClick={() => handleNavClick('/services/mobile-app-development')}
+                            className="w-full text-left px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-widest font-display text-brand-muted hover:bg-brand-surface hover:text-brand-accent transition-colors"
+                        >
+                            Mobile App Development
+                        </button>
+                        <button
+                            onClick={() => handleNavClick('/services/ai-solutions')}
+                            className="w-full text-left px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-widest font-display text-brand-muted hover:bg-brand-surface hover:text-brand-accent transition-colors"
+                        >
+                            AI Solutions
+                        </button>
+                        <button
+                            onClick={() => handleNavClick('/services/progressive-web-apps')}
+                            className="w-full text-left px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-widest font-display text-brand-muted hover:bg-brand-surface hover:text-brand-accent transition-colors"
+                        >
+                            Progressive Web Apps
+                        </button>
+                        <button
+                            onClick={() => handleNavClick('/services/websites')}
+                            className="w-full text-left px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-widest font-display text-brand-muted hover:bg-brand-surface hover:text-brand-accent transition-colors"
+                        >
+                            Websites & Platforms
+                        </button>
+                        <div className="h-px bg-brand-border my-1"></div>
+                        <button
+                            onClick={() => handleNavClick('/resources')}
+                            className="w-full text-left px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-widest font-display text-brand-muted hover:bg-brand-surface hover:text-brand-accent transition-colors"
                         >
                             Digital Guides
-                        </Link>
+                        </button>
                     </div>
                 </div>
               </div>
@@ -210,41 +238,56 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal, onOpenAuditModal }) => {
                 Home
               </Link>
 
-              {/* Mobile Our Services Accordion */}
+              {/* Mobile Services Accordion */}
               <div className="rounded-lg overflow-hidden bg-brand-surface/20 border border-brand-surface/50">
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                   className="w-full text-left px-4 py-4 text-xl font-display font-bold text-brand-bone hover:text-brand-accent flex justify-between items-center"
                   aria-expanded={mobileServicesOpen}
                 >
-                  Our Services
+                  Services
                   <ChevronDown size={20} className={`transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {mobileServicesOpen && (
                   <div className="bg-brand-black/50 px-4 pb-2 border-t border-brand-surface/30 space-y-1">
                     <button
-                      onClick={() => {
-                        closeMobileMenu();
-                        onOpenAuditModal?.();
-                      }}
-                      className="w-full text-left block px-4 py-3 rounded-lg text-sm font-display font-semibold text-brand-accent hover:text-white hover:bg-brand-surface border-l-2 border-brand-accent hover:border-white transition-all uppercase tracking-widest"
-                    >
-                      Free Website Audit
-                    </button>
-                    <Link
-                      to="/services"
-                      onClick={closeMobileMenu}
-                      className="block px-4 py-3 rounded-lg text-sm font-display font-semibold text-brand-bone hover:text-brand-accent hover:bg-brand-surface border-l-2 border-transparent hover:border-brand-accent transition-all uppercase tracking-widest"
+                      onClick={() => handleNavClick('/services')}
+                      className="w-full text-left block px-4 py-3 rounded-lg text-sm font-display font-semibold text-brand-bone hover:text-brand-accent hover:bg-brand-surface border-l-2 border-transparent hover:border-brand-accent transition-all uppercase tracking-widest"
                     >
                       Services Overview
-                    </Link>
-                    <Link
-                      to="/resources"
-                      onClick={closeMobileMenu}
-                      className="block px-4 py-3 rounded-lg text-sm font-display font-semibold text-brand-bone hover:text-brand-accent hover:bg-brand-surface border-l-2 border-transparent hover:border-brand-accent transition-all uppercase tracking-widest"
+                    </button>
+                    <div className="h-px bg-brand-border/30 my-2 mx-4"></div>
+                    <button
+                      onClick={() => handleNavClick('/services/mobile-app-development')}
+                      className="w-full text-left block px-4 py-3 rounded-lg text-sm font-display font-semibold text-brand-bone hover:text-brand-accent hover:bg-brand-surface border-l-2 border-transparent hover:border-brand-accent transition-all uppercase tracking-widest"
+                    >
+                      Mobile App Development
+                    </button>
+                    <button
+                      onClick={() => handleNavClick('/services/ai-solutions')}
+                      className="w-full text-left block px-4 py-3 rounded-lg text-sm font-display font-semibold text-brand-bone hover:text-brand-accent hover:bg-brand-surface border-l-2 border-transparent hover:border-brand-accent transition-all uppercase tracking-widest"
+                    >
+                      AI Solutions
+                    </button>
+                    <button
+                      onClick={() => handleNavClick('/services/progressive-web-apps')}
+                      className="w-full text-left block px-4 py-3 rounded-lg text-sm font-display font-semibold text-brand-bone hover:text-brand-accent hover:bg-brand-surface border-l-2 border-transparent hover:border-brand-accent transition-all uppercase tracking-widest"
+                    >
+                      Progressive Web Apps
+                    </button>
+                    <button
+                      onClick={() => handleNavClick('/services/websites')}
+                      className="w-full text-left block px-4 py-3 rounded-lg text-sm font-display font-semibold text-brand-bone hover:text-brand-accent hover:bg-brand-surface border-l-2 border-transparent hover:border-brand-accent transition-all uppercase tracking-widest"
+                    >
+                      Websites & Platforms
+                    </button>
+                    <div className="h-px bg-brand-border/30 my-2 mx-4"></div>
+                    <button
+                      onClick={() => handleNavClick('/resources')}
+                      className="w-full text-left block px-4 py-3 rounded-lg text-sm font-display font-semibold text-brand-bone hover:text-brand-accent hover:bg-brand-surface border-l-2 border-transparent hover:border-brand-accent transition-all uppercase tracking-widest"
                     >
                       Digital Guides
-                    </Link>
+                    </button>
                   </div>
                 )}
               </div>

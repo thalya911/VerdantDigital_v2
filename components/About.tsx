@@ -51,16 +51,16 @@ const About: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 reveal reveal-delay-100">
             <div className="space-y-5 md:space-y-6 text-brand-muted text-sm lg:text-base leading-relaxed">
               <p>
-                Verdant Digital creates websites and digital platforms that help businesses run with more clarity, confidence and momentum.
+                Verdant Digital builds digital products—websites, mobile apps, progressive web applications and AI-powered solutions—that help businesses run with more clarity, confidence and momentum.
               </p>
               <p>
-                We focus on building solutions that feel easy to use, simple to manage and aligned to how real customers think and behave. When design, content, structure and technology all work together, a website becomes more than a place to land. It becomes a tool that supports better decisions, stronger communication and real business growth.
+                We focus on building solutions that feel easy to use, simple to manage and aligned to how real customers think and behave. When design, content, structure and technology all work together, digital products become more than tools to use. They become systems that support better decisions, stronger communication and real business growth.
               </p>
             </div>
 
             <div className="space-y-5 md:space-y-6 text-brand-muted text-sm lg:text-base leading-relaxed">
               <p>
-                We specialise in modern, considered websites, Shopify and e-commerce builds and digital solutions that reduce friction and make day-to-day operations smoother. Whether it is a growing business that needs more enquiries or an established organisation that needs a cleaner, more scalable platform, we bring the same thoughtful approach and commitment to outcomes.
+                We specialise in mobile applications, progressive web apps, custom websites, AI-powered automation and e-commerce platforms that reduce friction and make day-to-day operations smoother. Whether it is a growing business that needs more enquiries or an established organisation that needs a cleaner, more scalable platform, we bring the same thoughtful approach and commitment to outcomes.
               </p>
               <p className="text-brand-accent font-bold">
                 No clutter. No confusion. No complicated handovers. Just digital work that helps your business move forward.
@@ -143,7 +143,7 @@ const About: React.FC = () => {
               We have always shared a love for technology, building things and solving problems with logic and smart design. Together with studies in behavioural science, computer science and design-thinking, we saw how clarity, usability and well-constructed digital experiences influence how people decide, navigate and trust a business both online and through communication.
             </p>
             <p>
-              We created Verdant Digital to offer something better. A studio that helps businesses move from reactive to proactive through websites and digital platforms that:
+              We created Verdant Digital to offer something better. A digital product studio that helps businesses move from reactive to proactive through apps, websites, AI solutions and platforms that:
             </p>
             <ul className="space-y-2 pl-4">
               <li className="flex items-start gap-3">
@@ -394,6 +394,19 @@ const About: React.FC = () => {
                   Clear communication, plain language, honest timelines. You always know where your project stands.
                 </p>
               </div>
+            </div>
+          </div>
+
+          {/* Tradie CTA */}
+          <div className="mt-12 mb-8 text-center reveal reveal-delay-200">
+            <div className="inline-block bg-brand-surface/30 border border-brand-border rounded-xl p-6 md:p-8 max-w-2xl">
+              <p className="text-brand-muted text-sm md:text-base leading-relaxed mb-4">
+                <span className="text-white font-bold">Trade or service business?</span> We also offer a streamlined 7-day website build specifically designed for tradies.
+              </p>
+              <a href="/tradie" className="inline-flex items-center gap-2 text-brand-accent hover:text-white font-bold uppercase tracking-wide text-xs transition-colors group">
+                Learn about Tradie Express Build
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </a>
             </div>
           </div>
 

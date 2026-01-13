@@ -237,13 +237,11 @@ const MainContact: React.FC = () => {
                   className="w-full bg-brand-surface border border-brand-border focus:border-brand-accent text-white rounded-lg p-3 outline-none transition-all h-[46px] text-sm"
                 >
                   <option value="">Select a service</option>
-                  <option value="Free Website Audit">Free Website Audit</option>
-                  <option value="Google Ads & Paid Search">Google Ads & Paid Search</option>
-                  <option value="SEO & Organic Growth">SEO & Organic Growth</option>
-                  <option value="Website Design & Development">Website Design & Development</option>
-                  <option value="E-commerce Solutions">E-commerce Solutions</option>
-                  <option value="Full Digital Marketing Suite">Full Digital Marketing Suite</option>
-                  <option value="Something Else">Something Else</option>
+                  <option value="Mobile App">Mobile App</option>
+                  <option value="AI / Automation">AI / Automation</option>
+                  <option value="Web App">Web App (works offline, feels like an app)</option>
+                  <option value="Website">Website</option>
+                  <option value="Not sure yet">Not sure yet</option>
                 </select>
               </div>
 

@@ -94,7 +94,7 @@ const WhatsIncluded: React.FC = () => {
         {/* Header */}
         <div className="mb-16 text-center reveal">
           <div className="inline-block mb-4 px-3 py-1 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded">
-            NEW YEAR TRADIE REFRESH OFFER
+            2026 NEW YEAR SPECIAL
           </div>
           <h1 className="text-4xl md:text-6xl font-display font-black text-white mb-6 tracking-tight uppercase">
             Everything You Get <br />

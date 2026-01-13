@@ -19,6 +19,7 @@ import CtaSection from './components/CtaSection';
 
 // Agency Components
 import MainHero from './components/MainHero';
+import MainServices from './components/MainServices';
 import MainExpertise from './components/MainExpertise';
 import MainPhilosophy from './components/MainPhilosophy';
 import MainPortfolio from './components/MainPortfolio';
@@ -34,6 +35,10 @@ import TermsAndPrivacy from './components/TermsAndPrivacy';
 import WhatsIncluded from './components/WhatsIncluded';
 import Sitemap from './components/Sitemap';
 import ServicesPage from './components/ServicesPage';
+import MobileAppDevelopmentPage from './components/MobileAppDevelopmentPage';
+import AISolutionsPage from './components/AISolutionsPage';
+import ProgressiveWebAppsPage from './components/ProgressiveWebAppsPage';
+import WebsitesPage from './components/WebsitesPage';
 import FreeResourcesPage from './components/FreeResourcesPage';
 import AdvertisingGuidePage from './components/AdvertisingGuidePage';
 import ConversionPsychologyGuidePage from './components/ConversionPsychologyGuidePage';
@@ -42,6 +47,7 @@ import ConversionPsychologyGuidePage from './components/ConversionPsychologyGuid
 const AgencyPage: React.FC = () => (
   <>
     <MainHero />
+    <MainServices />
     <MainPhilosophy />
     <MainExpertise />
     <MainPortfolio />
@@ -275,6 +281,10 @@ const AppContent: React.FC = () => {
         <Routes>
           <Route path="/" element={<AgencyPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/mobile-app-development" element={<MobileAppDevelopmentPage />} />
+          <Route path="/services/ai-solutions" element={<AISolutionsPage />} />
+          <Route path="/services/progressive-web-apps" element={<ProgressiveWebAppsPage />} />
+          <Route path="/services/websites" element={<WebsitesPage />} />
           <Route path="/resources" element={<FreeResourcesPage />} />
           <Route path="/resources/advertising-guide" element={<AdvertisingGuidePage />} />
           <Route path="/resources/conversion-psychology" element={<ConversionPsychologyGuidePage />} />

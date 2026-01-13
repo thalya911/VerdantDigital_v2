@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FAQ_CATEGORIES } from '../constants';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, ArrowRight } from 'lucide-react';
 
 const FaqPage: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<string | null>('0-0');
@@ -116,6 +116,19 @@ const FaqPage: React.FC = () => {
                 className="inline-flex items-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold px-8 py-4 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all uppercase tracking-widest text-sm"
               >
                 Contact Us
+              </a>
+            </div>
+          </div>
+
+          {/* Tradie CTA */}
+          <div className="mt-8 text-center">
+            <div className="inline-block bg-brand-surface/30 border border-brand-border rounded-xl p-6 md:p-8 max-w-2xl">
+              <p className="text-brand-muted text-sm md:text-base leading-relaxed mb-4">
+                <span className="text-white font-bold">Looking for a quick website solution?</span> Our Tradie Express Build gets trade and service businesses online in 7 days.
+              </p>
+              <a href="/tradie" className="inline-flex items-center gap-2 text-brand-accent hover:text-white font-bold uppercase tracking-wide text-xs transition-colors group">
+                View Tradie Express Build
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </div>

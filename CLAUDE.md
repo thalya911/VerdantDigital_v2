@@ -4,7 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a React 19 + TypeScript marketing website for Verdant Digital agency, built as a Google AI Studio app with Gemini API integration. The site uses React Router for navigation with multiple page routes.
+This is a React 19 + TypeScript marketing website for Verdant Digital, a digital product studio based in Brisbane, Australia. The site showcases the company's expanded service offering beyond web design to include mobile apps, AI solutions, and progressive web applications.
+
+**Positioning**: Digital Product Studio (not just a web design agency)
+**Core Services**: Mobile App Development, AI Solutions, Progressive Web Apps, Websites & Web Platforms
+**Technology Stack**: React 19, TypeScript, React Router, Tailwind CSS, Vite
+
+**Recent Updates (December 2024)**:
+- ✅ Repositioned from "web design agency" to "digital product studio"
+- ✅ Added 4 premium service pages with consistent design system
+- ✅ Updated homepage with MainServices component showcasing service pillars
+- ✅ Enhanced navigation with Services dropdown (8 links)
+- ✅ Implemented premium UI/UX design patterns (gradients, glows, animations)
 
 **Legal Entity**: Verdant Labs Pty Ltd (ABN: 62 690 480 516)
 **Contact Email**: hello@verdantdigital.com.au
@@ -59,20 +70,28 @@ The catch-all rewrite ensures SPA routing works (prevents 404s on client-side ro
 The app uses React Router for navigation with the following routes:
 
 **Routes** (defined in App.tsx):
-- `/` - Agency homepage (MainHero, MainPhilosophy, MainExpertise, MainPortfolio, MainContact)
+- `/` - Agency homepage (MainHero, MainServices, MainPhilosophy, MainExpertise, MainPortfolio, MainContact)
 - `/tradie` - Tradie services page (Hero, Comparison, Workflow, CtaSection, Faq, MainContact)
 - `/about` - About page with founders info, philosophy, how we work, why choose us
 - `/faq` - FAQ page with categorized questions
 - `/enquire` - Contact/enquiry form page
 - `/success` - Success page (shown after successful Stripe payment)
+- `/services/mobile-app-development` - Mobile app development service page
+- `/services/ai-solutions` - AI solutions service page
+- `/services/progressive-web-apps` - Progressive web apps service page
+- `/services/websites` - Websites & web platforms service page
 
 **Page Components**:
-- **AgencyPage**: Homepage with hero, philosophy, expertise, portfolio sections
+- **AgencyPage**: Homepage with hero, services overview, philosophy, expertise, portfolio sections
 - **TradiePage**: Tradie-focused landing page with pricing and conversion focus
 - **About**: Company information, founders (Thalya Tilt MacSporran & Jacob Paterson), philosophy, process
 - **FaqPage**: Comprehensive FAQ organized into 5 categories (20+ questions)
 - **EnquiryPage**: Contact form
 - **SuccessPage**: Payment confirmation
+- **MobileAppDevelopmentPage**: Service detail page for mobile app development (334 lines, premium design)
+- **AISolutionsPage**: Service detail page for AI/automation solutions (289 lines, premium design)
+- **ProgressiveWebAppsPage**: Service detail page for PWAs (289 lines, premium design)
+- **WebsitesPage**: Service detail page for websites & platforms (289 lines, premium design)
 
 ### Scroll Animation System
 
@@ -109,6 +128,113 @@ Classes: `.reveal`, `.reveal-delay-100`, `.reveal-delay-200`, `.reveal-delay-300
 **Key Custom Animations**:
 - `.animate-text-starspeed`: Text with stroke + glow effect (used in hero "ACCELERATED.")
 - `.reveal` system: Fade-in-up on scroll with staggered delays
+
+### Service Pages Design System
+
+All service pages (`/services/*`) follow a premium, consistent design pattern established in December 2024:
+
+**Visual Design Language**:
+- **Fixed ambient glows**: 2-3 floating blur circles per page (brand-accent, purple, blue, green variations)
+- **Grid pattern overlay**: Fixed background with subtle opacity
+- **Gradient badges**: Pill-shaped with icon, backdrop blur, border glow
+- **Hero typography**: text-5xl → text-8xl with glow effects on accent text
+- **Dual CTAs**: Primary (Start Your Project) + Secondary (See How It Works) with hover animations
+
+**Component Structure** (consistent across all service pages):
+
+1. **Hero Section** (mb-24):
+   - Gradient badge with service icon
+   - Large headline (text-8xl) with glowing accent span
+   - Descriptive paragraph (text-xl, max-w-3xl)
+   - Dual CTA buttons with scale/glow hover effects
+
+2. **What We Deliver** (mb-28):
+   - Section heading with description
+   - 3-column icon grid (md:grid-cols-3)
+   - Cards with gradient backgrounds, top accent bar on hover
+   - Icon boxes with scale-110 on hover
+   - Shadow glow effects: `shadow-[0_0_30px_rgba(0,255,179,0.1)]`
+
+3. **Ideal For** (mb-28):
+   - 3 large impact cards with custom color gradients
+   - Each card has unique gradient (blue/green/purple/yellow)
+   - Icons with glowing backgrounds
+   - Scale-105 + rotate-1 on hover
+   - Shadow effects on hover
+
+4. **Our Process** (mb-28, id="process"):
+   - Timeline-style vertical layout
+   - Gradient step numbers (01-05) with glow shadows
+   - Process icons from lucide-react (Target, Star, Code, Rocket, TrendingUp)
+   - Connector lines between steps
+   - Horizontal flex layout: number + icon/title/description
+
+5. **Tech & Capabilities** (mb-28):
+   - Pill-shaped tags in flex-wrap layout
+   - Gradient backgrounds with hover glow
+   - Scale-105 on hover
+   - Rounded-full borders
+
+6. **FAQ Section** (mb-28):
+   - Gradient card backgrounds
+   - Hover border color change to brand-accent
+   - Heading turns brand-accent on hover
+   - Glow shadow on hover
+
+7. **Bottom CTA** (rounded-3xl, p-16):
+   - Multiple overlapping ambient glows
+   - Large heading (text-6xl)
+   - Dual CTA buttons
+   - Overflow hidden for contained glows
+
+**Premium Design Patterns**:
+```tsx
+// Fixed ambient glows
+<div className="fixed top-0 right-1/4 w-96 h-96 bg-brand-accent/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+// Gradient badge
+<div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-brand-accent/20 to-brand-accent/10 border border-brand-accent/30 rounded-full backdrop-blur-sm">
+
+// Hero glow effect
+<span className="text-brand-accent inline-block relative">
+  Text
+  <div className="absolute -inset-4 bg-brand-accent/10 blur-xl -z-10"></div>
+</span>
+
+// Feature card with top accent bar
+<div className="group relative bg-gradient-to-br from-brand-surface/40 to-brand-surface/20 border border-brand-border/50 rounded-2xl p-6 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,179,0.1)]">
+  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-accent/50 via-brand-accent to-brand-accent/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+
+// Timeline step with glow
+<div className="w-16 h-16 bg-gradient-to-br from-brand-accent to-brand-accent/70 text-brand-black rounded-2xl flex items-center justify-center font-display font-black text-2xl shadow-[0_0_30px_rgba(0,255,179,0.3)] group-hover:scale-110 transition-transform">
+
+// Tech pill tags
+<div className="bg-gradient-to-r from-white/5 to-white/[0.02] border border-white/10 hover:border-brand-accent/50 rounded-full px-6 py-3 backdrop-blur-sm hover:bg-brand-accent/5 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,255,179,0.15)]">
+```
+
+**Icon Usage**:
+- All icons from `lucide-react` library
+- Common icons: ArrowRight, Smartphone, Sparkles, Globe, Layout, Zap, Brain, Target, Code, Star, Rocket, TrendingUp, CheckCircle
+- Icon sizes: 16px (badges), 20-28px (cards), 36px (large impact cards)
+- strokeWidth: 2-2.5 for consistency
+
+**Color Gradients**:
+- Blue/Accent: `from-blue-500/10 to-brand-accent/10`
+- Accent/Green: `from-brand-accent/10 to-green-500/10`
+- Purple/Accent: `from-purple-500/10 to-brand-accent/10`
+- Yellow/Accent: `from-yellow-500/10 to-brand-accent/10`
+- Surface gradients: `from-brand-surface/40 to-brand-surface/20`
+
+**Spacing & Layout**:
+- Section margins: `mb-24` (hero), `mb-28` (content sections)
+- Card gaps: `gap-6` (grids), `gap-8` (impact cards)
+- Padding: `p-6` (cards), `p-8` (impact cards), `p-12 md:p-16` (CTAs)
+- Max widths: `max-w-3xl` (hero text), `max-w-6xl` (grids), `max-w-3xl` (process/FAQ)
+
+**Animation Timing**:
+- Transitions: `duration-300` (standard), `duration-500` (impact cards)
+- Hover scales: `scale-[1.02]` (cards), `scale-105` (buttons/pills), `scale-110` (icons)
+- Delays: `reveal-delay-100`, `reveal-delay-200`, `reveal-delay-300`, `reveal-delay-400`, `reveal-delay-500`
 
 ### AI Content Generation Service
 
@@ -364,10 +490,20 @@ Three fonts loaded via Google Fonts (index.html):
 ## About Page Content
 
 ### Company Positioning
-Verdant Digital creates websites and digital platforms that help businesses operate with more **clarity, confidence and momentum**. Focus on:
+
+**Digital Product Studio** - Verdant Digital builds digital products—websites, mobile apps, progressive web applications and AI-powered solutions—that help businesses operate with more **clarity, confidence and momentum**.
+
+Focus on:
 - Usability, structure, performance and outcomes (not just visual presentation)
 - Complete solutions where structure, technology and design work together
 - Reducing friction and supporting better decision-making
+- Full-stack product development (not just web design)
+
+**Service Pillars**:
+1. **Mobile App Development**: Native and cross-platform apps (React Native, Swift, Kotlin)
+2. **AI Solutions**: Custom AI integrations, automation, chatbots, workflow optimization
+3. **Progressive Web Apps**: Offline-first, installable web applications
+4. **Websites & Web Platforms**: Custom websites, Shopify Plus, e-commerce, CMS solutions
 
 ### Founders
 **Thalya Tilt MacSporran** (Director)
@@ -392,11 +528,11 @@ Verdant Digital creates websites and digital platforms that help businesses oper
 4. **Launch and Optimise**: Performance tracking, user behaviour insights, ongoing refinement
 
 ### Services Offered
-- Modern, considered websites
-- Shopify and e-commerce builds
-- Digital solutions that reduce friction
-- Custom applications
-- Solutions for tradie businesses and established organisations
+- **Mobile App Development**: Native iOS/Android apps, cross-platform solutions (React Native), app-like experiences
+- **AI Solutions**: GPT integrations, intelligent chatbots, workflow automation, document processing, predictive analytics
+- **Progressive Web Apps**: Offline-first architecture, home screen installation, push notifications, cross-platform compatibility
+- **Websites & Web Platforms**: Custom websites, Shopify Plus e-commerce, headless CMS, SEO-optimized builds
+- **Tradie Express Build**: 7-day website builds specifically for trade businesses ($399 setup + $99/month)
 
 ## Mobile Responsiveness Best Practices
 
@@ -432,8 +568,21 @@ Always provide mobile-first responsive spacing to prevent elements from feeling 
 - `components/EnquiryPage.tsx`: Contact form
 - `components/SuccessPage.tsx`: Payment success confirmation
 
+**Service Pages** (Premium Design):
+- `components/MobileAppDevelopmentPage.tsx`: Mobile app development service page (334 lines)
+- `components/AISolutionsPage.tsx`: AI solutions service page (289 lines)
+- `components/ProgressiveWebAppsPage.tsx`: Progressive web apps service page (289 lines)
+- `components/WebsitesPage.tsx`: Websites & web platforms service page (289 lines)
+
+**Homepage Sections**:
+- `components/MainHero.tsx`: Hero section with WebGL animation
+- `components/MainServices.tsx`: 4-pillar service overview with links to service pages
+- `components/MainPhilosophy.tsx`: Company philosophy and approach
+- `components/MainExpertise.tsx`: Technical expertise and capabilities
+- `components/MainPortfolio.tsx`: Project showcase and case studies
+
 **Shared Components**:
-- `components/Header.tsx`: Navigation header
+- `components/Header.tsx`: Navigation header with Services dropdown (8 links: Free Audit, Services Overview, 4 service pages, Digital Guides)
 - `components/Footer.tsx`: Site footer with social links, Quick Links, copyright
 - `components/MainContact.tsx`: Contact form section (reused on multiple pages)
 

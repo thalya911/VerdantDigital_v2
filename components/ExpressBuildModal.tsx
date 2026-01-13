@@ -426,7 +426,7 @@ const ExpressBuildModal: React.FC<ExpressBuildModalProps> = ({ isOpen, onClose }
       <ContactFormModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
-        prefilledHelpWith="NEW YEAR TRADIE REFRESH OFFER"
+        prefilledHelpWith="2026 New Year Special - Tradie Website"
       />
     </div>
   );

@@ -118,9 +118,9 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
             {/* Section Heading */}
             <div className="text-center mb-8 reveal">
               <h2 className="text-3xl md:text-5xl font-display font-black text-white uppercase tracking-tight">
-                NEW YEAR REFRESH OFFER
+                NEW YEAR, NEW WEBSITE
               </h2>
-              <p className="text-brand-muted text-lg mt-2 italic">ENDS 1 JANUARY 2026</p>
+              <p className="text-brand-muted text-lg mt-2 italic">2026 New Year Special — Ends 15 February</p>
             </div>
 
             <div className="reveal reveal-delay-100">
@@ -131,7 +131,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                 <div className="mb-8">
                   {/* Urgency Badge */}
                   <div className="bg-brand-accent text-brand-black text-[10px] font-black uppercase tracking-widest py-2 px-4 rounded inline-block mb-6">
-                    6 SPOTS LEFT
+                    2026 NEW YEAR SPECIAL
                   </div>
 
                   {/* Valued At Strikethrough */}

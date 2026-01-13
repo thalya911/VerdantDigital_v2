@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
 
             {/* Tagline */}
             <p className="text-xs text-gray-600 max-w-xs">
-              Design-led websites, custom applications, and performance marketing engineered to grow your business.
+              Custom Websites • Mobile Apps • Progressive Web Apps • AI-Powered Solutions
             </p>
           </div>
 
@@ -107,7 +107,7 @@ const Footer: React.FC = () => {
         {/* Bottom Copyright Bar */}
         <div className="pt-6 border-t border-brand-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
-            <p>&copy; {new Date().getFullYear()} Verdant Labs Pty Ltd. All rights reserved.</p>
+            <p>&copy; 2025 Verdant Labs Pty Ltd. All rights reserved.</p>
             <p>Made with ❤️ in Brisbane, Australia</p>
           </div>
         </div>
