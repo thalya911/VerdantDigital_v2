@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Globe, Zap, Smartphone, Monitor, Search, Building2, Users, Rocket, Clock, Layout, Shield, Cpu, Lock, Wifi, WifiOff } from 'lucide-react';
+import { ArrowRight, Globe, Zap, Smartphone, Monitor, Search, Building2, Users, Rocket, Layout, Cpu, Lock, WifiOff } from 'lucide-react';
 
 const pwaAdvantages = [
   {

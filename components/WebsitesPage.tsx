@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Building2, ShoppingBag, Server, Code2, Palette, Rocket, Search, Zap, CreditCard, Database, Users, Settings, LayoutDashboard } from 'lucide-react';
+import { ArrowRight, Building2, ShoppingBag, Server, Code2, Palette, Search, Zap, CreditCard, Database, Users, Settings, LayoutDashboard } from 'lucide-react';
 
 const websiteTypes = [
   {
