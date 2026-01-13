@@ -4,7 +4,7 @@ import Threads from './Threads';
 
 const MainHero: React.FC = () => {
   const acceleratedRef = useRef<HTMLSpanElement>(null);
-  const [acceleratedWidth, setAcceleratedWidth] = useState<number | null>(null);
+  const [, setAcceleratedWidth] = useState<number | null>(null);
 
   useEffect(() => {
     if (acceleratedRef.current) {
