@@ -19,9 +19,6 @@ const MainHero: React.FC = () => {
       {/* Background Effects - CSS-based grain (no blend mode to avoid compositing issues) */}
       <div className="absolute -inset-[20%] z-[1] opacity-[0.08] pointer-events-none grain-texture" style={{ transform: 'translateZ(0)' }}></div>
 
-      {/* Animated Gradient Blob - Reduced blur on mobile */}
-      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-brand-accent/5 rounded-full blur-[60px] md:blur-[120px] pointer-events-none animate-pulse duration-[10000ms] z-[1]" style={{ transform: 'translateZ(0)' }}></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="max-w-5xl reveal">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[0.95] mb-4 uppercase" style={{fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.02em'}}>
@@ -63,7 +60,7 @@ const MainHero: React.FC = () => {
             </a>
           </div>
 
-          <div className="flex flex-col items-start gap-4 border-t border-brand-border pt-10 pb-20 md:pb-0">
+          <div className="flex flex-col items-start gap-4 border-t border-brand-border pt-10 pb-8 md:pb-0">
              <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Powered by Modern Technology Stack</span>
 
              {/* Clarified Technology Section with visual badges */}

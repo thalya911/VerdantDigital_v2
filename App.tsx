@@ -79,10 +79,6 @@ const TradiePage: React.FC<{ onOpenModal: () => void }> = ({ onOpenModal }) => {
     <div className="fixed -inset-[20%] opacity-[0.08] pointer-events-none grain-texture" style={{ transform: 'translateZ(0)' }}></div>
     <div className="fixed inset-0 bg-grid-pattern bg-[size:50px_50px] opacity-[0.1] pointer-events-none"></div>
 
-    {/* Neon Glows - Reduced blur on mobile via CSS */}
-    <div className="fixed top-[-10%] right-[-5%] w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[60px] md:blur-[120px] pointer-events-none" style={{ transform: 'translateZ(0)' }}></div>
-    <div className="fixed bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[60px] md:blur-[120px] pointer-events-none" style={{ transform: 'translateZ(0)' }}></div>
-
     <div className="relative z-10">
       {/* Section Navigation */}
       <nav className={`fixed left-0 right-0 bg-brand-black/95 backdrop-blur-md border-b border-brand-border transition-all duration-300 ${scrolled ? 'top-[48px] lg:top-[56px] z-50' : 'top-[56px] lg:top-[64px] z-40'}`}>
