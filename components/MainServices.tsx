@@ -30,7 +30,7 @@ const services = [
 
 const MainServices: React.FC = () => {
   return (
-    <section className="py-16 bg-brand-black relative overflow-hidden">
+    <section className="pt-8 pb-16 sm:pt-10 bg-brand-black relative overflow-hidden">
       {/* Animated Divider */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-accent to-transparent opacity-0 animate-pulse" style={{animation: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'}}></div>
 
@@ -40,7 +40,7 @@ const MainServices: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header Section */}
-        <div className="mb-12 reveal text-left">
+        <div className="mb-6 sm:mb-10 reveal text-left">
           <div className="inline-block mb-4 px-3 py-1 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded">
             What We Build
           </div>
@@ -52,42 +52,45 @@ const MainServices: React.FC = () => {
           </p>
         </div>
 
-        {/* Service Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal reveal-delay-100">
+        {/* Service Cards Grid - 2x2 on mobile, 4 across on desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 reveal reveal-delay-100">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <a
                 key={index}
                 href={service.link}
-                className="bg-brand-surface/30 border border-brand-border rounded-lg p-6 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300 flex flex-col items-start"
+                className="bg-brand-surface/30 border border-brand-border rounded-lg p-3 sm:p-6 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300 flex flex-col active:scale-[0.98]"
               >
-                <div className="w-12 h-12 bg-brand-black border-2 border-brand-accent/20 rounded-lg flex items-center justify-center text-brand-accent mb-4 group-hover:scale-110 group-hover:border-brand-accent transition-all duration-300 shadow-lg">
-                  <Icon size={24} strokeWidth={2} />
+                {/* Icon + Title row */}
+                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 bg-brand-black border-2 border-brand-accent/20 rounded-lg flex items-center justify-center text-brand-accent group-hover:scale-110 group-hover:border-brand-accent transition-all duration-300 shadow-lg shrink-0">
+                    <Icon size={18} className="sm:w-6 sm:h-6" strokeWidth={2} />
+                  </div>
+                  <h3 className="text-sm sm:text-lg font-display font-bold text-white uppercase group-hover:text-brand-accent transition-colors leading-tight">
+                    {service.title}
+                  </h3>
                 </div>
-                <h3 className="text-lg font-display font-bold text-white mb-2 uppercase group-hover:text-brand-accent transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-brand-muted leading-relaxed font-light text-sm mb-4 flex-grow">
-                  {service.description}
+                <p className="text-brand-muted leading-snug sm:leading-relaxed font-light text-xs sm:text-sm flex-grow">
+                  {service.description}{' '}
+                  <span className="inline-flex items-center gap-0.5 sm:gap-1 text-brand-accent font-semibold group-hover:text-white transition-colors whitespace-nowrap">
+                    Learn More
+                    <ArrowRight size={12} className="sm:w-3 sm:h-3 group-hover:translate-x-0.5 transition-transform" />
+                  </span>
                 </p>
-                <div className="inline-flex items-center gap-2 text-brand-accent font-bold uppercase tracking-wide text-xs group-hover:text-white transition-colors">
-                  Learn More
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </div>
               </a>
             );
           })}
         </div>
 
         {/* View All CTA */}
-        <div className="mt-10 flex justify-center reveal reveal-delay-200">
+        <div className="mt-6 sm:mt-10 flex justify-center reveal reveal-delay-200">
           <a
             href="/services"
-            className="group inline-flex items-center justify-center gap-3 border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-brand-black font-bold px-6 py-3 rounded-lg transition-all uppercase tracking-widest text-sm"
+            className="group inline-flex items-center justify-center gap-2 sm:gap-3 border border-brand-accent/60 sm:border-2 sm:border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-brand-black font-bold px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all uppercase tracking-wider text-xs sm:text-sm active:scale-[0.97]"
           >
             View All Services
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={14} className="sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
       </div>

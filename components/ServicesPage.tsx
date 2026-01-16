@@ -56,10 +56,10 @@ const ServicesPage: React.FC = () => {
 
       <div className="relative z-10">
         {/* Hero */}
-        <section className="pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+        <section className="pt-32 pb-2 px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center reveal">
             <h1 className="text-4xl md:text-5xl font-display font-black text-white mb-6 tracking-tight uppercase">
-              What We <span className="text-brand-accent">Build</span>
+              <span className="text-brand-accent">SERVICES</span>
             </h1>
             <p className="text-brand-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
               Apps, websites, AI tools. We handle the technical side so you can focus on running your business.
@@ -68,23 +68,23 @@ const ServicesPage: React.FC = () => {
         </section>
 
         {/* Services Grid */}
-        <section className="py-12 px-4 sm:px-6 lg:px-8">
+        <section className="pt-12 pb-4 px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4">
               {services.map((service, index) => {
                 const Icon = service.icon;
                 return (
                   <a
                     key={index}
                     href={service.link}
-                    className="reveal group block bg-brand-surface/20 border border-brand-border/30 rounded-xl p-6 hover:border-brand-accent/50 transition-all"
+                    className="reveal group block bg-brand-surface/20 border border-brand-border/30 rounded-xl p-4 hover:border-brand-accent/50 transition-all"
                   >
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-brand-accent/10 border border-brand-accent/20 rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 group-hover:scale-110 transition-transform">
-                        <Icon size={24} strokeWidth={2} />
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="w-10 h-10 bg-brand-accent/10 border border-brand-accent/20 rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 group-hover:scale-110 transition-transform">
+                        <Icon size={20} strokeWidth={2} />
                       </div>
                       <div>
-                        <h2 className="text-xl font-display font-bold text-white mb-1 group-hover:text-brand-accent transition-colors">
+                        <h2 className="text-xl font-display font-bold text-white mb-0.5 group-hover:text-brand-accent transition-colors">
                           {service.title}
                         </h2>
                         <p className="text-brand-muted text-sm">
@@ -93,10 +93,10 @@ const ServicesPage: React.FC = () => {
                       </div>
                     </div>
 
-                    <ul className="space-y-2 mb-4">
+                    <ul className="space-y-1 mb-3">
                       {service.bullets.map((bullet, i) => (
-                        <li key={i} className="text-sm text-brand-bone flex items-start gap-2">
-                          <span className="text-brand-accent mt-1 flex-shrink-0">•</span>
+                        <li key={i} className="text-sm text-brand-bone flex items-center gap-2">
+                          <span className="text-brand-accent flex-shrink-0">•</span>
                           {bullet}
                         </li>
                       ))}
@@ -113,30 +113,32 @@ const ServicesPage: React.FC = () => {
         </section>
 
         {/* Bottom CTA */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center reveal">
-            <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-4 uppercase">
-              Not Sure What <span className="text-brand-accent">You Need?</span>
-            </h2>
-            <p className="text-brand-muted mb-8">
-              Tell us about your problem. We will tell you honestly what would help.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href="/enquire"
-                className="group inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-bold py-4 px-8 rounded-lg transition-all text-sm"
-              >
-                Describe Your Problem
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a
-                href="https://calendly.com/verdantdigital"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-transparent border border-brand-border hover:border-brand-accent text-white hover:text-brand-accent font-bold py-4 px-8 rounded-lg transition-all text-sm"
-              >
-                Book a Call
-              </a>
+        <section className="pt-6 pb-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-brand-surface/30 border border-brand-border rounded-xl p-6 md:p-8 text-center reveal">
+              <h2 className="text-xl md:text-2xl font-display font-black text-white mb-3 uppercase">
+                Not Sure What <span className="text-brand-accent">You Need?</span>
+              </h2>
+              <p className="text-brand-muted text-sm md:text-base mb-6">
+                Tell us about your problem. We will tell you honestly what would help.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href="/enquire"
+                  className="group inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold py-3 px-6 rounded-lg transition-all text-xs uppercase tracking-widest"
+                >
+                  Describe Your Problem
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a
+                  href="https://calendly.com/verdantdigital"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 border border-brand-border hover:border-brand-accent text-white hover:text-brand-accent font-bold py-3 px-6 rounded-lg transition-all text-xs uppercase tracking-widest"
+                >
+                  Book a Call
+                </a>
+              </div>
             </div>
           </div>
         </section>

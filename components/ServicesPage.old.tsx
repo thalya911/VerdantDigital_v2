@@ -367,7 +367,7 @@ const ServicesPage: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => handleGetQuote('Free Website Audit')}
-                className="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold py-4 px-8 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all uppercase tracking-widest text-sm"
+                className="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold py-4 px-8 rounded-lg transition-all uppercase tracking-widest text-sm"
               >
                 <ClipboardCheck size={18} />
                 Request Free Audit

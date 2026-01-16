@@ -33,7 +33,7 @@ const FaqPage: React.FC = () => {
             </div>
             <h1 className="text-3xl md:text-5xl font-display font-black text-white leading-[1.1] mb-6 uppercase" style={{letterSpacing: '0.02em'}}>
               FREQUENTLY ASKED <br/>
-              <span className="animate-text-starspeed inline-block">QUESTIONS</span>
+              <span className="text-brand-accent">QUESTIONS</span>
             </h1>
             <p className="text-brand-muted text-base lg:text-lg leading-relaxed max-w-2xl mx-auto">
               Everything you need to know about working with Verdant Digital. Can't find what you're looking for? <a href="/enquire" className="text-brand-accent hover:underline">Get in touch</a>.
@@ -113,7 +113,7 @@ const FaqPage: React.FC = () => {
               </p>
               <a
                 href="/enquire"
-                className="inline-flex items-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold px-8 py-4 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all uppercase tracking-widest text-sm"
+                className="inline-flex items-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold px-8 py-4 rounded-lg transition-all uppercase tracking-widest text-sm"
               >
                 Contact Us
               </a>

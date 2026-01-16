@@ -28,9 +28,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
 
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[0.95] mb-6" style={{fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.01em'}}>
                 A WEBSITE THAT HELPS YOU<br/>
-                <span className="animate-text-starspeed inline-block">
-                  WIN MORE WORK
-                </span>
+                <span className="text-brand-accent">WIN MORE WORK</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-brand-accent font-bold mb-8 max-w-3xl leading-relaxed">
@@ -44,7 +42,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                     trackStartBuildClick('hero_main');
                     onOpenModal();
                   }}
-                  className="group inline-flex items-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-extrabold px-8 py-4 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all uppercase tracking-widest text-sm"
+                  className="group inline-flex items-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-extrabold px-8 py-4 rounded-lg transition-all uppercase tracking-widest text-sm"
                 >
                   Start Your Build
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -125,7 +123,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
 
             <div className="reveal reveal-delay-100">
               {/* Pricing Card */}
-              <div className="bg-brand-surface/60 backdrop-blur-lg border-2 border-brand-accent rounded-2xl p-6 md:p-8 lg:p-10 mx-auto shadow-[0_0_50px_rgba(0,255,179,0.15)] text-center transform hover:scale-[1.01] transition-all duration-300 group relative overflow-hidden">
+              <div className="bg-brand-surface/60 backdrop-blur-lg border-2 border-brand-accent rounded-2xl p-6 md:p-8 lg:p-10 mx-auto text-center transform hover:scale-[1.01] transition-all duration-300 group relative overflow-hidden">
 
                 {/* Top Section - Centered Badge, Pricing & CTA */}
                 <div className="mb-8">
@@ -162,7 +160,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                         trackStartBuildClick('pricing_card');
                         onOpenModal();
                       }}
-                      className="w-full bg-brand-accent hover:bg-white text-brand-black font-black text-sm py-3 px-6 rounded-xl shadow-[0_4px_20px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_30px_rgba(0,255,179,0.6)] transition-all flex items-center justify-center gap-2 uppercase tracking-wide transform group-hover:-translate-y-1"
+                      className="w-full bg-brand-accent hover:bg-white text-brand-black font-black text-sm py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2 uppercase tracking-wide transform group-hover:-translate-y-1"
                     >
                       Start Your Build
                     </button>

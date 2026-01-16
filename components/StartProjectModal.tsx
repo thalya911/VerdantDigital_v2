@@ -44,8 +44,8 @@ const StartProjectModal: React.FC<StartProjectModalProps> = ({ isOpen, onClose }
           <div className="grid md:grid-cols-2 gap-6 text-left">
             
             {/* Express Build */}
-            <div className="bg-brand-black border-2 border-brand-accent rounded-xl p-6 md:p-8 relative flex flex-col shadow-[0_0_30px_rgba(0,255,179,0.05)]">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-accent text-brand-black text-xs font-bold uppercase tracking-widest py-1.5 px-4 rounded-full shadow-[0_0_15px_rgba(0,255,179,0.4)] whitespace-nowrap flex items-center gap-2">
+            <div className="bg-brand-black border-2 border-brand-accent rounded-xl p-6 md:p-8 relative flex flex-col">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-accent text-brand-black text-xs font-bold uppercase tracking-widest py-1.5 px-4 rounded-full whitespace-nowrap flex items-center gap-2">
                  Most Popular
               </div>
               
@@ -99,7 +99,7 @@ const StartProjectModal: React.FC<StartProjectModalProps> = ({ isOpen, onClose }
               </div>
 
               <button
-                className="w-full block text-center bg-brand-accent hover:bg-white text-brand-black font-bold py-4 px-6 rounded-lg transition-all uppercase tracking-wide shadow-[0_4px_14px_rgba(0,255,179,0.3)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.5)] hover:-translate-y-1 transform"
+                className="w-full block text-center bg-brand-accent hover:bg-white text-brand-black font-bold py-4 px-6 rounded-lg transition-all uppercase tracking-wide hover:-translate-y-1 transform"
                 onClick={() => {
                   trackCtaClick('express_build_start', 'start_project_modal');
                   setIsExpressModalOpen(true);

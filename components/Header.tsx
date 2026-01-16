@@ -108,9 +108,9 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
                             onClick={() => handleNavClick('/services')}
                             className="w-full text-left px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-widest font-display text-brand-muted hover:bg-brand-surface hover:text-brand-accent transition-colors"
                         >
-                            Services Overview
+                            Overview
                         </button>
-                        <div className="h-px bg-brand-border my-1"></div>
+                        <div className="h-px bg-brand-accent/50 my-1"></div>
                         <button
                             onClick={() => handleNavClick('/services/mobile-app-development')}
                             className="w-full text-left px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-widest font-display text-brand-muted hover:bg-brand-surface hover:text-brand-accent transition-colors"
@@ -135,7 +135,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
                         >
                             Websites & Platforms
                         </button>
-                        <div className="h-px bg-brand-border my-1"></div>
+                        <div className="h-px bg-brand-accent/50 my-1"></div>
                         <button
                             onClick={() => handleNavClick('/resources')}
                             className="w-full text-left px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-widest font-display text-brand-muted hover:bg-brand-surface hover:text-brand-accent transition-colors"
@@ -196,7 +196,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
               {currentView === 'tradie' ? (
                 <button
                   onClick={onOpenModal}
-                  className="flex items-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold py-2 px-6 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all uppercase tracking-widest text-sm"
+                  className="flex items-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold py-2 px-6 rounded-lg transition-all uppercase tracking-widest text-sm"
                 >
                   Start Your Build
                   <Hammer size={18} className="fill-current" />
@@ -205,7 +205,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
                 <Link
                   to="/#enquire"
                   onClick={() => scrollToHash('enquire')}
-                  className="flex items-center text-sm font-extrabold uppercase tracking-widest font-display bg-brand-accent hover:bg-white text-brand-black px-6 py-2 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all"
+                  className="flex items-center text-sm font-extrabold uppercase tracking-widest font-display bg-brand-accent hover:bg-white text-brand-black px-6 py-2 rounded-lg transition-all"
                 >
                   Get In Touch
                 </Link>
@@ -254,9 +254,9 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
                       onClick={() => handleNavClick('/services')}
                       className="w-full text-left block px-4 py-3 rounded-lg text-sm font-display font-semibold text-brand-bone hover:text-brand-accent hover:bg-brand-surface border-l-2 border-transparent hover:border-brand-accent transition-all uppercase tracking-widest"
                     >
-                      Services Overview
+                      Overview
                     </button>
-                    <div className="h-px bg-brand-border/30 my-2 mx-4"></div>
+                    <div className="h-px bg-brand-accent/50 my-2 mx-4"></div>
                     <button
                       onClick={() => handleNavClick('/services/mobile-app-development')}
                       className="w-full text-left block px-4 py-3 rounded-lg text-sm font-display font-semibold text-brand-bone hover:text-brand-accent hover:bg-brand-surface border-l-2 border-transparent hover:border-brand-accent transition-all uppercase tracking-widest"
@@ -281,7 +281,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
                     >
                       Websites & Platforms
                     </button>
-                    <div className="h-px bg-brand-border/30 my-2 mx-4"></div>
+                    <div className="h-px bg-brand-accent/50 my-2 mx-4"></div>
                     <button
                       onClick={() => handleNavClick('/resources')}
                       className="w-full text-left block px-4 py-3 rounded-lg text-sm font-display font-semibold text-brand-bone hover:text-brand-accent hover:bg-brand-surface border-l-2 border-transparent hover:border-brand-accent transition-all uppercase tracking-widest"
@@ -347,7 +347,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
               {currentView === 'tradie' ? (
                 <button
                   onClick={() => { closeMobileMenu(); onOpenModal(); }}
-                  className="w-full text-center bg-brand-accent hover:bg-white text-brand-black font-extrabold py-4 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all text-lg uppercase tracking-wide flex items-center justify-center gap-2"
+                  className="w-full text-center bg-brand-accent hover:bg-white text-brand-black font-extrabold py-4 rounded-lg transition-all text-lg uppercase tracking-wide flex items-center justify-center gap-2"
                 >
                   Start Your Build
                   <Hammer size={20} className="fill-current" />
@@ -356,7 +356,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
                 <Link
                   to="/#enquire"
                   onClick={() => { closeMobileMenu(); scrollToHash('enquire'); }}
-                  className="block w-full text-center bg-brand-accent hover:bg-white text-brand-black font-extrabold py-4 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all text-lg uppercase tracking-wide"
+                  className="block w-full text-center bg-brand-accent hover:bg-white text-brand-black font-extrabold py-4 rounded-lg transition-all text-lg uppercase tracking-wide"
                 >
                   Get In Touch
                 </Link>

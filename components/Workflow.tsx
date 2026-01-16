@@ -67,7 +67,7 @@ const Workflow: React.FC<WorkflowProps> = ({ onOpenModal }) => {
         <div className="text-center mt-16">
           <button
             onClick={onOpenModal}
-            className="inline-flex items-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-extrabold px-8 py-4 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all uppercase tracking-widest text-sm"
+            className="inline-flex items-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-extrabold px-8 py-4 rounded-lg transition-all uppercase tracking-widest text-sm"
           >
             Start Your Build
             <ArrowRight size={16} />

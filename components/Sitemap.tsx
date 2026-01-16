@@ -17,10 +17,21 @@ const Sitemap: React.FC = () => {
       ]
     },
     {
+      title: 'Services',
+      icon: Briefcase,
+      links: [
+        { name: 'Mobile App Development', path: '/services/mobile-app-development', description: 'iOS and Android apps built with React Native or native code' },
+        { name: 'AI Solutions', path: '/services/ai-solutions', description: 'Custom AI integrations, automation, and intelligent workflows' },
+        { name: 'Progressive Web Apps', path: '/services/progressive-web-apps', description: 'App-like web experiences that work offline' },
+        { name: 'Websites', path: '/services/websites', description: 'Custom websites, Shopify, and e-commerce platforms' },
+      ]
+    },
+    {
       title: 'Industries',
       icon: Building2,
       links: [
         { name: 'Tradies', path: '/tradie', description: 'Express Build package for trade businesses' },
+        { name: "What's Included", path: '/tradie/whats-included', description: 'Full breakdown of the Tradie Express Build package' },
       ]
     },
     {
@@ -39,14 +50,6 @@ const Sitemap: React.FC = () => {
         { name: 'FAQs', path: '/faq', description: 'Frequently asked questions' },
         { name: 'Terms & Privacy', path: '/terms-and-privacy', description: 'Terms and conditions, privacy policy' },
         { name: 'Tradie Terms & Conditions', path: '/tradie/terms', description: 'Express Build service terms' },
-      ]
-    },
-    {
-      title: 'Get Started',
-      icon: Briefcase,
-      links: [
-        { name: 'Enquiry Form', path: '/enquire', description: 'Submit your project enquiry' },
-        { name: 'Success', path: '/success', description: 'Payment confirmation' },
       ]
     }
   ];
@@ -144,7 +147,7 @@ const Sitemap: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => handleNavigation('/enquire')}
-                className="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold py-4 px-8 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all uppercase tracking-widest text-sm"
+                className="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold py-4 px-8 rounded-lg transition-all uppercase tracking-widest text-sm"
               >
                 <Mail size={18} />
                 Get In Touch

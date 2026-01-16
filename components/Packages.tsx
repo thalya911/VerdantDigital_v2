@@ -16,7 +16,7 @@ const Packages: React.FC = () => {
         </div>
 
         <div className="max-w-md mx-auto reveal reveal-delay-100">
-            <div className="relative bg-brand-black border-2 border-brand-accent rounded-2xl shadow-[0_0_50px_rgba(0,255,179,0.15)] overflow-hidden transform hover:scale-[1.02] transition-all duration-500">
+            <div className="relative bg-brand-black border-2 border-brand-accent rounded-2xl overflow-hidden transform hover:scale-[1.02] transition-all duration-500">
               
               {/* Badge */}
               <div className="bg-brand-accent text-brand-black text-xs font-extrabold uppercase tracking-widest py-3 text-center">
@@ -108,7 +108,7 @@ const Packages: React.FC = () => {
                 </ul>
 
                 {/* CTA */}
-                <a href="#enquire" className="w-full bg-brand-accent hover:bg-white text-brand-black font-bold text-lg py-5 rounded-xl shadow-[0_4px_20px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_30px_rgba(0,255,179,0.6)] transition-all transform hover:-translate-y-1 uppercase tracking-wider flex items-center justify-center gap-3 group">
+                <a href="#enquire" className="w-full bg-brand-accent hover:bg-white text-brand-black font-bold text-lg py-5 rounded-xl transition-all transform hover:-translate-y-1 uppercase tracking-wider flex items-center justify-center gap-3 group">
                   <Zap size={20} className="fill-current group-hover:scale-110 transition-transform" />
                   GET STARTED
                 </a>

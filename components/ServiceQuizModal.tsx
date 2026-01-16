@@ -350,7 +350,7 @@ const ServiceQuizModal: React.FC<ServiceQuizModalProps> = ({ isOpen, onClose, on
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={handleProceedToContact}
-                  className="flex-1 inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold py-4 px-6 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all uppercase tracking-wide text-sm"
+                  className="flex-1 inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold py-4 px-6 rounded-lg transition-all uppercase tracking-wide text-sm"
                 >
                   Get In Touch About This Service
                   <ArrowRight size={18} />

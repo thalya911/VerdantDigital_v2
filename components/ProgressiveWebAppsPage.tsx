@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowRight, Globe, Zap, Smartphone, Monitor, Search, Building2, Users, Rocket, Layout, Cpu, Lock, WifiOff } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, Globe, Zap, Smartphone, Monitor, Search, Building2, Users, Rocket, Layout, Cpu, Lock, WifiOff, ChevronDown } from 'lucide-react';
 
 const pwaAdvantages = [
   {
@@ -43,6 +43,8 @@ const useCases = [
 ];
 
 const ProgressiveWebAppsPage: React.FC = () => {
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+
   return (
     <div className="min-h-screen bg-brand-black">
       {/* Subtle Background */}
@@ -57,12 +59,12 @@ const ProgressiveWebAppsPage: React.FC = () => {
               <span className="text-brand-accent text-xs font-bold uppercase tracking-widest">Progressive Web Platforms</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-white mb-6 tracking-tight uppercase leading-[0.9]">
+            <h1 className="text-4xl md:text-5xl lg:text-5xl font-display font-black text-white mb-6 tracking-tight uppercase leading-[0.9]">
               App Power.{' '}
               <span className="text-brand-accent">Browser Reach.</span>
             </h1>
 
-            <p className="text-brand-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+            <p className="text-brand-muted text-lg md:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
               High-performance Progressive Web Apps (PWAs) that deliver a native mobile experience without the friction of an App Store. One codebase for iOS, Android, and Desktop.
             </p>
 
@@ -84,7 +86,7 @@ const ProgressiveWebAppsPage: React.FC = () => {
                 Why Choose a{' '}
                 <span className="text-brand-accent">Progressive Platform?</span>
               </h2>
-              <p className="text-brand-muted text-lg max-w-2xl mx-auto">
+              <p className="text-brand-muted text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
                 The business benefits, not just the features.
               </p>
             </div>
@@ -219,12 +221,12 @@ const ProgressiveWebAppsPage: React.FC = () => {
           </div>
         </section>
 
-        {/* The Process - The Verdant Way */}
+        {/* The Process */}
         <section id="process" className="py-20 px-4 sm:px-6 lg:px-8 border-t border-brand-border/20">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12 reveal">
               <h2 className="text-3xl md:text-4xl font-display font-black text-white uppercase">
-                The Verdant <span className="text-brand-accent">Way</span>
+                Our <span className="text-brand-accent">Process</span>
               </h2>
             </div>
 
@@ -279,15 +281,18 @@ const ProgressiveWebAppsPage: React.FC = () => {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-brand-border/20">
-          <div className="max-w-2xl mx-auto">
-            <div className="text-center mb-12 reveal">
-              <h2 className="text-3xl md:text-4xl font-display font-black text-white uppercase">
+        <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-brand-border/20">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-8 md:mb-12 reveal">
+              <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-3 uppercase">
                 Common <span className="text-brand-accent">Questions</span>
               </h2>
+              <p className="text-brand-muted text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+                Straight answers to what businesses ask most.
+              </p>
             </div>
 
-            <div className="space-y-4 reveal reveal-delay-100">
+            <div className="space-y-3">
               {[
                 {
                   q: 'Are there limits to what a Web App can do?',
@@ -306,9 +311,25 @@ const ProgressiveWebAppsPage: React.FC = () => {
                   a: "You do. Once the project is complete and paid for, you own 100% of the intellectual property and source code. No lock-in, no surprises."
                 }
               ].map((faq, i) => (
-                <div key={i} className="p-5 bg-brand-surface/20 border border-brand-border/30 rounded-lg hover:border-brand-accent/30 transition-colors">
-                  <h3 className="text-base font-bold text-white mb-2">{faq.q}</h3>
-                  <p className="text-brand-muted text-sm leading-relaxed">{faq.a}</p>
+                <div
+                  key={i}
+                  className="reveal bg-brand-surface/20 border border-brand-border/30 rounded-xl overflow-hidden transition-all duration-300 hover:border-brand-accent/40"
+                >
+                  <button
+                    onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
+                    className="w-full flex items-center justify-between p-5 text-left"
+                  >
+                    <h3 className="text-sm sm:text-base font-bold text-white pr-4">{faq.q}</h3>
+                    <ChevronDown
+                      size={20}
+                      className={`text-brand-accent flex-shrink-0 transition-transform duration-300 ${expandedFaq === i ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${expandedFaq === i ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}
+                  >
+                    <p className="text-brand-muted text-sm leading-relaxed px-5 pb-5">{faq.a}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -316,30 +337,37 @@ const ProgressiveWebAppsPage: React.FC = () => {
         </section>
 
         {/* Bottom CTA */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-brand-border/20">
-          <div className="max-w-2xl mx-auto text-center reveal">
-            <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-4 uppercase">
-              Ready to <span className="text-brand-accent">Build?</span>
-            </h2>
-            <p className="text-brand-muted mb-8 text-lg">
-              Tell us what you're trying to build. We'll tell you honestly if a PWA is the right approach.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href="/enquire"
-                className="group inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-bold py-4 px-8 rounded-lg transition-all text-sm"
-              >
-                Check Compatibility for My Project
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a
-                href="https://calendly.com/verdantdigital"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-transparent border border-brand-border hover:border-brand-accent text-white hover:text-brand-accent font-bold py-4 px-8 rounded-lg transition-all text-sm"
-              >
-                Book a Call
-              </a>
+        <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 mb-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="reveal relative bg-gradient-to-br from-brand-surface/50 to-brand-surface/20 border border-brand-border/30 rounded-2xl p-6 sm:p-8 overflow-hidden">
+              {/* Ambient glow */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/10 rounded-full blur-[60px] pointer-events-none"></div>
+
+              <div className="relative z-10 text-center">
+                <h2 className="text-2xl md:text-3xl font-display font-black text-white mb-2 uppercase">
+                  Ready to <span className="text-brand-accent">Build?</span>
+                </h2>
+                <p className="text-brand-muted text-sm sm:text-base mb-4 max-w-xl mx-auto">
+                  Tell us what you're trying to build. We'll tell you honestly if a PWA is the right approach.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <a
+                    href="/enquire"
+                    className="group inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-bold py-3 px-6 rounded-lg transition-all text-sm"
+                  >
+                    Check Compatibility for My Project
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  <a
+                    href="https://calendly.com/verdantdigital"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-transparent border border-brand-border hover:border-brand-accent text-white hover:text-brand-accent font-bold py-3 px-6 rounded-lg transition-all text-sm"
+                  >
+                    Book a Call
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>

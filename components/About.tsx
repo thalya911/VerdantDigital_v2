@@ -1,7 +1,49 @@
-import React from 'react';
-import { Target, Layers, Users, CheckCircle, ArrowRight, Zap, Shield, TrendingUp } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Target, Layers, Users, ArrowRight } from 'lucide-react';
 
 const About: React.FC = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const processSteps = [
+    {
+      num: '01',
+      title: 'Discovery and Strategy',
+      desc: 'We start by understanding your business, your customers and what success looks like. Every project begins with your specific goals, requirements and challenges.'
+    },
+    {
+      num: '02',
+      title: 'Design and Architecture',
+      desc: 'We plan user flows, structure and technical approach together so the solution is logical, scalable and aligned with how the business operates.'
+    },
+    {
+      num: '03',
+      title: 'Build and Iterate',
+      desc: 'Development progresses in clear cycles with regular check-ins. You see progress early and often. Feedback is incorporated during the build, not after everything is finished.'
+    },
+    {
+      num: '04',
+      title: 'Launch and Optimise',
+      desc: 'We do not disappear after launch. Performance tracking, user behaviour insights and ongoing refinement ensure your digital solution continues to improve over time.'
+    }
+  ];
+
+  const handleScroll = () => {
+    if (carouselRef.current) {
+      const scrollLeft = carouselRef.current.scrollLeft;
+      const cardWidth = carouselRef.current.offsetWidth;
+      const newIndex = Math.round(scrollLeft / cardWidth);
+      setActiveStep(newIndex);
+    }
+  };
+
+  const scrollToStep = (index: number) => {
+    if (carouselRef.current) {
+      const cardWidth = carouselRef.current.offsetWidth;
+      carouselRef.current.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="bg-brand-black">
       {/* Section Navigation */}
@@ -24,10 +66,6 @@ const About: React.FC = () => {
               <a href="#how-we-work" className="flex items-center text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap leading-none">
                 How We Work
               </a>
-              <span className="text-brand-border leading-none">|</span>
-              <a href="#why-choose-us" className="flex items-center text-xs font-semibold uppercase tracking-widest text-brand-muted hover:text-brand-accent transition-colors whitespace-nowrap leading-none">
-                Why Choose Us
-              </a>
             </div>
           </div>
         </div>
@@ -42,9 +80,8 @@ const About: React.FC = () => {
             <div className="inline-block mb-4 px-3 py-1 bg-brand-accent/20 border border-brand-accent/40 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded">
               About Us
             </div>
-            <h1 className="text-3xl md:text-5xl font-display font-black text-white leading-[1.1] mb-6 uppercase" style={{letterSpacing: '0.02em'}}>
-              ABOUT <br/>
-              <span className="animate-text-starspeed inline-block">VERDANT DIGITAL</span>
+            <h1 className="text-2xl md:text-3xl font-display font-black text-white leading-[1.1] mb-6 uppercase" style={{letterSpacing: '0.02em'}}>
+              ABOUT <span className="text-brand-accent">VERDANT DIGITAL</span>
             </h1>
           </div>
 
@@ -63,7 +100,7 @@ const About: React.FC = () => {
                 We specialise in mobile applications, progressive web apps, custom websites, AI-powered automation and e-commerce platforms that reduce friction and make day-to-day operations smoother. Whether it is a growing business that needs more enquiries or an established organisation that needs a cleaner, more scalable platform, we bring the same thoughtful approach and commitment to outcomes.
               </p>
               <p className="text-brand-accent font-bold">
-                No clutter. No confusion. No complicated handovers. Just digital work that helps your business move forward.
+                Clear communication. Simple handovers. Digital work that helps your business move forward.
               </p>
             </div>
           </div>
@@ -77,9 +114,8 @@ const About: React.FC = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="mb-10 md:mb-12 reveal">
-            <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-[1.1] mb-6 uppercase" style={{letterSpacing: '0.02em'}}>
-              ABOUT THE <br/>
-              <span className="animate-text-starspeed inline-block">FOUNDERS</span>
+            <h2 className="text-2xl md:text-3xl font-display font-black text-white leading-[1.1] mb-6 uppercase" style={{letterSpacing: '0.02em'}}>
+              ABOUT THE <span className="text-brand-accent">FOUNDERS</span>
             </h2>
           </div>
 
@@ -104,7 +140,7 @@ const About: React.FC = () => {
                 <h3 className="text-xl font-display font-bold text-white mb-1">Thalya Tilt MacSporran</h3>
                 <p className="text-brand-accent font-semibold text-xs uppercase tracking-widest mb-4">Director</p>
                 <p className="text-brand-muted text-sm leading-relaxed italic">
-                  "Better systems create better decisions, and better decisions create better businesses."
+                  "Better systems enable better decisions, and better decisions create better businesses."
                 </p>
               </div>
             </div>
@@ -185,13 +221,12 @@ const About: React.FC = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="mb-10 md:mb-12 reveal">
-            <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-[1.1] mb-6 md:mb-6 uppercase" style={{letterSpacing: '0.02em'}}>
-              OUR <br/>
-              <span className="animate-text-starspeed inline-block">PHILOSOPHY</span>
+            <h2 className="text-2xl md:text-3xl font-display font-black text-white leading-[1.1] mb-6 uppercase" style={{letterSpacing: '0.02em'}}>
+              OUR <span className="text-brand-accent">PHILOSOPHY</span>
             </h2>
             <div className="space-y-5 md:space-y-4 text-brand-muted text-sm lg:text-base leading-relaxed">
               <p>
-                We believe websites should be created as complete solutions, not as isolated parts. The structure, the technology and the design all work together to create clarity, reduce friction and support better decision making for both the business and the customer.
+                We believe digital products should be created as complete solutions, not as isolated parts. The structure, the technology and the design all work together to create clarity, reduce friction and support better decision making for both the business and the customer.
               </p>
               <p>
                 When digital experiences are aligned in this way, they become tools that help a business operate with <span className="text-brand-accent font-bold">more confidence, control and momentum</span>.
@@ -200,31 +235,31 @@ const About: React.FC = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 md:gap-6 reveal reveal-delay-100">
-            <div className="bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/20 md:border-brand-border rounded-lg p-5 md:p-6 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300">
-              <div className="w-12 h-12 bg-brand-black border border-brand-accent/30 md:border-brand-border rounded-lg flex items-center justify-center text-brand-accent group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-4 shadow-lg">
-                <Target size={28} />
+            <div className="bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/20 md:border-brand-border rounded-lg p-4 md:p-5 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300">
+              <div className="w-10 h-10 bg-brand-black border border-brand-accent/30 md:border-brand-border rounded-lg flex items-center justify-center text-brand-accent group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-3 shadow-lg">
+                <Target size={22} />
               </div>
-              <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-accent transition-colors">Strategic Design</h3>
+              <h3 className="text-lg font-display font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">Strategic Design</h3>
               <p className="text-brand-muted leading-relaxed text-sm">
                 Every layout, colour and interaction has a purpose. Your customers know exactly what to do next, turning more visits into real business outcomes.
               </p>
             </div>
 
-            <div className="bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/20 md:border-brand-border rounded-lg p-5 md:p-6 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300">
-              <div className="w-12 h-12 bg-brand-black border border-brand-accent/30 md:border-brand-border rounded-lg flex items-center justify-center text-brand-accent group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-4 shadow-lg">
-                <Layers size={28} />
+            <div className="bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/20 md:border-brand-border rounded-lg p-4 md:p-5 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300">
+              <div className="w-10 h-10 bg-brand-black border border-brand-accent/30 md:border-brand-border rounded-lg flex items-center justify-center text-brand-accent group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-3 shadow-lg">
+                <Layers size={22} />
               </div>
-              <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-accent transition-colors">Technical Excellence</h3>
+              <h3 className="text-lg font-display font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">Technical Excellence</h3>
               <p className="text-brand-muted leading-relaxed text-sm">
                 Platforms that are fast, stable and built to scale with your business. No frustrating slowdowns, no technical debt holding you back.
               </p>
             </div>
 
-            <div className="bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/20 md:border-brand-border rounded-lg p-5 md:p-6 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300">
-              <div className="w-12 h-12 bg-brand-black border border-brand-accent/30 md:border-brand-border rounded-lg flex items-center justify-center text-brand-accent group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-4 shadow-lg">
-                <Users size={28} />
+            <div className="bg-brand-surface/60 md:bg-brand-surface/30 border border-brand-accent/20 md:border-brand-border rounded-lg p-4 md:p-5 group hover:border-brand-accent hover:bg-brand-surface/60 transition-all duration-300">
+              <div className="w-10 h-10 bg-brand-black border border-brand-accent/30 md:border-brand-border rounded-lg flex items-center justify-center text-brand-accent group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300 mb-3 shadow-lg">
+                <Users size={22} />
               </div>
-              <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-accent transition-colors">Integrated Approach</h3>
+              <h3 className="text-lg font-display font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">Integrated Approach</h3>
               <p className="text-brand-muted leading-relaxed text-sm">
                 A team that feels like your own. Clear updates, no confusing jargon, and people who care about your success as much as you do.
               </p>
@@ -240,181 +275,101 @@ const About: React.FC = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="mb-10 md:mb-12 reveal">
-            <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-[1.1] mb-6 uppercase" style={{letterSpacing: '0.02em'}}>
-              HOW WE <br/>
-              <span className="animate-text-starspeed inline-block">WORK</span>
+            <h2 className="text-2xl md:text-3xl font-display font-black text-white leading-[1.1] mb-6 uppercase" style={{letterSpacing: '0.02em'}}>
+              HOW WE <span className="text-brand-accent">WORK</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-8 reveal reveal-delay-100">
-            {/* Step 1 */}
-            <div className="flex gap-4 md:gap-6">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-brand-accent text-brand-black rounded-lg flex items-center justify-center font-display font-black text-xl">
-                  01
+          {/* Mobile Carousel */}
+          <div className="md:hidden reveal reveal-delay-100">
+            <div
+              ref={carouselRef}
+              onScroll={handleScroll}
+              className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {processSteps.map((step, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-full snap-center pr-4"
+                >
+                  <div className="bg-brand-surface/30 border border-brand-border rounded-xl p-5">
+                    <div className="flex gap-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 bg-brand-accent text-brand-black rounded-lg flex items-center justify-center font-display font-black text-xl">
+                          {step.num}
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-display font-bold text-white mb-2">{step.title}</h3>
+                        <p className="text-brand-muted text-sm leading-relaxed">{step.desc}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-display font-bold text-white mb-3">Discovery and Strategy</h3>
-                <p className="text-brand-muted leading-relaxed">
-                  We start by understanding your business, your customers and what success looks like. No cookie-cutter solutions. Every project begins with your specific goals, requirements and challenges.
-                </p>
-              </div>
+              ))}
             </div>
+            {/* Dot Indicators */}
+            <div className="flex justify-center gap-2 mt-5">
+              {processSteps.map((_, index) => (
+                <span
+                  key={index}
+                  onClick={() => scrollToStep(index)}
+                  className={`block rounded-full cursor-pointer ${
+                    activeStep === index ? 'bg-brand-accent h-2.5 w-6' : 'bg-brand-border h-2.5 w-2.5'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
 
-            {/* Step 2 */}
-            <div className="flex gap-4 md:gap-6">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-brand-accent text-brand-black rounded-lg flex items-center justify-center font-display font-black text-xl">
-                  02
+          {/* Desktop Grid */}
+          <div className="hidden md:grid md:grid-cols-2 gap-8 reveal reveal-delay-100">
+            {processSteps.map((step, index) => (
+              <div key={index} className="flex gap-6">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-brand-accent text-brand-black rounded-lg flex items-center justify-center font-display font-black text-xl">
+                    {step.num}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-lg font-display font-bold text-white mb-2">{step.title}</h3>
+                  <p className="text-brand-muted text-sm leading-relaxed">{step.desc}</p>
                 </div>
               </div>
-              <div>
-                <h3 className="text-xl font-display font-bold text-white mb-3">Design and Architecture</h3>
-                <p className="text-brand-muted leading-relaxed">
-                  We plan user flows, structure and technical approach together so the solution is logical, scalable and aligned with how the business operates. Design decisions are made with technical feasibility in mind, and technical decisions consider how users actually behave.
-                </p>
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div className="flex gap-4 md:gap-6">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-brand-accent text-brand-black rounded-lg flex items-center justify-center font-display font-black text-xl">
-                  03
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-display font-bold text-white mb-3">Build and Iterate</h3>
-                <p className="text-brand-muted leading-relaxed">
-                  Development progresses in clear cycles with regular check-ins. You see progress early and often. Feedback is incorporated during the build, not after everything is finished.
-                </p>
-              </div>
-            </div>
-
-            {/* Step 4 */}
-            <div className="flex gap-4 md:gap-6">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-brand-accent text-brand-black rounded-lg flex items-center justify-center font-display font-black text-xl">
-                  04
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-display font-bold text-white mb-3">Launch and Optimise</h3>
-                <p className="text-brand-muted leading-relaxed">
-                  We do not disappear after launch. Performance tracking, user behaviour insights and ongoing refinement ensure your digital solution continues to improve and support proactive decision making over time.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Why Clients Choose Us */}
-      <section id="why-choose-us" className="py-12 pb-16 md:py-16 md:pb-24 bg-brand-black relative scroll-mt-24">
+      {/* CTA Section */}
+      <section className="py-12 md:py-16 bg-brand-black relative">
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-accent to-transparent opacity-0 animate-pulse" style={{animation: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'}}></div>
         <div className="absolute inset-0 bg-grid-pattern bg-[size:60px_60px] opacity-[0.05] pointer-events-none"></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="mb-10 md:mb-12 reveal">
-            <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-[1.1] mb-6 uppercase" style={{letterSpacing: '0.02em'}}>
-              WHY CLIENTS <br/>
-              <span className="animate-text-starspeed inline-block">CHOOSE US</span>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="bg-brand-surface/30 border border-brand-border rounded-xl p-4 md:p-6 text-center reveal">
+            <h2 className="text-xl md:text-2xl font-display font-black text-white mb-3 uppercase" style={{letterSpacing: '0.02em'}}>
+              Ready to Start <span className="text-brand-accent">Building?</span>
             </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 mb-10 md:mb-12 reveal reveal-delay-100">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 bg-brand-black border border-brand-border rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 shadow-lg">
-                <CheckCircle size={20} />
-              </div>
-              <div>
-                <h3 className="text-white font-bold font-display text-lg mb-1">We Actually Deliver</h3>
-                <p className="text-brand-muted text-sm leading-relaxed">
-                  No endless revisions or missed deadlines. We scope properly, build efficiently, and deliver on time.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 bg-brand-black border border-brand-border rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 shadow-lg">
-                <Zap size={20} />
-              </div>
-              <div>
-                <h3 className="text-white font-bold font-display text-lg mb-1">Speed Matters</h3>
-                <p className="text-brand-muted text-sm leading-relaxed">
-                  Fast websites convert better. Fast development means you get to market quicker. We optimise for both.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 bg-brand-black border border-brand-border rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 shadow-lg">
-                <Shield size={20} />
-              </div>
-              <div>
-                <h3 className="text-white font-bold font-display text-lg mb-1">Built to Last</h3>
-                <p className="text-brand-muted text-sm leading-relaxed">
-                  Clean code, proper architecture, and scalable infrastructure. Your platform grows with your business.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 bg-brand-black border border-brand-border rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 shadow-lg">
-                <TrendingUp size={20} />
-              </div>
-              <div>
-                <h3 className="text-white font-bold font-display text-lg mb-1">ROI-Focused</h3>
-                <p className="text-brand-muted text-sm leading-relaxed">
-                  Every decision is measured against business outcomes. More conversions, more leads, more revenue.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 bg-brand-black border border-brand-border rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 shadow-lg">
-                <Users size={20} />
-              </div>
-              <div>
-                <h3 className="text-white font-bold font-display text-lg mb-1">Local Team</h3>
-                <p className="text-brand-muted text-sm leading-relaxed">
-                  Australian-based, in your timezone, speaking your language. Real support when you need it.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 bg-brand-black border border-brand-border rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0 shadow-lg">
-                <Target size={20} />
-              </div>
-              <div>
-                <h3 className="text-white font-bold font-display text-lg mb-1">No Jargon</h3>
-                <p className="text-brand-muted text-sm leading-relaxed">
-                  Clear communication, plain language, honest timelines. You always know where your project stands.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Tradie CTA */}
-          <div className="mt-12 mb-8 text-center reveal reveal-delay-200">
-            <div className="inline-block bg-brand-surface/30 border border-brand-border rounded-xl p-6 md:p-8 max-w-2xl">
-              <p className="text-brand-muted text-sm md:text-base leading-relaxed mb-4">
-                <span className="text-white font-bold">Trade or service business?</span> We also offer a streamlined 7-day website build specifically designed for tradies.
-              </p>
-              <a href="/tradie" className="inline-flex items-center gap-2 text-brand-accent hover:text-white font-bold uppercase tracking-wide text-xs transition-colors group">
-                Learn about Tradie Express Build
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            <p className="text-brand-muted text-sm md:text-base mb-4 max-w-xl mx-auto leading-relaxed">
+              Whether you have a project in mind or want to explore what's possible, we'd love to hear from you.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a
+                href="/enquire"
+                className="inline-flex items-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-extrabold px-6 py-3 rounded-lg transition-all uppercase tracking-widest text-xs"
+              >
+                Start a Conversation
+                <ArrowRight size={16} />
+              </a>
+              <a
+                href="/#services"
+                className="inline-flex items-center gap-2 border border-brand-border hover:border-brand-accent text-white hover:text-brand-accent font-bold px-6 py-3 rounded-lg transition-all uppercase tracking-widest text-xs"
+              >
+                Explore Our Services
               </a>
             </div>
-          </div>
-
-          <div className="text-center reveal reveal-delay-200">
-            <a href="/enquire" className="group inline-flex items-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-extrabold px-8 py-4 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all uppercase tracking-widest text-sm">
-              Start a Conversation
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </a>
           </div>
         </div>
       </section>

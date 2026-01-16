@@ -173,7 +173,7 @@ const MainPortfolio: React.FC = () => {
             <div className="inline-block mb-2 px-3 py-1 bg-brand-accent/20 border border-brand-accent/40 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded">
               PORTFOLIO
             </div>
-            <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-[1.1] uppercase max-w-3xl" style={{letterSpacing: '0.02em'}}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-black text-white leading-[1.1] uppercase max-w-3xl" style={{letterSpacing: '0.02em'}}>
               RECENT WORKS
             </h2>
           </div>

@@ -48,7 +48,7 @@ const FreeResourcesPage: React.FC = () => {
           </div>
           <h1 className="text-4xl md:text-6xl font-display font-black text-white mb-6 tracking-tight uppercase">
             Self-Service <br />
-            <span className="animate-text-starspeed inline-block">Digital Guides</span>
+            <span className="text-brand-accent">Digital Guides</span>
           </h1>
           <p className="text-brand-muted text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
             Not every business has thousands of dollars for full-service packages. These guides help you tackle digital marketing and website optimisation yourself with proven strategies and clear step-by-step instructions.
@@ -63,7 +63,7 @@ const FreeResourcesPage: React.FC = () => {
               onClick={() => setActiveFilter(tag)}
               className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest transition-all ${
                 activeFilter === tag
-                  ? 'bg-brand-accent text-brand-black shadow-[0_4px_14px_rgba(0,255,179,0.4)]'
+                  ? 'bg-brand-accent text-brand-black'
                   : 'bg-brand-surface/30 border border-brand-border text-brand-muted hover:border-brand-accent hover:text-white'
               }`}
             >

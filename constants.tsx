@@ -228,21 +228,21 @@ export const TESTIMONIALS: TestimonialItem[] = [
   {
     name: "Dave M.",
     role: "Sparky in Brisbane",
-    quote: "Verdant made it dead simple. I spent 20 mins on the phone, sent some photos, and the site was live. The best part is I don't have to worry about technical stuff.",
+    quote: "Verdant Digital made it dead simple. I spent 20 mins on the phone, sent some photos, and the site was live. The best part is I don't have to worry about technical stuff.",
     rating: 5,
     result: "Leads up 45% in 90 days"
   },
   {
     name: "Sarah T.",
     role: "Landscaping Business Owner",
-    quote: "I was quoted $5k by another agency. Verdant did it for a fraction of that. The new site actually brings in qualified leads, not just tyre kickers.",
+    quote: "I was quoted $5k by another agency. Verdant Digital did it for a fraction of that. The new site actually brings in qualified leads, not just tyre kickers.",
     rating: 5,
     result: "20+ Enquiries per month"
   },
   {
     name: "Mikey R.",
     role: "Roofing Contractor",
-    quote: "No fluff, no tech jargon. Just a solid site that works on mobile. The boys at Verdant know what they're doing.",
+    quote: "No fluff, no tech jargon. Just a solid site that works on mobile. The team at Verdant Digital know what they're doing.",
     rating: 5,
     result: "Ranked #1 in Local Search"
   }

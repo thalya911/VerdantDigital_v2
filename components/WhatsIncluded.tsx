@@ -622,7 +622,7 @@ const WhatsIncluded: React.FC = () => {
 
           <a
             href="/tradie#pricing"
-            className="inline-flex items-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-extrabold text-lg py-4 px-8 rounded-lg shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] transition-all uppercase tracking-wide"
+            className="inline-flex items-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-extrabold text-lg py-4 px-8 rounded-lg transition-all uppercase tracking-wide"
           >
             Get Started Now
             <ArrowRight size={20} />

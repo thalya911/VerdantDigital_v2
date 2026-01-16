@@ -1,50 +1,180 @@
-import React from 'react';
-import { ArrowRight, Brain, Shield, Users, Layers, Database, Bot, FileText, Zap, Target, Rocket, CheckCircle } from 'lucide-react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { ArrowRight, Brain, Shield, Users, Layers, Database, Bot, FileText, Zap, Target, Rocket, CheckCircle, ChevronDown } from 'lucide-react';
+import WorkflowAuditModal from './WorkflowAuditModal';
+
+const capabilities = [
+  {
+    icon: Database,
+    step: '01',
+    title: 'Instant Answers from Your Docs',
+    desc: 'Turn PDFs, Notion pages, and internal docs into a searchable knowledge base. Your team gets answers in seconds.'
+  },
+  {
+    icon: Bot,
+    step: '02',
+    title: 'AI That Takes Action',
+    desc: 'AI that acts, not just responds. Draft emails, update your CRM, and move data between apps automatically.'
+  },
+  {
+    icon: Layers,
+    step: '03',
+    title: 'AI Inside Your Software',
+    desc: 'Plug AI into your existing tools. Summaries, analysis, and automation where your team already works.'
+  },
+  {
+    icon: FileText,
+    step: '04',
+    title: 'Content at Scale',
+    desc: 'Generate SEO content, product descriptions, and social posts. All filtered through your brand voice.'
+  }
+];
+
+const labApproach = [
+  {
+    icon: Shield,
+    title: 'Security-First',
+    desc: 'Your data is never used to train public models. Zero-retention APIs and private deployments.'
+  },
+  {
+    icon: Users,
+    title: 'Human-in-the-Loop',
+    desc: 'AI does the heavy lifting. Humans provide the final check. 100% accuracy.'
+  },
+  {
+    icon: Layers,
+    title: 'Tech-Agnostic',
+    desc: 'OpenAI, Anthropic, or open-source. We use what fits your budget and security needs.'
+  }
+];
 
 const AISolutionsPage: React.FC = () => {
+  const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
+  const [activeCapability, setActiveCapability] = useState(0);
+  const [activeApproach, setActiveApproach] = useState(0);
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const capabilityCarouselRef = useRef<HTMLDivElement>(null);
+  const approachCarouselRef = useRef<HTMLDivElement>(null);
+
+  const handleCapabilityScroll = () => {
+    if (capabilityCarouselRef.current) {
+      const scrollLeft = capabilityCarouselRef.current.scrollLeft;
+      const cardWidth = capabilityCarouselRef.current.offsetWidth;
+      const newIndex = Math.round(scrollLeft / cardWidth);
+      setActiveCapability(newIndex);
+    }
+  };
+
+  const handleApproachScroll = () => {
+    if (approachCarouselRef.current) {
+      const scrollLeft = approachCarouselRef.current.scrollLeft;
+      const cardWidth = approachCarouselRef.current.offsetWidth;
+      setActiveApproach(Math.round(scrollLeft / cardWidth));
+    }
+  };
+
+  const scrollToCapability = (index: number) => {
+    if (capabilityCarouselRef.current) {
+      const cardWidth = capabilityCarouselRef.current.offsetWidth;
+      capabilityCarouselRef.current.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
+    }
+  };
+
+  const scrollToApproach = (index: number) => {
+    if (approachCarouselRef.current) {
+      const cardWidth = approachCarouselRef.current.offsetWidth;
+      approachCarouselRef.current.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
+    }
+  };
+
+  // Auto-cycling state
+  const [isCapabilityPaused, setIsCapabilityPaused] = useState(false);
+  const [isApproachPaused, setIsApproachPaused] = useState(false);
+  const capabilityTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const approachTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Auto-advance capabilities carousel
+  const advanceCapability = useCallback(() => {
+    if (!isCapabilityPaused && capabilityCarouselRef.current) {
+      const nextIndex = (activeCapability + 1) % capabilities.length;
+      scrollToCapability(nextIndex);
+    }
+  }, [activeCapability, isCapabilityPaused]);
+
+  // Auto-advance approach carousel
+  const advanceApproach = useCallback(() => {
+    if (!isApproachPaused && approachCarouselRef.current) {
+      const nextIndex = (activeApproach + 1) % labApproach.length;
+      scrollToApproach(nextIndex);
+    }
+  }, [activeApproach, isApproachPaused]);
+
+  // Set up auto-cycling intervals
+  useEffect(() => {
+    const capabilityInterval = setInterval(advanceCapability, 4000);
+    return () => clearInterval(capabilityInterval);
+  }, [advanceCapability]);
+
+  useEffect(() => {
+    const approachInterval = setInterval(advanceApproach, 4000);
+    return () => clearInterval(approachInterval);
+  }, [advanceApproach]);
+
+  // Pause on user interaction, resume after 6 seconds
+  const handleCapabilityInteraction = () => {
+    setIsCapabilityPaused(true);
+    if (capabilityTimeoutRef.current) clearTimeout(capabilityTimeoutRef.current);
+    capabilityTimeoutRef.current = setTimeout(() => setIsCapabilityPaused(false), 6000);
+  };
+
+  const handleApproachInteraction = () => {
+    setIsApproachPaused(true);
+    if (approachTimeoutRef.current) clearTimeout(approachTimeoutRef.current);
+    approachTimeoutRef.current = setTimeout(() => setIsApproachPaused(false), 6000);
+  };
+
+  // Cleanup timeouts on unmount
+  useEffect(() => {
+    return () => {
+      if (capabilityTimeoutRef.current) clearTimeout(capabilityTimeoutRef.current);
+      if (approachTimeoutRef.current) clearTimeout(approachTimeoutRef.current);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-brand-black">
-      {/* Fixed ambient glows */}
-      <div className="fixed top-0 right-1/4 w-96 h-96 bg-brand-accent/10 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="fixed bottom-1/4 left-0 w-80 h-80 bg-purple-500/10 rounded-full blur-[100px] pointer-events-none"></div>
-      <div className="fixed top-1/2 right-0 w-72 h-72 bg-blue-500/8 rounded-full blur-[100px] pointer-events-none"></div>
-
       {/* Subtle grid background */}
       <div className="fixed inset-0 bg-grid-pattern bg-[size:60px_60px] opacity-[0.03] pointer-events-none"></div>
 
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center reveal">
-            {/* Gradient Badge */}
-            <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-gradient-to-r from-brand-accent/20 to-brand-accent/10 border border-brand-accent/30 rounded-full backdrop-blur-sm">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-brand-accent/10 border border-brand-accent/20 rounded-full">
               <Brain size={16} className="text-brand-accent" />
-              <span className="text-brand-accent text-xs font-bold uppercase tracking-widest">AI Solutions Lab</span>
+              <span className="text-brand-accent text-xs font-bold uppercase tracking-widest">AI Solutions</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-display font-black text-white mb-6 tracking-tight uppercase leading-[0.95]">
-              Deploy Intelligence.{' '}
-              <span className="text-brand-accent inline-block relative">
-                Automate Excellence.
-                <div className="absolute -inset-4 bg-brand-accent/10 blur-xl -z-10"></div>
-              </span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-display font-black text-white mb-5 tracking-tight uppercase leading-[1] sm:leading-[0.95]">
+              Custom AI.{' '}
+              <span className="text-brand-accent">Built for Your Workflow.</span>
             </h1>
 
-            <p className="text-brand-muted text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-10">
-              We bridge the gap between AI hype and business reality. Verdant builds custom AI agents and automated workflows that integrate directly into your existing tech stack.
+            <p className="text-brand-muted text-base sm:text-lg md:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
+              AI agents and automations that plug into your existing tools. We handle the complexity. You get hours back.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/enquire"
-                className="group inline-flex items-center justify-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-bold py-4 px-8 rounded-lg transition-all text-sm shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] hover:scale-[1.02]"
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={() => setIsAuditModalOpen(true)}
+                className="group inline-flex items-center justify-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-bold py-4 px-8 rounded-lg transition-all text-sm"
               >
-                Audit My Workflow
+                Get a Free Workflow Audit
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
+              </button>
               <a
                 href="#capabilities"
-                className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-brand-accent/50 hover:border-brand-accent text-white hover:text-brand-accent font-bold py-4 px-8 rounded-lg transition-all text-sm hover:bg-brand-accent/5"
+                className="inline-flex items-center justify-center gap-2 bg-transparent border border-brand-border hover:border-brand-accent text-white hover:text-brand-accent font-bold py-4 px-8 rounded-lg transition-all text-sm"
               >
                 See What We Build
               </a>
@@ -53,57 +183,80 @@ const AISolutionsPage: React.FC = () => {
         </section>
 
         {/* AI Capabilities Section */}
-        <section id="capabilities" className="py-20 px-4 sm:px-6 lg:px-8">
+        <section id="capabilities" className="py-16 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-14 reveal">
-              <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-4 uppercase">
-                Tailored AI <span className="text-brand-accent">Implementation</span>
+            <div className="text-center mb-8 md:mb-12 reveal">
+              <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-3 uppercase">
+                What We <span className="text-brand-accent">Build</span>
               </h2>
-              <p className="text-brand-muted text-lg max-w-2xl mx-auto">
-                AI shouldn't be a separate app. It should be the engine inside the tools you already use.
+              <p className="text-brand-muted text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+                AI that lives inside your existing tools. Not another app to manage.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  icon: Database,
-                  title: 'Knowledge Bases & RAG',
-                  desc: "We turn your company's PDFs, Notion pages, and docs into a private, searchable \"Oracle\" that answers team questions instantly.",
-                  color: 'from-blue-500/10 to-brand-accent/10'
-                },
-                {
-                  icon: Bot,
-                  title: 'Agentic Workflows',
-                  desc: "AI \"Agents\" that don't just talk, but do. They can draft emails, update your CRM, and move data between apps based on logic.",
-                  color: 'from-brand-accent/10 to-green-500/10'
-                },
-                {
-                  icon: Layers,
-                  title: 'Custom LLM Integration',
-                  desc: 'Plugging models like Claude 3.5 or GPT-4o into your proprietary software to provide summaries, sentiment analysis, or code generation.',
-                  color: 'from-purple-500/10 to-brand-accent/10'
-                },
-                {
-                  icon: FileText,
-                  title: 'Automated Content Pipelines',
-                  desc: 'Large-scale generation of SEO content, product descriptions, or social posts, all filtered through your brand voice.',
-                  color: 'from-yellow-500/10 to-brand-accent/10'
-                }
-              ].map((item, i) => {
+            {/* Mobile: Swipeable Carousel */}
+            <div className="md:hidden">
+              {/* Carousel */}
+              <div
+                ref={capabilityCarouselRef}
+                onScroll={() => { handleCapabilityScroll(); handleCapabilityInteraction(); }}
+                onTouchStart={handleCapabilityInteraction}
+                className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide touch-pan-x overscroll-x-contain"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+              >
+                {capabilities.map((item, index) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={index}
+                      className="flex-shrink-0 w-full snap-center px-1 cursor-grab active:cursor-grabbing"
+                    >
+                      <div className="bg-brand-surface/20 border border-brand-border/30 rounded-xl p-5 text-center select-none">
+                        <div className="w-12 h-12 bg-brand-accent/10 border border-brand-accent/20 rounded-xl flex items-center justify-center text-brand-accent mx-auto mb-4">
+                          <Icon size={24} strokeWidth={2} />
+                        </div>
+                        <h3 className="text-base font-bold text-white mb-2">
+                          {item.title}
+                        </h3>
+                        <p className="text-brand-muted text-sm leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Swipe hint */}
+              <p className="text-center text-[10px] text-brand-muted/50 mt-3">Swipe to explore</p>
+
+              {/* Dot Indicators */}
+              <div className="flex justify-center gap-2 mt-5">
+                {capabilities.map((_, index) => (
+                  <span
+                    key={index}
+                    onClick={() => { scrollToCapability(index); handleCapabilityInteraction(); }}
+                    className={`block rounded-full cursor-pointer transition-all ${
+                      activeCapability === index ? 'bg-brand-accent h-2.5 w-6' : 'bg-brand-border h-2.5 w-2.5'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop: 2x2 Grid */}
+            <div className="hidden md:grid md:grid-cols-2 gap-5">
+              {capabilities.map((item, i) => {
                 const Icon = item.icon;
                 return (
                   <div
                     key={i}
-                    className={`reveal reveal-delay-${(i + 1) * 100} group relative bg-gradient-to-br ${item.color} border border-brand-border/50 rounded-2xl p-6 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,179,0.1)]`}
+                    className="reveal group bg-brand-surface/20 border border-brand-border/30 rounded-xl p-5 hover:border-brand-accent/50 transition-all"
                   >
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-accent/50 via-brand-accent to-brand-accent/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-brand-accent/10 border border-brand-accent/30 rounded-xl flex items-center justify-center text-brand-accent flex-shrink-0 group-hover:scale-110 transition-transform">
-                        <Icon size={24} strokeWidth={2} />
+                      <div className="w-11 h-11 bg-brand-accent/10 border border-brand-accent/20 rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0">
+                        <Icon size={22} strokeWidth={2} />
                       </div>
                       <div>
-                        <h3 className="text-lg font-display font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">
+                        <h3 className="text-base font-bold text-white mb-1.5">
                           {item.title}
                         </h3>
                         <p className="text-brand-muted text-sm leading-relaxed">{item.desc}</p>
@@ -117,50 +270,68 @@ const AISolutionsPage: React.FC = () => {
         </section>
 
         {/* Why the "Lab" Approach - Trust Building */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-14 reveal">
-              <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-4 uppercase">
-                Why the <span className="text-brand-accent">"Lab"</span> Approach?
+            <div className="text-center mb-8 md:mb-12 reveal">
+              <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-3 uppercase">
+                How We <span className="text-brand-accent">Work</span>
               </h2>
-              <p className="text-brand-muted text-lg max-w-2xl mx-auto">
-                Practical AI. Not Science Fiction.
+              <p className="text-brand-muted text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+                Practical AI. Not science fiction.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: Shield,
-                  title: 'Security-First',
-                  desc: 'We prioritise data privacy. Your proprietary data is never used to train public models. We use "Zero-Retention" APIs and VPC deployments.',
-                  gradient: 'from-blue-500/15 to-brand-accent/10'
-                },
-                {
-                  icon: Users,
-                  title: 'Human-in-the-Loop',
-                  desc: 'We build systems where AI does the heavy lifting (90%) and a human provides the final "Golden Stamp" (10%), ensuring 100% accuracy.',
-                  gradient: 'from-brand-accent/15 to-green-500/10'
-                },
-                {
-                  icon: Layers,
-                  title: 'Tech-Agnostic',
-                  desc: "Whether it's OpenAI, Anthropic, or open-source models like Llama 3 running on AWS, we use the tool that fits your budget and security needs.",
-                  gradient: 'from-purple-500/15 to-brand-accent/10'
-                }
-              ].map((item, i) => {
+            {/* Mobile: Swipeable Carousel */}
+            <div className="md:hidden">
+              <div
+                ref={approachCarouselRef}
+                onScroll={() => { handleApproachScroll(); handleApproachInteraction(); }}
+                onTouchStart={handleApproachInteraction}
+                className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide touch-pan-x overscroll-x-contain"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+              >
+                {labApproach.map((item, index) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={index} className="flex-shrink-0 w-full snap-center px-1 cursor-grab active:cursor-grabbing">
+                      <div className="bg-brand-surface/20 border border-brand-border/30 rounded-xl p-5 text-center select-none">
+                        <div className="w-12 h-12 bg-brand-accent/10 border border-brand-accent/20 rounded-xl flex items-center justify-center text-brand-accent mx-auto mb-4">
+                          <Icon size={24} strokeWidth={2} />
+                        </div>
+                        <h3 className="text-base font-bold text-white mb-2">{item.title}</h3>
+                        <p className="text-brand-muted text-sm leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <p className="text-center text-[10px] text-brand-muted/50 mt-3">Swipe to explore</p>
+              <div className="flex justify-center gap-2 mt-4">
+                {labApproach.map((_, index) => (
+                  <span
+                    key={index}
+                    onClick={() => { scrollToApproach(index); handleApproachInteraction(); }}
+                    className={`block rounded-full cursor-pointer transition-all ${
+                      activeApproach === index ? 'bg-brand-accent h-2.5 w-6' : 'bg-brand-border h-2.5 w-2.5'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop: 3-column Grid */}
+            <div className="hidden md:grid md:grid-cols-3 gap-5">
+              {labApproach.map((item, i) => {
                 const Icon = item.icon;
                 return (
                   <div
                     key={i}
-                    className={`reveal reveal-delay-${(i + 1) * 100} group relative bg-gradient-to-br ${item.gradient} border border-brand-border/50 rounded-2xl p-8 hover:border-brand-accent/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(0,255,179,0.15)]`}
+                    className="reveal group bg-brand-surface/20 border border-brand-border/30 rounded-xl p-5 hover:border-brand-accent/50 transition-all"
                   >
-                    <div className="w-16 h-16 bg-brand-accent/15 border border-brand-accent/30 rounded-2xl flex items-center justify-center text-brand-accent mb-5 group-hover:scale-110 group-hover:bg-brand-accent/20 transition-all">
-                      <Icon size={32} strokeWidth={1.5} />
+                    <div className="w-11 h-11 bg-brand-accent/10 border border-brand-accent/20 rounded-lg flex items-center justify-center text-brand-accent mb-4">
+                      <Icon size={22} strokeWidth={2} />
                     </div>
-                    <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-accent transition-colors">
-                      {item.title}
-                    </h3>
+                    <h3 className="text-base font-bold text-white mb-1.5">{item.title}</h3>
                     <p className="text-brand-muted text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 );
@@ -176,14 +347,14 @@ const AISolutionsPage: React.FC = () => {
               <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-4 uppercase">
                 Investment <span className="text-brand-accent">Tiers</span>
               </h2>
-              <p className="text-brand-muted text-lg max-w-2xl mx-auto">
+              <p className="text-brand-muted text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
                 Start small, prove the ROI, then scale.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
               {/* Discovery & Pilot */}
-              <div className="reveal reveal-delay-100 group relative bg-gradient-to-br from-brand-surface/40 to-brand-surface/20 border border-brand-border/50 rounded-2xl p-8 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,179,0.1)]">
+              <div className="reveal reveal-delay-100 group relative bg-gradient-to-br from-brand-surface/40 to-brand-surface/20 border border-brand-border/50 rounded-2xl p-8 hover:border-brand-accent/50 transition-all duration-300">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-accent/50 via-brand-accent to-brand-accent/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
 
                 <div className="flex items-center gap-3 mb-4">
@@ -213,16 +384,16 @@ const AISolutionsPage: React.FC = () => {
                   ))}
                 </ul>
 
-                <a
-                  href="/enquire"
+                <button
+                  onClick={() => setIsAuditModalOpen(true)}
                   className="block w-full text-center bg-brand-accent hover:bg-white text-brand-black font-bold py-3 px-6 rounded-lg transition-all text-sm"
                 >
                   Start Discovery
-                </a>
+                </button>
               </div>
 
               {/* Custom AI Integration */}
-              <div className="reveal reveal-delay-200 group relative bg-gradient-to-br from-brand-surface/40 to-brand-surface/20 border border-brand-border/50 rounded-2xl p-8 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,179,0.1)]">
+              <div className="reveal reveal-delay-200 group relative bg-gradient-to-br from-brand-surface/40 to-brand-surface/20 border border-brand-border/50 rounded-2xl p-8 hover:border-brand-accent/50 transition-all duration-300">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-accent/50 via-brand-accent to-brand-accent/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
 
                 <div className="flex items-center gap-3 mb-4">
@@ -260,7 +431,7 @@ const AISolutionsPage: React.FC = () => {
               </div>
 
               {/* Enterprise Automation */}
-              <div className="reveal reveal-delay-300 group relative bg-gradient-to-br from-brand-surface/40 to-brand-surface/20 border border-brand-border/50 rounded-2xl p-8 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,179,0.1)]">
+              <div className="reveal reveal-delay-300 group relative bg-gradient-to-br from-brand-surface/40 to-brand-surface/20 border border-brand-border/50 rounded-2xl p-8 hover:border-brand-accent/50 transition-all duration-300">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-accent/50 via-brand-accent to-brand-accent/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
 
                 <div className="flex items-center gap-3 mb-4">
@@ -298,14 +469,19 @@ const AISolutionsPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Updated FAQ Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        {/* FAQ Section */}
+        <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-10 uppercase text-center reveal">
-              Honest <span className="text-brand-accent">Answers</span>
-            </h2>
+            <div className="text-center mb-8 md:mb-12 reveal">
+              <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-3 uppercase">
+                Common <span className="text-brand-accent">Questions</span>
+              </h2>
+              <p className="text-brand-muted text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+                Straight answers to what businesses ask most.
+              </p>
+            </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {[
                 {
                   q: 'Will AI replace my staff?',
@@ -330,10 +506,23 @@ const AISolutionsPage: React.FC = () => {
               ].map((faq, i) => (
                 <div
                   key={i}
-                  className={`reveal reveal-delay-${(i + 1) * 100} group p-6 bg-gradient-to-br from-brand-surface/30 to-brand-surface/10 border border-brand-border/30 rounded-xl hover:border-brand-accent/40 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,179,0.08)]`}
+                  className="reveal bg-brand-surface/20 border border-brand-border/30 rounded-xl overflow-hidden transition-all duration-300 hover:border-brand-accent/40"
                 >
-                  <h3 className="text-base font-bold text-white mb-3 group-hover:text-brand-accent transition-colors">{faq.q}</h3>
-                  <p className="text-brand-muted text-sm leading-relaxed">{faq.a}</p>
+                  <button
+                    onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
+                    className="w-full flex items-center justify-between p-5 text-left"
+                  >
+                    <h3 className="text-sm sm:text-base font-bold text-white pr-4">{faq.q}</h3>
+                    <ChevronDown
+                      size={20}
+                      className={`text-brand-accent flex-shrink-0 transition-transform duration-300 ${expandedFaq === i ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${expandedFaq === i ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}
+                  >
+                    <p className="text-brand-muted text-sm leading-relaxed px-5 pb-5">{faq.a}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -341,33 +530,32 @@ const AISolutionsPage: React.FC = () => {
         </section>
 
         {/* Bottom CTA */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 mb-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="reveal relative bg-gradient-to-br from-brand-surface/50 to-brand-surface/20 border border-brand-border/30 rounded-3xl p-12 md:p-16 overflow-hidden">
-              {/* Ambient glows inside CTA */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-brand-accent/10 rounded-full blur-[80px] pointer-events-none"></div>
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/10 rounded-full blur-[60px] pointer-events-none"></div>
+        <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 mb-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="reveal relative bg-gradient-to-br from-brand-surface/50 to-brand-surface/20 border border-brand-border/30 rounded-2xl p-6 sm:p-8 overflow-hidden">
+              {/* Ambient glow */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/10 rounded-full blur-[60px] pointer-events-none"></div>
 
               <div className="relative z-10 text-center">
-                <h2 className="text-3xl md:text-5xl font-display font-black text-white mb-6 uppercase">
+                <h2 className="text-2xl md:text-3xl font-display font-black text-white mb-2 uppercase">
                   Ready to Deploy <span className="text-brand-accent">Intelligence?</span>
                 </h2>
-                <p className="text-brand-muted text-lg mb-10 max-w-xl mx-auto">
-                  Tell us what eats up your team's time. We'll show you exactly where AI can give you hours back.
+                <p className="text-brand-muted text-sm sm:text-base mb-4 max-w-xl mx-auto">
+                  Tell us what eats up your team's time. We'll show you where AI can help.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="/enquire"
-                    className="group inline-flex items-center justify-center gap-3 bg-brand-accent hover:bg-white text-brand-black font-bold py-4 px-10 rounded-lg transition-all text-sm shadow-[0_4px_14px_rgba(0,255,179,0.4)] hover:shadow-[0_6px_20px_rgba(0,255,179,0.6)] hover:scale-[1.02]"
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <button
+                    onClick={() => setIsAuditModalOpen(true)}
+                    className="group inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-white text-brand-black font-bold py-3 px-6 rounded-lg transition-all text-sm"
                   >
-                    Start With a Discovery Call
-                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                  </a>
+                    Free Workflow Audit
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </button>
                   <a
                     href="https://calendly.com/verdantdigital"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-brand-accent/50 hover:border-brand-accent text-white hover:text-brand-accent font-bold py-4 px-10 rounded-lg transition-all text-sm hover:bg-brand-accent/5"
+                    className="inline-flex items-center justify-center gap-2 bg-transparent border border-brand-border hover:border-brand-accent text-white hover:text-brand-accent font-bold py-3 px-6 rounded-lg transition-all text-sm"
                   >
                     Book a Call
                   </a>
@@ -377,6 +565,12 @@ const AISolutionsPage: React.FC = () => {
           </div>
         </section>
       </div>
+
+      {/* Workflow Audit Modal */}
+      <WorkflowAuditModal
+        isOpen={isAuditModalOpen}
+        onClose={() => setIsAuditModalOpen(false)}
+      />
     </div>
   );
 };
