@@ -8,10 +8,6 @@ import {
   Eye,
   Rocket,
   Globe,
-  Layout,
-  FileEdit,
-  Settings,
-  Headphones,
   X,
   AlertCircle,
   ChevronDown

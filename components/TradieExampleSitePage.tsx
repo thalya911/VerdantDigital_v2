@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Monitor, Smartphone, Check, Phone, Mail, MapPin, Star, Shield, Clock, Zap, ChevronRight, Menu, X, Home, Wrench, Users, MessageSquare, FileText, Building2, Lightbulb, Power, ShieldCheck, Image, Map } from 'lucide-react';
 
 type PageType = 'home' | 'services' | 'about' | 'reviews' | 'contact';
@@ -317,113 +317,9 @@ const DesktopMockup: React.FC<{ currentPage: PageType; setCurrentPage: (page: Pa
 
 // Mobile Phone Mockup
 const MobileMockup: React.FC<{ currentPage: PageType; setCurrentPage: (page: PageType) => void }> = ({ currentPage, setCurrentPage }) => {
-  const phoneRef = useRef<HTMLDivElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number | null>(null);
-  const isVisibleRef = useRef(false);
-
-  useEffect(() => {
-    const phoneElement = phoneRef.current;
-    const scrollContainer = scrollContainerRef.current;
-
-    if (!phoneElement || !scrollContainer) return;
-
-    const startScrollLoop = () => {
-      const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
-      const duration = 8000; // 8 seconds per direction
-      const pauseDuration = 1500; // 1.5 second pause at top/bottom
-      let startTime: number | null = null;
-      let direction: 'down' | 'up' = 'down';
-      let isPaused = false;
-      let pauseStartTime: number | null = null;
-
-      const animateScroll = (currentTime: number) => {
-        if (!isVisibleRef.current || currentPage !== 'home') {
-          animationRef.current = null;
-          return;
-        }
-
-        // Handle pause at top/bottom
-        if (isPaused) {
-          if (pauseStartTime === null) pauseStartTime = currentTime;
-          if (currentTime - pauseStartTime >= pauseDuration) {
-            isPaused = false;
-            pauseStartTime = null;
-            startTime = null;
-            direction = direction === 'down' ? 'up' : 'down';
-          }
-          animationRef.current = requestAnimationFrame(animateScroll);
-          return;
-        }
-
-        if (startTime === null) startTime = currentTime;
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        // Ease-in-out function for smooth acceleration/deceleration
-        const easeInOut = progress < 0.5
-          ? 2 * progress * progress
-          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-
-        if (direction === 'down') {
-          scrollContainer.scrollTop = scrollHeight * easeInOut;
-        } else {
-          scrollContainer.scrollTop = scrollHeight * (1 - easeInOut);
-        }
-
-        if (progress >= 1) {
-          isPaused = true;
-        }
-
-        animationRef.current = requestAnimationFrame(animateScroll);
-      };
-
-      // Initial delay before starting
-      setTimeout(() => {
-        if (isVisibleRef.current && currentPage === 'home') {
-          animationRef.current = requestAnimationFrame(animateScroll);
-        }
-      }, 500);
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          isVisibleRef.current = entry.isIntersecting;
-
-          if (entry.isIntersecting && currentPage === 'home' && !animationRef.current) {
-            startScrollLoop();
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(phoneElement);
-
-    return () => {
-      observer.disconnect();
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-        animationRef.current = null;
-      }
-    };
-  }, [currentPage]);
-
-  // Reset scroll when page changes
-  useEffect(() => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTop = 0;
-    }
-    if (animationRef.current) {
-      cancelAnimationFrame(animationRef.current);
-      animationRef.current = null;
-    }
-  }, [currentPage]);
-
   return (
     <div className="flex justify-center">
-      <div className="relative" ref={phoneRef}>
+      <div className="relative">
         {/* Phone Frame */}
         <div className="w-[320px] bg-gray-900 rounded-[3rem] p-3 shadow-2xl border-4 border-gray-800">
           {/* Notch */}
@@ -442,7 +338,7 @@ const MobileMockup: React.FC<{ currentPage: PageType; setCurrentPage: (page: Pag
             </div>
 
             {/* Content */}
-            <div ref={scrollContainerRef} className="overflow-y-auto max-h-[580px]">
+            <div className="overflow-y-auto max-h-[580px]">
               <ExampleSiteContent view="mobile" currentPage={currentPage} setCurrentPage={setCurrentPage} />
             </div>
           </div>
