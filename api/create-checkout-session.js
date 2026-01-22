@@ -18,6 +18,7 @@ export default async function handler(req, res) {
       payment_method_types: ['card'],
       mode: mode,
       customer_email: customerEmail,
+      allow_promotion_codes: true, // Allow customers to enter coupon codes at checkout
       metadata: {
         ...metadata,
         receipt_email: 'thalya@verdantlabs.com.au', // Always send receipts here

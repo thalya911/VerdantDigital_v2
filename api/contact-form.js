@@ -9,14 +9,29 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { firstName, lastName, email, phone, preferredContact, business, website, helpWith, message } = req.body;
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      preferredContact,
+      business,
+      website,
+      helpWith,
+      message,
+      // Additional fields from specialized forms
+      preferredTime,
+      source,
+      teamSize,
+      additionalInfo
+    } = req.body;
 
-    // Validate required fields
-    if (!firstName || !lastName || !email || !phone || !preferredContact) {
+    // Validate required fields (lastName is optional for some forms)
+    if (!firstName || !email || !phone || !preferredContact) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const fullName = `${firstName} ${lastName}`;
+    const fullName = lastName ? `${firstName} ${lastName}` : firstName;
 
     // Build notification email HTML for internal team
     const notificationHtml = `
@@ -85,10 +100,34 @@ export default async function handler(req, res) {
               <div class="value">${helpWith}</div>
             </div>
             ` : ''}
+            ${preferredTime ? `
+            <div class="field">
+              <span class="label">Preferred Contact Time</span>
+              <div class="value">${preferredTime}</div>
+            </div>
+            ` : ''}
+            ${teamSize ? `
+            <div class="field">
+              <span class="label">Team Size</span>
+              <div class="value">${teamSize}</div>
+            </div>
+            ` : ''}
+            ${source ? `
+            <div class="field">
+              <span class="label">Enquiry Source</span>
+              <div class="value">${source}</div>
+            </div>
+            ` : ''}
             ${message ? `
             <div class="field">
-              <span class="label">Message</span>
+              <span class="label">Message / Details</span>
               <div class="value">${message.replace(/\n/g, '<br>')}</div>
+            </div>
+            ` : ''}
+            ${additionalInfo ? `
+            <div class="field">
+              <span class="label">Additional Information</span>
+              <div class="value">${additionalInfo.replace(/\n/g, '<br>')}</div>
             </div>
             ` : ''}
 
@@ -171,7 +210,7 @@ export default async function handler(req, res) {
       from: 'Verdant Digital <noreply@verdantdigital.com.au>',
       to: 'thalya@verdantlabs.com.au',
       replyTo: email,
-      subject: `New Enquiry: ${fullName}${business ? ` (${business})` : ''}`,
+      subject: `${helpWith ? `[${helpWith}] ` : ''}New Enquiry: ${fullName}${business ? ` (${business})` : ''}`,
       html: notificationHtml,
     });
 

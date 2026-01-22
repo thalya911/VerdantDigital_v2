@@ -1,8 +1,58 @@
-import React, { useState } from 'react';
-import { BookOpen, TrendingUp, ArrowRight, Brain } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { BookOpen, TrendingUp, ArrowRight, Brain, Mail, Sparkles, Lock } from 'lucide-react';
+
+const STORAGE_KEY = 'verdant_newsletter_subscribed';
 
 const FreeResourcesPage: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('All');
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+
+  // Check localStorage on mount
+  useEffect(() => {
+    const subscribed = localStorage.getItem(STORAGE_KEY);
+    if (subscribed === 'true') {
+      setIsUnlocked(true);
+    }
+    setIsLoading(false);
+  }, []);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: firstName || 'Newsletter',
+          lastName: 'Subscriber',
+          email,
+          phone: 'N/A',
+          preferredContact: 'Email',
+          helpWith: 'Newsletter Subscription',
+          message: 'Subscribed via Resources page gate.'
+        }),
+      });
+
+      if (response.ok) {
+        localStorage.setItem(STORAGE_KEY, 'true');
+        setIsUnlocked(true);
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Connection error. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const guides = [
     {
@@ -35,6 +85,109 @@ const FreeResourcesPage: React.FC = () => {
     ? guides
     : guides.filter(guide => guide.tags.includes(activeFilter));
 
+  // Show loading state briefly
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-brand-black pt-32 pb-20 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-brand-accent border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  // Newsletter gate - shown when not unlocked
+  if (!isUnlocked) {
+    return (
+      <div className="min-h-screen bg-brand-black pt-32 pb-20">
+        {/* Background Grid Pattern */}
+        <div className="fixed inset-0 bg-grid-pattern bg-[size:60px_60px] opacity-[0.05] pointer-events-none"></div>
+
+        {/* Ambient glows */}
+        <div className="fixed top-1/4 left-1/4 w-96 h-96 bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="fixed bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center">
+            {/* Lock Icon */}
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-brand-accent/10 border border-brand-accent/30 rounded-2xl mb-8">
+              <Lock size={36} className="text-brand-accent" />
+            </div>
+
+            <h1 className="text-3xl md:text-5xl font-display font-black text-white mb-4 tracking-tight uppercase">
+              Unlock Free <span className="text-brand-accent">Resources</span>
+            </h1>
+
+            <p className="text-brand-muted text-base md:text-lg mb-8 leading-relaxed">
+              Get instant access to our digital guides, playbooks, and resources.
+              Just enter your email below - no spam, just valuable content.
+            </p>
+
+            {/* Sign-up Form */}
+            <form onSubmit={handleNewsletterSubmit} className="space-y-4 max-w-md mx-auto">
+              <div className="space-y-3">
+                <input
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="First name (optional)"
+                  className="w-full bg-brand-surface border border-brand-border focus:border-brand-accent text-white rounded-lg px-4 py-3.5 outline-none transition-all text-sm placeholder:text-brand-muted/50"
+                />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email address"
+                  required
+                  className="w-full bg-brand-surface border border-brand-border focus:border-brand-accent text-white rounded-lg px-4 py-3.5 outline-none transition-all text-sm placeholder:text-brand-muted/50"
+                />
+              </div>
+
+              {error && (
+                <p className="text-red-400 text-sm">{error}</p>
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmitting || !email}
+                className="w-full bg-brand-accent hover:bg-white text-brand-black font-bold py-4 rounded-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wide"
+              >
+                {isSubmitting ? (
+                  'Unlocking...'
+                ) : (
+                  <>
+                    <Sparkles size={18} />
+                    Unlock Free Access
+                  </>
+                )}
+              </button>
+
+              <p className="text-brand-muted/60 text-xs">
+                By subscribing, you'll also receive occasional updates about new resources and guides.
+              </p>
+            </form>
+
+            {/* What's Inside Preview */}
+            <div className="mt-12 pt-8 border-t border-brand-border/30">
+              <p className="text-brand-muted text-xs uppercase tracking-widest mb-6">What you'll get access to:</p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-brand-surface/20 border border-brand-border/30 rounded-xl p-4 text-left">
+                  <TrendingUp size={24} className="text-brand-accent mb-2" />
+                  <p className="text-white text-sm font-bold">Advertising Guide</p>
+                  <p className="text-brand-muted text-xs mt-1">Google Ads, Facebook, TikTok & more</p>
+                </div>
+                <div className="bg-brand-surface/20 border border-brand-border/30 rounded-xl p-4 text-left">
+                  <Brain size={24} className="text-brand-accent mb-2" />
+                  <p className="text-white text-sm font-bold">Conversion Playbook</p>
+                  <p className="text-brand-muted text-xs mt-1">Psychology of high-converting sites</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Main content - shown when unlocked
   return (
     <div className="min-h-screen bg-brand-black pt-32 pb-20">
       {/* Background Grid Pattern */}

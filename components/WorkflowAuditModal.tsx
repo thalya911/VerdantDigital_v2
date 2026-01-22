@@ -108,6 +108,7 @@ const WorkflowAuditModal: React.FC<WorkflowAuditModalProps> = ({ isOpen, onClose
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formState,
+          preferredContact: formState.preferredContact || 'Email',
           helpWith: 'AI Workflow Audit',
           message: `WORKFLOW AUDIT REQUEST\n\n` +
             `Time-Consuming Tasks:\n${painPointLabels.map(p => `• ${p}`).join('\n')}\n\n` +
