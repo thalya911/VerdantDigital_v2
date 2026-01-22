@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpen, TrendingUp, ArrowRight, Brain, Mail, Sparkles, Lock } from 'lucide-react';
+import { BookOpen, TrendingUp, ArrowRight, Brain, Sparkles, Lock } from 'lucide-react';
 
 const STORAGE_KEY = 'verdant_newsletter_subscribed';
 
