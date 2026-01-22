@@ -19,6 +19,23 @@ export default async function handler(req, res) {
       mode: mode,
       customer_email: customerEmail,
       allow_promotion_codes: true, // Allow customers to enter coupon codes at checkout
+
+      // Create a Stripe customer for future reference
+      customer_creation: 'always',
+
+      // Collect billing address
+      billing_address_collection: 'required',
+
+      // Collect phone number
+      phone_number_collection: {
+        enabled: true,
+      },
+
+      // Require terms acceptance (needs Terms URL set in Stripe Dashboard > Settings > Public details)
+      consent_collection: {
+        terms_of_service: 'required',
+      },
+
       metadata: {
         ...metadata,
         receipt_email: 'thalya@verdantlabs.com.au', // Always send receipts here
