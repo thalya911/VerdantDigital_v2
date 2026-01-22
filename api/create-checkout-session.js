@@ -18,9 +18,7 @@ export default async function handler(req, res) {
       payment_method_types: ['card'],
       mode: mode,
       customer_email: customerEmail,
-      // TESTING: Auto-apply 100% discount - REMOVE AFTER TESTING
-      discounts: [{ promotion_code: 'promo_1SsKQuFlNOCGOhJ6evAiGnVg' }],
-      // allow_promotion_codes: true, // Disabled while testing with auto-applied discount
+      allow_promotion_codes: true, // Allow customers to enter coupon codes at checkout
       metadata: {
         ...metadata,
         receipt_email: 'thalya@verdantlabs.com.au', // Always send receipts here
